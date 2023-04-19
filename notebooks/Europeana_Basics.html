@@ -100,7 +100,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Welcome
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -111,18 +111,18 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Module1.html">
-   Module 1: Basic Principles
+  <a class="reference internal" href="1%20Basic_principles.html">
+   1: Basic Principles
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Module2.html">
-   Module 2: Creating LOD
+  <a class="reference internal" href="2%20Creating_LOD.html">
+   2: Creating LOD
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Module3.html">
-   Module 3: SPARQL queries
+  <a class="reference internal" href="3%20SPARQL_queries.html">
+   3: SPARQL queries
   </a>
  </li>
 </ul>
@@ -150,6 +150,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Wikidata_Basics.html">
    Wikidata
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Wikidata_SPARQL.html">
+   Wikidata SPARQL
   </a>
  </li>
  <li class="toctree-l1">
@@ -331,6 +336,15 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
+<span class="kn">import</span> <span class="nn">ssl</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">_create_unverified_https_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">_create_unverified_context</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ssl</span><span class="o">.</span><span class="n">_create_default_https_context</span> <span class="o">=</span> <span class="n">_create_unverified_https_context</span>
+
 <span class="n">endpoint</span> <span class="o">=</span> <span class="s1">&#39;http://sparql.europeana.eu/&#39;</span>
 <span class="n">sparql</span> <span class="o">=</span> <span class="n">SPARQLWrapper</span><span class="p">(</span><span class="n">endpoint</span><span class="p">)</span>
 
@@ -339,25 +353,28 @@ title="Print to PDF"
     <span class="n">sparql</span><span class="o">.</span><span class="n">setReturnFormat</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">sparql</span><span class="o">.</span><span class="n">query</span><span class="p">()</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="s1">&#39;bindings&#39;</span><span class="p">])</span>  
-    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
     
 <span class="k">def</span> <span class="nf">print_results</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;value$&#39;</span> <span class="p">,</span> <span class="n">column</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1"> =&gt; </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1"> =&gt; </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Before you start to work with the Europeana data, it is useful to develop a good understanding of the Europeana data model. The model is somewhat complicated, and this module will only explain the basics that you need to know about to build your first queries.</p>
-<p>A central resource in the datamodel is <code class="docutils literal notranslate"><span class="pre">edm:providedCHO</span></code>. This resource represents the cultural heritage object provided by the local institution. This <code class="docutils literal notranslate"><span class="pre">edm:providedCHO</span></code> is part of two <code class="docutils literal notranslate"><span class="pre">ore:Aggregations</span></code>. The term ‘Aggregation’ is taken from the <a class="reference external" href="https://www.openarchives.org/ore/"><em>Object Reuse and Exchange</em></a> vocabulary, which was developed to describe compound digital objects. There are in fact two aggregations. Europeana makes a distinction between the metadata that are supplied by the local data provider on the one hand, and the metadata that has been added by Europeana on the other. These two aggregation also have different types. There is a local ‘ore:Aggregation’, next to an ‘edm:EuropeanaAggregation’.</p>
-<p>Both aggregations contain ore:Proxy resources. These resources contain most of the descriptive metadata about the heritage objects. The ‘local’ Proxy, first of all, contains most of the metadata that have been supplied by the contributing instution. More detailed information about the Europeana Data Model can be found in the <a class="reference external" href="http://www.openarchives.org/ore/1.0/primer.html">Primer</a>.</p>
+<p>Before you start to work with the Europeana data, it is useful to familiarise yourself with the Europeana data model.</p>
 <p>The model can be visualised as follows:</p>
 <p><img alt="" src="../_images/Europeana.svg" /></p>
-<p>This model may indeed look slightly complicated, but, to work with the Europeana data, you mainly need to know which predicates can be used for which resources.</p>
-<p>The following properties all have the local <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> resource as their domain:</p>
+<p>A central resource in the datamodel is <code class="docutils literal notranslate"><span class="pre">edm:providedCHO</span></code>.</p>
+<p>This <code class="docutils literal notranslate"><span class="pre">edm:providedCHO</span></code> is part of two <code class="docutils literal notranslate"><span class="pre">ore:Aggregations</span></code>. There is a local <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code>, next to an <code class="docutils literal notranslate"><span class="pre">edm:EuropeanaAggregation</span></code>. Europeana makes a distinction between the metadata that are supplied by the local data provider on the one hand, and the metadata that has been added by Europeana on the other.</p>
+<p>The term ‘Aggregation’ is taken from the <a class="reference external" href="https://www.openarchives.org/ore/"><em>Object Reuse and Exchange</em></a> vocabulary, which was developed to describe compound digital objects.</p>
+<p>Both aggregations contain <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> resources. These <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> resources contain most of the descriptive metadata about the heritage objects. The ‘local’ Proxy (i.e. the <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> resource connected to <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code>) contains most of the metadata that have been supplied by the contributing instution. The <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> resource connected to the <code class="docutils literal notranslate"><span class="pre">edm:EuropeanaAggregation</span></code> contains some additional metadata.</p>
+<p>More detailed information about the Europeana Data Model can be found in the <a class="reference external" href="http://www.openarchives.org/ore/1.0/primer.html">Primer</a>.</p>
+<p>The explanation of this model may have seemed slightly complicated, but, to work with the Europeana data, you mainly need to know the predicates that are available for these various resources.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> in the <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> is described using the following properties:</p>
 <ul class="simple">
 <li><p>dc:title</p></li>
 <li><p>dc:creator</p></li>
@@ -382,7 +399,8 @@ title="Print to PDF"
 <p>The query below selects the title, the type and the date of creation of a small list of ten objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;PREFIX dc:      &lt;http://purl.org/dc/elements/1.1/&gt;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">PREFIX dc:      &lt;http://purl.org/dc/elements/1.1/&gt;</span>
 <span class="s1">PREFIX dcterms: &lt;http://purl.org/dc/terms/&gt;</span>
 <span class="s1">PREFIX edm:     &lt;http://www.europeana.eu/schemas/edm/&gt;</span>
 <span class="s1">PREFIX ore:     &lt;http://www.openarchives.org/ore/terms/&gt;</span>
@@ -399,22 +417,18 @@ title="Print to PDF"
 <span class="s1">LIMIT 10</span>
 <span class="s1">&#39;&#39;&#39;</span>
 
-<span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 6)
+<span class="n">df</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><a href="http://grlc.io/api-git/peterverhaar/sparql_queries/europeana_basic_1?endpoint=http%3A%2F%2Fsparql.europeana.eu%2F" target="_blank">See the result</a></p>
-<p>The query explained above searches in all the 50 million objects available in Europeana, so it may be useful to search more specifilly for certain types of objects. You can state that the objects should be of type ‘IMAGE’. You can do this by making use of the dc:type property.</p>
-<p>It must be noted, however, that the values in the dc:type predicate have not been entered consistently by all institutions. As a results of this, you will not necessarily receive all images.</p>
+<p>The query shownabove searches in all the 50 million objects available in Europeana.</p>
+<p>You can also search more specifically for certain types of objects. You can state that the objects should be of type ‘IMAGE’, for example. You can do this by making use of the dc:type property.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;PREFIX dc:      &lt;http://purl.org/dc/elements/1.1/&gt;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">PREFIX dc:      &lt;http://purl.org/dc/elements/1.1/&gt;</span>
 <span class="s1">PREFIX edm:     &lt;http://www.europeana.eu/schemas/edm/&gt;</span>
 <span class="s1">PREFIX ore:     &lt;http://www.openarchives.org/ore/terms/&gt;</span>
 
@@ -434,19 +448,15 @@ title="Print to PDF"
 <span class="s1">}</span>
 <span class="s1">&#39;&#39;&#39;</span>
 
-<span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10000, 6)
+<span class="n">df</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><a href="http://grlc.io/api-git/peterverhaar/sparql_queries/europeana_basic_2?endpoint=http%3A%2F%2Fsparql.europeana.eu%2F" target="_blank">See the result</a></p>
-<p>The ore:Proxy object in the local ore:Aggregation has descriptive metadata supplied by the data provided. Data about the data provider itself and about the rights associated with the object can be found in the <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> Resource this local Proxy belongs to. The <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> is connected to the <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> via the <code class="docutils literal notranslate"><span class="pre">ore:proxyIn</span></code> predicate.</p>
-<p>In Europeana, the local <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> is described using the following properties:</p>
+<p>It must be noted, however, that the values in the dc:type predicate have not been entered consistently by all institutions. As a results of this, you will not necessarily receive all images.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> object in the local ore:Aggregation has descriptive metadata supplied by the data provided, as was mentioned. Data about the data provider itself and about the rights associated with the object can be found in the <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> Resource this local Proxy belongs to. The <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> is connected to the <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> via the <code class="docutils literal notranslate"><span class="pre">ore:proxyIn</span></code> predicate.</p>
+<p>The local <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> is described using the following properties:</p>
 <ul class="simple">
 <li><p>edm:dataProvider</p></li>
 <li><p>edm:rights</p></li>
@@ -455,14 +465,14 @@ title="Print to PDF"
 <li><p>edm:object</p></li>
 <li><p>edm:provider</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">edm:isShownBy</span></code> predicate is generally followed by the link to the digital object. <code class="docutils literal notranslate"><span class="pre">edm:isShownAt</span></code> mostly contains a link to the landing page describing the object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;PREFIX dc:      &lt;http://purl.org/dc/elements/1.1/&gt;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">PREFIX dc:      &lt;http://purl.org/dc/elements/1.1/&gt;</span>
 <span class="s1">PREFIX edm:     &lt;http://www.europeana.eu/schemas/edm/&gt;</span>
 <span class="s1">PREFIX ore:     &lt;http://www.openarchives.org/ore/terms/&gt;</span>
 
-<span class="s1">SELECT ?title ?type ?institution ?rights </span>
+<span class="s1">SELECT *</span>
 <span class="s1">WHERE {</span>
 
 <span class="s1">    ?object dc:title ?title .</span>
@@ -474,18 +484,12 @@ title="Print to PDF"
 <span class="s1">    </span>
 <span class="s1">    ?aggr edm:dataProvider ?institution .</span>
 <span class="s1">    ?aggr edm:rights ?rights .</span>
-<span class="s1">    </span>
-
+<span class="s1">      </span>
 <span class="s1">}</span>
 <span class="s1">LIMIT 10</span>
 <span class="s1">&#39;&#39;&#39;</span>
 
-<span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 8)
+<span class="n">df</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -511,18 +515,14 @@ title="Print to PDF"
 <span class="s2">LIMIT 40</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(40, 7)
+<span class="n">df</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><a href="http://grlc.io/api-git/peterverhaar/sparql_queries/europeana_basic_4?endpoint=http%3A%2F%2Fsparql.europeana.eu%2F" target="_blank">See the result</a></p>
-<p>You can also request the links of the digital objects. This link is usually provided as an object followung the edm:isShownAt predicate.</p>
+<p>You can also request the links of the digital objects. This link is usually provided as an object followung the <code class="docutils literal notranslate"><span class="pre">edm:isShownAt</span></code> predicate.</p>
+<p><code class="docutils literal notranslate"><span class="pre">edm:isShownAt</span></code> mostly contains a link to the landing page describing the object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -536,31 +536,27 @@ title="Print to PDF"
 
 <span class="s2">?object dc:title ?title .</span>
 <span class="s2">?object ore:proxyIn ?local_aggr .</span>
+
 <span class="s2">?local_aggr edm:isShownAt ?url .</span>
 <span class="s2">?local_aggr edm:dataProvider &quot;Rijksmuseum&quot; .</span>
 <span class="s2">}</span>
 <span class="s2">LIMIT 40</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(40, 5)
+<span class="n">df</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><a href="http://grlc.io/api-git/peterverhaar/sparql_queries/europeana_basic_5?endpoint=http%3A%2F%2Fsparql.europeana.eu%2F" target="_blank">See the result</a></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">edm:aggregatedCHO</span></code> is also part of an <code class="docutils literal notranslate"><span class="pre">edm:EuropeanaAggregation</span></code>. This resource can be described using the following predicates:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ore:Proxy</span></code> resource that is connected to a <code class="docutils literal notranslate"><span class="pre">ore:Aggregation</span></code> is also a proxy for an <code class="docutils literal notranslate"><span class="pre">edm:aggregatedCHO</span></code> resource. This latter resource is also part of an <code class="docutils literal notranslate"><span class="pre">edm:EuropeanaAggregation</span></code>. This resource can be described using the following predicates:</p>
 <ul class="simple">
 <li><p>edm:collectionName</p></li>
 <li><p>edm:country</p></li>
 <li><p>edm:landingPage</p></li>
 <li><p>edm:language</p></li>
 </ul>
-<p>Once you have found the <code class="docutils literal notranslate"><span class="pre">edm:EuropeanaAggregation</span></code> associated with an <code class="docutils literal notranslate"><span class="pre">edm:aggregatedCHO</span></code>, you search for objects managed by a cultural heritage institution in a specific langauge, or for objects in a specific langauge.</p>
+<p>Once you have found the <code class="docutils literal notranslate"><span class="pre">edm:EuropeanaAggregation</span></code> associated with an <code class="docutils literal notranslate"><span class="pre">edm:aggregatedCHO</span></code>, you search for objects managed by a cultural heritage institution in a specific country, or for objects in a specific langauge.</p>
 <p>The SPARQL query below searches for images supplied by an institution located in Belgium in the Dutch language.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -570,7 +566,7 @@ title="Print to PDF"
 <span class="s2">PREFIX ore: &lt;http://www.openarchives.org/ore/terms/&gt;</span>
 <span class="s2">PREFIX html: &lt;http://www.w3.org/1999/xhtml/vocab#&gt;</span>
 
-<span class="s2">SELECT ?title ?creator ?img_url ?eur_aggr</span>
+<span class="s2">SELECT ?title ?creator ?img_url ?eur_aggr ?local_aggr</span>
 <span class="s2">WHERE {</span>
 <span class="s2">?object edm:type &quot;IMAGE&quot; .</span>
 <span class="s2">?object dc:title ?title .</span>
@@ -587,6 +583,7 @@ title="Print to PDF"
 <span class="s2">?eur_aggr edm:language ?lang .</span>
 <span class="s2">?eur_aggr edm:language &#39;nl&#39; .</span>
 
+
 <span class="s2">OPTIONAL{ ?local_aggr edm:object ?img_url . } .</span>
 
 
@@ -594,12 +591,7 @@ title="Print to PDF"
 
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10000, 10)
+<span class="n">df</span> <span class="o">=</span> <span class="n">run_query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
