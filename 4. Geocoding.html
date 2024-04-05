@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Geocoding &#8212; My sample book</title>
+    <title>4. Geocoding &#8212; Mapping tutorial</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,7 +48,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Exercise 1.1" href="Solutions.html" />
+    <link rel="next" title="Solutions" href="Solutions.html" />
     <link rel="prev" title="3. GeoJSON" href="3.%20GeoJSON.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -86,14 +86,9 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
       
       
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Mapping tutorial</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -122,7 +117,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2.%20Additional%20Layers.html">
-   Additional Layers
+   2. Additional Layers
   </a>
  </li>
  <li class="toctree-l1">
@@ -144,7 +139,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Solutions.html">
-   Exercise 1.1
+   Solutions
   </a>
  </li>
 </ul>
@@ -206,7 +201,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/4. Geocoding.ipynb"
+        <a href="https://mybinder.org/v2/gh/cdsleiden/mapping-tutorial/main?urlpath=tree/docs/4. Geocoding.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -249,7 +244,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/cdsleiden/mapping-tutorial/"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -266,7 +261,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F4. Geocoding.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/cdsleiden/mapping-tutorial//issues/new?title=Issue%20on%20page%20%2F4. Geocoding.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -519,7 +514,7 @@ Broerstraat 4 Groningen
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_130aa35b2d0d0f82a736b5b635e99570 {
+                #map_f188b78ae0e3dc7dc596f27f77098e9e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -532,14 +527,14 @@ Broerstraat 4 Groningen
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_130aa35b2d0d0f82a736b5b635e99570&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_f188b78ae0e3dc7dc596f27f77098e9e&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_130aa35b2d0d0f82a736b5b635e99570 = L.map(
-                &quot;map_130aa35b2d0d0f82a736b5b635e99570&quot;,
+            var map_f188b78ae0e3dc7dc596f27f77098e9e = L.map(
+                &quot;map_f188b78ae0e3dc7dc596f27f77098e9e&quot;,
                 {
                     center: [52.09167565753429, 5.10068760531639],
                     crs: L.CRS.EPSG3857,
@@ -553,133 +548,133 @@ Broerstraat 4 Groningen
 
 
 
-            var tile_layer_12af99b13627204111f52469b3149a65 = L.tileLayer(
+            var tile_layer_98e7bdb3e4c45e6fe3bd59581c8c350e = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_130aa35b2d0d0f82a736b5b635e99570);
+            ).addTo(map_f188b78ae0e3dc7dc596f27f77098e9e);
 
 
-            var circle_8f6589ce12dce6970fa33e1987d64323 = L.circle(
+            var circle_3a5d77af826f5370f525ea9618b2a5ef = L.circle(
                 [50.8450593, 5.6899146],
                 {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#1827c9&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#1827c9&quot;, &quot;fillOpacity&quot;: 1, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8000, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_130aa35b2d0d0f82a736b5b635e99570);
+            ).addTo(map_f188b78ae0e3dc7dc596f27f77098e9e);
 
 
-        var popup_c2a84f654a42016703f3c236d046a368 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-
-
-                var html_f440665d7f36076c348f2e54034b5d73 = $(`&lt;div id=&quot;html_f440665d7f36076c348f2e54034b5d73&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Grote Looiersstraat 17 Maastricht&lt;/div&gt;`)[0];
-                popup_c2a84f654a42016703f3c236d046a368.setContent(html_f440665d7f36076c348f2e54034b5d73);
+        var popup_5de80514f1a731ddb92038c407a494fb = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
 
 
-        circle_8f6589ce12dce6970fa33e1987d64323.bindPopup(popup_c2a84f654a42016703f3c236d046a368)
+                var html_b40a06da9f0a4fcae97211d8a175606b = $(`&lt;div id=&quot;html_b40a06da9f0a4fcae97211d8a175606b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Grote Looiersstraat 17 Maastricht&lt;/div&gt;`)[0];
+                popup_5de80514f1a731ddb92038c407a494fb.setContent(html_b40a06da9f0a4fcae97211d8a175606b);
+
+
+
+        circle_3a5d77af826f5370f525ea9618b2a5ef.bindPopup(popup_5de80514f1a731ddb92038c407a494fb)
         ;
 
 
 
 
-            var circle_fd1e82e6038c81dfd586e024c904a27f = L.circle(
+            var circle_04f924f3b0d25a1169491117bcb99464 = L.circle(
                 [52.1572514, 4.4815708],
                 {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#1827c9&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#1827c9&quot;, &quot;fillOpacity&quot;: 1, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8000, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_130aa35b2d0d0f82a736b5b635e99570);
+            ).addTo(map_f188b78ae0e3dc7dc596f27f77098e9e);
 
 
-        var popup_b3b928b8cd69cd8dcaf1b97d0cfe2e33 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-
-
-                var html_5c6e9c933baf7413b70dc395a8e84d99 = $(`&lt;div id=&quot;html_5c6e9c933baf7413b70dc395a8e84d99&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Witte Singel 27 Leiden&lt;/div&gt;`)[0];
-                popup_b3b928b8cd69cd8dcaf1b97d0cfe2e33.setContent(html_5c6e9c933baf7413b70dc395a8e84d99);
+        var popup_aae3089c57835902d81b801a334bf737 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
 
 
-        circle_fd1e82e6038c81dfd586e024c904a27f.bindPopup(popup_b3b928b8cd69cd8dcaf1b97d0cfe2e33)
+                var html_055aa68282b0f5e256fdb66a7010c92d = $(`&lt;div id=&quot;html_055aa68282b0f5e256fdb66a7010c92d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Witte Singel 27 Leiden&lt;/div&gt;`)[0];
+                popup_aae3089c57835902d81b801a334bf737.setContent(html_055aa68282b0f5e256fdb66a7010c92d);
+
+
+
+        circle_04f924f3b0d25a1169491117bcb99464.bindPopup(popup_aae3089c57835902d81b801a334bf737)
         ;
 
 
 
 
-            var circle_38c433374440c9f11ff8b6e456a94337 = L.circle(
+            var circle_fe1127b97ee6f77d5607970aa78b74b4 = L.circle(
                 [52.3676855, 4.8897127],
                 {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#1827c9&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#1827c9&quot;, &quot;fillOpacity&quot;: 1, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8000, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_130aa35b2d0d0f82a736b5b635e99570);
+            ).addTo(map_f188b78ae0e3dc7dc596f27f77098e9e);
 
 
-        var popup_fde22f3e822e80690544015038e5b079 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-
-
-                var html_05d79fca96771f342871ac5ffd963c93 = $(`&lt;div id=&quot;html_05d79fca96771f342871ac5ffd963c93&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Singel 425 Amsterdam&lt;/div&gt;`)[0];
-                popup_fde22f3e822e80690544015038e5b079.setContent(html_05d79fca96771f342871ac5ffd963c93);
+        var popup_d97d566926ed04cac6288b2d7c750989 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
 
 
-        circle_38c433374440c9f11ff8b6e456a94337.bindPopup(popup_fde22f3e822e80690544015038e5b079)
+                var html_bca2bb80f354717b08016704114220ce = $(`&lt;div id=&quot;html_bca2bb80f354717b08016704114220ce&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Singel 425 Amsterdam&lt;/div&gt;`)[0];
+                popup_d97d566926ed04cac6288b2d7c750989.setContent(html_bca2bb80f354717b08016704114220ce);
+
+
+
+        circle_fe1127b97ee6f77d5607970aa78b74b4.bindPopup(popup_d97d566926ed04cac6288b2d7c750989)
         ;
 
 
 
 
-            var circle_b7149320a4e23b7c595f8be6ed4cb5a7 = L.circle(
+            var circle_72252aec17af74cedf0fc664e2d3d9c0 = L.circle(
                 [52.0946054, 5.1235846],
                 {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#1827c9&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#1827c9&quot;, &quot;fillOpacity&quot;: 1, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8000, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_130aa35b2d0d0f82a736b5b635e99570);
+            ).addTo(map_f188b78ae0e3dc7dc596f27f77098e9e);
 
 
-        var popup_3c3e3cb7e2587578e57ac70eef248c18 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-
-
-                var html_19b42e77ca2352786b392091debf3eb7 = $(`&lt;div id=&quot;html_19b42e77ca2352786b392091debf3eb7&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Drift 27 Utrecht&lt;/div&gt;`)[0];
-                popup_3c3e3cb7e2587578e57ac70eef248c18.setContent(html_19b42e77ca2352786b392091debf3eb7);
+        var popup_552fd19caea39c9ccfdba206f4475b8f = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
 
 
-        circle_b7149320a4e23b7c595f8be6ed4cb5a7.bindPopup(popup_3c3e3cb7e2587578e57ac70eef248c18)
+                var html_4dceb2282b75b0b75f6df00b7a33c7dc = $(`&lt;div id=&quot;html_4dceb2282b75b0b75f6df00b7a33c7dc&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Drift 27 Utrecht&lt;/div&gt;`)[0];
+                popup_552fd19caea39c9ccfdba206f4475b8f.setContent(html_4dceb2282b75b0b75f6df00b7a33c7dc);
+
+
+
+        circle_72252aec17af74cedf0fc664e2d3d9c0.bindPopup(popup_552fd19caea39c9ccfdba206f4475b8f)
         ;
 
 
 
 
-            var circle_4053c6fadb523093dcd9ddeb042d01ad = L.circle(
+            var circle_d569980d6b8d3e946e96fb44c1e36236 = L.circle(
                 [51.8168933, 5.8654912],
                 {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#1827c9&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#1827c9&quot;, &quot;fillOpacity&quot;: 1, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8000, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_130aa35b2d0d0f82a736b5b635e99570);
+            ).addTo(map_f188b78ae0e3dc7dc596f27f77098e9e);
 
 
-        var popup_7a382a5be6727548a2c68fb5a4032b07 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-
-
-                var html_7bdbaed7938d36d98ce3bada6c054c9a = $(`&lt;div id=&quot;html_7bdbaed7938d36d98ce3bada6c054c9a&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Houtlaan 4 Nijmegen&lt;/div&gt;`)[0];
-                popup_7a382a5be6727548a2c68fb5a4032b07.setContent(html_7bdbaed7938d36d98ce3bada6c054c9a);
+        var popup_9cd6f5099ca6ff023c04df6ca1e62b71 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
 
 
-        circle_4053c6fadb523093dcd9ddeb042d01ad.bindPopup(popup_7a382a5be6727548a2c68fb5a4032b07)
+                var html_6c8931fc6b85b97bad59c069f1824a6f = $(`&lt;div id=&quot;html_6c8931fc6b85b97bad59c069f1824a6f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Houtlaan 4 Nijmegen&lt;/div&gt;`)[0];
+                popup_9cd6f5099ca6ff023c04df6ca1e62b71.setContent(html_6c8931fc6b85b97bad59c069f1824a6f);
+
+
+
+        circle_d569980d6b8d3e946e96fb44c1e36236.bindPopup(popup_9cd6f5099ca6ff023c04df6ca1e62b71)
         ;
 
 
 
 
-            var circle_78e4559532f8863d71709c88d60f8bd9 = L.circle(
+            var circle_397f93ce1c157177d0160d8bedb43a56 = L.circle(
                 [53.2189163, 6.5629461],
                 {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#1827c9&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#1827c9&quot;, &quot;fillOpacity&quot;: 1, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 8000, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
-            ).addTo(map_130aa35b2d0d0f82a736b5b635e99570);
+            ).addTo(map_f188b78ae0e3dc7dc596f27f77098e9e);
 
 
-        var popup_1fc9d9ecbae1f43f1fb90b91b15cafe0 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-
-
-                var html_eb5c004bd278c150b4cda74259ac4d0c = $(`&lt;div id=&quot;html_eb5c004bd278c150b4cda74259ac4d0c&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Broerstraat 4 Groningen&lt;/div&gt;`)[0];
-                popup_1fc9d9ecbae1f43f1fb90b91b15cafe0.setContent(html_eb5c004bd278c150b4cda74259ac4d0c);
+        var popup_c4d59b81f501a6c65e597c170972dd52 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
 
 
-        circle_78e4559532f8863d71709c88d60f8bd9.bindPopup(popup_1fc9d9ecbae1f43f1fb90b91b15cafe0)
+                var html_6c81665069e97e10d7411e18cf55e226 = $(`&lt;div id=&quot;html_6c81665069e97e10d7411e18cf55e226&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Broerstraat 4 Groningen&lt;/div&gt;`)[0];
+                popup_c4d59b81f501a6c65e597c170972dd52.setContent(html_6c81665069e97e10d7411e18cf55e226);
+
+
+
+        circle_397f93ce1c157177d0160d8bedb43a56.bindPopup(popup_c4d59b81f501a6c65e597c170972dd52)
         ;
 
 
@@ -755,7 +750,7 @@ Broerstraat 4 Groningen
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_9750dc6ef80cb545d8e7f042aee07154 {
+                #map_95432bcff5cd657eaccc2c5e6f9da5cf {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -768,14 +763,14 @@ Broerstraat 4 Groningen
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_9750dc6ef80cb545d8e7f042aee07154&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_95432bcff5cd657eaccc2c5e6f9da5cf&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_9750dc6ef80cb545d8e7f042aee07154 = L.map(
-                &quot;map_9750dc6ef80cb545d8e7f042aee07154&quot;,
+            var map_95432bcff5cd657eaccc2c5e6f9da5cf = L.map(
+                &quot;map_95432bcff5cd657eaccc2c5e6f9da5cf&quot;,
                 {
                     center: [52.09167565753429, 5.10068760531639],
                     crs: L.CRS.EPSG3857,
@@ -789,10 +784,10 @@ Broerstraat 4 Groningen
 
 
 
-            var tile_layer_a0090471d42502add244aff8c61704b9 = L.tileLayer(
+            var tile_layer_f4c7a6abe7b3bfc82026381533fb3aac = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_9750dc6ef80cb545d8e7f042aee07154);
+            ).addTo(map_95432bcff5cd657eaccc2c5e6f9da5cf);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -837,7 +832,7 @@ Broerstraat 4 Groningen
     <a class='right-next' id="next-link" href="Solutions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercise 1.1</p>
+        <p class="prev-next-title">Solutions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -848,7 +843,7 @@ Broerstraat 4 Groningen
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Peter Verhaar<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

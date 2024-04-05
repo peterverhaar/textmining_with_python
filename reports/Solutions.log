@@ -37,7 +37,7 @@ m.save('nl.html')
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/var/folders/nf/35gdwksd0fx8kzbsljz4dz6hnrcnxq/T/ipykernel_86577/2284109039.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/nf/35gdwksd0fx8kzbsljz4dz6hnrcnxq/T/ipykernel_87777/2284109039.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      6[0m gj = GeoJson('nl_updated.geojson' ,
 [1;32m      7[0m           [0mzoom_on_click[0m [0;34m=[0m [0;32mTrue[0m [0;34m,[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 8[0;31m        style_function=lambda feature: {    

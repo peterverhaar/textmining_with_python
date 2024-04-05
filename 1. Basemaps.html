@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Base maps &#8212; My sample book</title>
+    <title>1. Base maps &#8212; Mapping tutorial</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,7 +48,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Additional Layers" href="2.%20Additional%20Layers.html" />
+    <link rel="next" title="2. Additional Layers" href="2.%20Additional%20Layers.html" />
     <link rel="prev" title="Mapping tutorial" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -86,14 +86,9 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
       
       
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Mapping tutorial</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -122,7 +117,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2.%20Additional%20Layers.html">
-   Additional Layers
+   2. Additional Layers
   </a>
  </li>
  <li class="toctree-l1">
@@ -144,7 +139,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Solutions.html">
-   Exercise 1.1
+   Solutions
   </a>
  </li>
 </ul>
@@ -206,7 +201,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/1. Basemaps.ipynb"
+        <a href="https://mybinder.org/v2/gh/cdsleiden/mapping-tutorial/main?urlpath=tree/docs/1. Basemaps.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -249,7 +244,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/cdsleiden/mapping-tutorial/"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -266,7 +261,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1. Basemaps.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/cdsleiden/mapping-tutorial//issues/new?title=Issue%20on%20page%20%2F1. Basemaps.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -501,7 +496,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_5e11e772c76a721065c1172afb52ffc3 {
+                #map_1e8fb144d599973fb96380665b447783 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -514,14 +509,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_5e11e772c76a721065c1172afb52ffc3&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_1e8fb144d599973fb96380665b447783&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_5e11e772c76a721065c1172afb52ffc3 = L.map(
-                &quot;map_5e11e772c76a721065c1172afb52ffc3&quot;,
+            var map_1e8fb144d599973fb96380665b447783 = L.map(
+                &quot;map_1e8fb144d599973fb96380665b447783&quot;,
                 {
                     center: [0, 0],
                     crs: L.CRS.EPSG3857,
@@ -535,10 +530,10 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_50140409dd0ba018f26bd62b8e6ea262 = L.tileLayer(
+            var tile_layer_d95da27eebe0adbd269470b10dedd134 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_5e11e772c76a721065c1172afb52ffc3);
+            ).addTo(map_1e8fb144d599973fb96380665b447783);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -592,7 +587,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_db27810d56b8caaf020d1352626a13e7 {
+                #map_8a57c2a4c8597bd063926b975f0be76b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -605,14 +600,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_db27810d56b8caaf020d1352626a13e7&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_8a57c2a4c8597bd063926b975f0be76b&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_db27810d56b8caaf020d1352626a13e7 = L.map(
-                &quot;map_db27810d56b8caaf020d1352626a13e7&quot;,
+            var map_8a57c2a4c8597bd063926b975f0be76b = L.map(
+                &quot;map_8a57c2a4c8597bd063926b975f0be76b&quot;,
                 {
                     center: [52.15775492822701, 4.482736320037433],
                     crs: L.CRS.EPSG3857,
@@ -626,10 +621,10 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_94b823b1303e4723272779960b498cae = L.tileLayer(
+            var tile_layer_2886df5c9fe74778c24425580244e86d = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_db27810d56b8caaf020d1352626a13e7);
+            ).addTo(map_8a57c2a4c8597bd063926b975f0be76b);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -673,7 +668,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_5fba7b35681ff774fc18548c0d7b1784 {
+                #map_456b710074de8011b7fc4e72b735864c {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -686,14 +681,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_5fba7b35681ff774fc18548c0d7b1784&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_456b710074de8011b7fc4e72b735864c&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_5fba7b35681ff774fc18548c0d7b1784 = L.map(
-                &quot;map_5fba7b35681ff774fc18548c0d7b1784&quot;,
+            var map_456b710074de8011b7fc4e72b735864c = L.map(
+                &quot;map_456b710074de8011b7fc4e72b735864c&quot;,
                 {
                     center: [52.15723602487217, 4.482775926589967],
                     crs: L.CRS.EPSG3857,
@@ -707,10 +702,10 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_35d3db1ae483cbdfd5a1501fe9151c59 = L.tileLayer(
+            var tile_layer_5b68e88df79b00d991dd61a5be999130 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_5fba7b35681ff774fc18548c0d7b1784);
+            ).addTo(map_456b710074de8011b7fc4e72b735864c);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -763,7 +758,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_6eab5e7c96251ed2b4f6ca11bb572218 {
+                #map_e49a16f3dff64a478797f547824a11d6 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -776,14 +771,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_6eab5e7c96251ed2b4f6ca11bb572218&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_e49a16f3dff64a478797f547824a11d6&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_6eab5e7c96251ed2b4f6ca11bb572218 = L.map(
-                &quot;map_6eab5e7c96251ed2b4f6ca11bb572218&quot;,
+            var map_e49a16f3dff64a478797f547824a11d6 = L.map(
+                &quot;map_e49a16f3dff64a478797f547824a11d6&quot;,
                 {
                     center: [52.15723602487217, 4.482775926589967],
                     crs: L.CRS.EPSG3857,
@@ -797,10 +792,10 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_a34ec6d1e6971132c34d4f251b633027 = L.tileLayer(
+            var tile_layer_5d0e6b524236f5296f8d9590591cfffc = L.tileLayer(
                 &quot;https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\&quot;http://cartodb.com/attributions\&quot;\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\&quot;http://cartodb.com/attributions\&quot;\u003eattributions\u003c/a\u003e&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_6eab5e7c96251ed2b4f6ca11bb572218);
+            ).addTo(map_e49a16f3dff64a478797f547824a11d6);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -871,7 +866,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_607e7d8115a07d1322d8fca7d024e091 {
+                #map_550ed8b8bc6fe5489ec8beb7673101b6 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -884,14 +879,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_607e7d8115a07d1322d8fca7d024e091&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_550ed8b8bc6fe5489ec8beb7673101b6&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_607e7d8115a07d1322d8fca7d024e091 = L.map(
-                &quot;map_607e7d8115a07d1322d8fca7d024e091&quot;,
+            var map_550ed8b8bc6fe5489ec8beb7673101b6 = L.map(
+                &quot;map_550ed8b8bc6fe5489ec8beb7673101b6&quot;,
                 {
                     center: [52.15723602487217, 4.482775926589967],
                     crs: L.CRS.EPSG3857,
@@ -905,10 +900,10 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_019ef4b4ed0afc277ee5d775f3fe2074 = L.tileLayer(
+            var tile_layer_32187fb260aa3ea73164a1a8abeba1bf = L.tileLayer(
                 &quot;https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Map data: \u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors, \u003ca href=\&quot;http://viewfinderpanoramas.org\&quot;\u003eSRTM\u003c/a\u003e | Map style: \u0026copy; \u003ca href=\&quot;https://opentopomap.org\&quot;\u003eOpenTopoMap\u003c/a\u003e (\u003ca href=\&quot;https://creativecommons.org/licenses/by-sa/3.0/\&quot;\u003eCC-BY-SA\u003c/a\u003e)&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_607e7d8115a07d1322d8fca7d024e091);
+            ).addTo(map_550ed8b8bc6fe5489ec8beb7673101b6);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -954,7 +949,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_8c67d38b17e8d1ce2751fd29a2479b31 {
+                #map_e51d888af47937cb868eef2b660847f8 {
                     position: relative;
                     width: 50.0%;
                     height: 100.0%;
@@ -967,14 +962,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_8c67d38b17e8d1ce2751fd29a2479b31&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_e51d888af47937cb868eef2b660847f8&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_8c67d38b17e8d1ce2751fd29a2479b31 = L.map(
-                &quot;map_8c67d38b17e8d1ce2751fd29a2479b31&quot;,
+            var map_e51d888af47937cb868eef2b660847f8 = L.map(
+                &quot;map_e51d888af47937cb868eef2b660847f8&quot;,
                 {
                     center: [52.15723602487217, 4.482775926589967],
                     crs: L.CRS.EPSG3857,
@@ -988,10 +983,10 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_bd78bc9d11347a934815131a41636c02 = L.tileLayer(
+            var tile_layer_2a270042ef0c47406b9c5cf98a958cab = L.tileLayer(
                 &quot;https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg&quot;,
                 {&quot;attribution&quot;: &quot;Map tiles by \u003ca href=\&quot;http://stamen.com\&quot;\u003eStamen Design\u003c/a\u003e, under \u003ca href=\&quot;http://creativecommons.org/licenses/by/3.0\&quot;\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://creativecommons.org/licenses/by-sa/3.0\&quot;\u003eCC BY SA\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_8c67d38b17e8d1ce2751fd29a2479b31);
+            ).addTo(map_e51d888af47937cb868eef2b660847f8);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -1041,7 +1036,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_c7eed6d66f80e96cce6e513d8b1d1cbe {
+                #map_06c290197192a119de23d8844530c126 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -1054,14 +1049,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_c7eed6d66f80e96cce6e513d8b1d1cbe&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_06c290197192a119de23d8844530c126&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_c7eed6d66f80e96cce6e513d8b1d1cbe = L.map(
-                &quot;map_c7eed6d66f80e96cce6e513d8b1d1cbe&quot;,
+            var map_06c290197192a119de23d8844530c126 = L.map(
+                &quot;map_06c290197192a119de23d8844530c126&quot;,
                 {
                     center: [0.0, 0.0],
                     crs: L.CRS.EPSG3857,
@@ -1075,10 +1070,10 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_faa5de765cf2271306722aca8788357f = L.tileLayer(
+            var tile_layer_c1bab02e3776a19567b653d0ceef57f9 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_c7eed6d66f80e96cce6e513d8b1d1cbe);
+            ).addTo(map_06c290197192a119de23d8844530c126);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -1131,7 +1126,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_a256ca947563637fea03b203ab3e3b1f {
+                #map_803a986f7fabe4fdec1323b432ba4077 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -1146,14 +1141,14 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 &lt;body&gt;
 
 
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_a256ca947563637fea03b203ab3e3b1f&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_803a986f7fabe4fdec1323b432ba4077&quot; &gt;&lt;/div&gt;
 
 &lt;/body&gt;
 &lt;script&gt;
 
 
-            var map_a256ca947563637fea03b203ab3e3b1f = L.map(
-                &quot;map_a256ca947563637fea03b203ab3e3b1f&quot;,
+            var map_803a986f7fabe4fdec1323b432ba4077 = L.map(
+                &quot;map_803a986f7fabe4fdec1323b432ba4077&quot;,
                 {
                     center: [41.89812135355312, 12.476395553072532],
                     crs: L.CRS.EPSG3857,
@@ -1167,21 +1162,21 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
 
 
 
-            var tile_layer_612fe2f2748dc56d6aca254b7475aa35 = L.tileLayer(
+            var tile_layer_e7e4b12ef052d2d88437968f577dbf61 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_a256ca947563637fea03b203ab3e3b1f);
+            ).addTo(map_803a986f7fabe4fdec1323b432ba4077);
 
 
-            var tile_layer_ee83bbc96db21c798d33b33a4eb51f11 = L.tileLayer(
+            var tile_layer_9ad600d4994912e5295de220e5c9d334 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
-            var mini_map_83744e4082c3ecb986f27aa7cdb38d7c = new L.Control.MiniMap(
-                tile_layer_ee83bbc96db21c798d33b33a4eb51f11,
+            var mini_map_f099be5ec8a114d86aa27934c046606b = new L.Control.MiniMap(
+                tile_layer_9ad600d4994912e5295de220e5c9d334,
                 {&quot;autoToggleDisplay&quot;: false, &quot;centerFixed&quot;: false, &quot;collapsedHeight&quot;: 25, &quot;collapsedWidth&quot;: 25, &quot;height&quot;: 150, &quot;minimized&quot;: false, &quot;position&quot;: &quot;bottomright&quot;, &quot;toggleDisplay&quot;: false, &quot;width&quot;: 150, &quot;zoomAnimation&quot;: false, &quot;zoomLevelOffset&quot;: -5}
             );
-            map_a256ca947563637fea03b203ab3e3b1f.addControl(mini_map_83744e4082c3ecb986f27aa7cdb38d7c);
+            map_803a986f7fabe4fdec1323b432ba4077.addControl(mini_map_f099be5ec8a114d86aa27934c046606b);
 
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -1226,7 +1221,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
     <a class='right-next' id="next-link" href="2.%20Additional%20Layers.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Additional Layers</p>
+        <p class="prev-next-title">2. Additional Layers</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1237,7 +1232,7 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Peter Verhaar<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
