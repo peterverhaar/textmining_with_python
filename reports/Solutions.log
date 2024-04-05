@@ -1,0 +1,63 @@
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/nbclient/client.py", line 554, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from folium import GeoJson
+
+m = folium.Map([52.17730033847493,4.537353515625001], 
+            zoom_start=7)
+
+gj = GeoJson('nl_updated.geojson' ,
+          zoom_on_click = True ,
+       style_function=lambda feature: {    
+        'fillColor': '#b5163b',           
+        'color': '#7a0c26', 
+        'weight': 2
+    }).add_to(m)
+
+folium.features.GeoJsonTooltip(fields=['name'],labels=False).add_to(gj)
+
+m.save('nl.html')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m/var/folders/nf/35gdwksd0fx8kzbsljz4dz6hnrcnxq/T/ipykernel_86577/2284109039.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m gj = GeoJson('nl_updated.geojson' ,
+[1;32m      7[0m           [0mzoom_on_click[0m [0;34m=[0m [0;32mTrue[0m [0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 8[0;31m        style_function=lambda feature: {    
+[0m[1;32m      9[0m         [0;34m'fillColor'[0m[0;34m:[0m [0;34m'#b5163b'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     10[0m         [0;34m'color'[0m[0;34m:[0m [0;34m'#7a0c26'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/folium/features.py[0m in [0;36m__init__[0;34m(self, data, style_function, highlight_function, name, overlay, control, show, smooth_factor, tooltip, embed, popup, zoom_on_click, marker)[0m
+[1;32m    495[0m         [0mself[0m[0;34m.[0m[0mmarker[0m [0;34m=[0m [0mmarker[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    496[0m [0;34m[0m[0m
+[0;32m--> 497[0;31m         [0mself[0m[0;34m.[0m[0mdata[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mprocess_data[0m[0;34m([0m[0mdata[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    498[0m [0;34m[0m[0m
+[1;32m    499[0m         [0;32mif[0m [0mself[0m[0;34m.[0m[0mstyle[0m [0;32mor[0m [0mself[0m[0;34m.[0m[0mhighlight[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/folium/features.py[0m in [0;36mprocess_data[0;34m(self, data)[0m
+[1;32m    532[0m                 [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0membed[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    533[0m                     [0mself[0m[0;34m.[0m[0membed_link[0m [0;34m=[0m [0mdata[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 534[0;31m                 [0;32mwith[0m [0mopen[0m[0;34m([0m[0mdata[0m[0;34m)[0m [0;32mas[0m [0mf[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    535[0m                     [0;32mreturn[0m [0mjson[0m[0;34m.[0m[0mloads[0m[0;34m([0m[0mf[0m[0;34m.[0m[0mread[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    536[0m         [0;32melif[0m [0mhasattr[0m[0;34m([0m[0mdata[0m[0;34m,[0m [0;34m'__geo_interface__'[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'nl_updated.geojson'
+FileNotFoundError: [Errno 2] No such file or directory: 'nl_updated.geojson'
+
