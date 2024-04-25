@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crossref &#8212; DATH notebooks</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">DATH notebooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  APIs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="API.html">
+   Data acquisition via the Europeana API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Data_analysis.html">
+   Data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="De-tabooing%20loneliness.html">
+   Number of publications per year
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  STCN LOD
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Place_of_Publication.html">
+   Analyses of places of publication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Italian.html">
+   Books in Italian or translated from Italian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Elsevier.html">
+   Bonaventura Elsevier
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Harry_Potter.html">
+   Fan fiction based on Harry Potter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Goodreads_reviews.html">
+   Goodreads reviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Mapping_literature.html">
+   Mapping literature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Van_Gogh.html">
+   Van Gogh
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/peterverhaar/dath_notebooks/master?urlpath=tree/docs/Crossref.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/peterverhaar/dath_notebooks/tree/main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2FCrossref.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Crossref.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Crossref</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="crossref">
+<h1>Crossref<a class="headerlink" href="#crossref" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">get_items</span><span class="p">(</span><span class="n">json_data</span><span class="p">):</span>
+    
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">date_parts</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;published&#39;</span><span class="p">][</span><span class="s1">&#39;date-parts&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">part</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">date_parts</span><span class="p">):</span>
+            <span class="n">date</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_parts</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">date</span> <span class="o">+=</span> <span class="s1">&#39;-&#39;</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
+        
+        <span class="k">if</span> <span class="s1">&#39;author&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">authors</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]:</span>
+                <span class="n">author_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">author_name</span> <span class="o">+=</span> <span class="n">author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;given&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">author_name</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;family&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">authors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">author_name</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">authors</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">authors</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;doi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;DOI&#39;</span><span class="p">]</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;publisher&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;publisher&#39;</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="s1">&#39;isbn-type&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">isbns</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">isbn</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;isbn-type&#39;</span><span class="p">]:</span>
+                <span class="n">isbns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">isbn</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">],</span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="n">isbn</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]}</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">isbns</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;isbn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">isbns</span>
+        <span class="k">if</span> <span class="s1">&#39;subject&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">subjects</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]:</span>
+                <span class="n">subjects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subjects</span>
+        <span class="k">if</span> <span class="s1">&#39;abstract&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;abstract&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;abstract&#39;</span><span class="p">]</span>     
+        <span class="k">if</span> <span class="s1">&#39;container-title&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;journal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;container-title&#39;</span><span class="p">]</span>
+
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;subtitle&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;subtitle&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">title</span>
+        <span class="k">if</span> <span class="s1">&#39;link&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]:</span>
+                <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">[</span><span class="s1">&#39;URL&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">links</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">query_nr</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;loneliness&#39;</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">publ_type</span> <span class="o">=</span> <span class="s1">&#39;journal-article&#39;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2004-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2024-01-01&#39;</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span><span class="s1">&#39;mailto:p.a.f.verhaar@hum.leidenuniv.nl&#39;</span><span class="p">}</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://api.crossref.org/works?query=%22</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">%22&amp;cursor=</span><span class="si">{</span><span class="n">cursor</span><span class="si">}</span><span class="s1">&amp;rows=</span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">end_date</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;&amp;filter=type:</span><span class="si">{</span><span class="n">publ_type</span><span class="si">}</span><span class="s1">,from-pub-date:</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">,until-pub-date:</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;total-results&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> results. &quot;</span><span class="p">)</span>
+<span class="n">nr_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+
+<span class="n">query_nr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">query_nr</span><span class="si">}</span><span class="s2">: items </span><span class="si">{</span><span class="p">(</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="p">)</span><span class="o">-</span><span class="n">rows</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+   
+<span class="n">data</span> <span class="o">=</span> <span class="n">get_items</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+<span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">next_cursor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">if</span> <span class="s1">&#39;next-cursor&#39;</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]:</span>
+    <span class="n">next_cursor</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;next-cursor&#39;</span><span class="p">]</span>
+
+<span class="k">while</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;\w+&#39;</span> <span class="p">,</span> <span class="n">next_cursor</span><span class="p">)</span> <span class="ow">and</span> <span class="n">nr_items</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://api.crossref.org/works?query=%22</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">%22&amp;cursor=</span><span class="si">{</span><span class="n">next_cursor</span><span class="si">}</span><span class="s1">&amp;rows=</span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">end_date</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;&amp;filter=type:</span><span class="si">{</span><span class="n">publ_type</span><span class="si">}</span><span class="s1">,from-pub-date:</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">,until-pub-date:</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">json_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">query_nr</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">query_nr</span><span class="si">}</span><span class="s2">: items </span><span class="si">{</span><span class="p">(</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="p">)</span><span class="o">-</span><span class="n">rows</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">nr_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">get_items</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">next_cursor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="s1">&#39;next-cursor&#39;</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]:</span>
+        <span class="n">next_cursor</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;next-cursor&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=*&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+9091 results. 
+1: items 0-500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAZKaQmFmJnOVJRVU1xUzlLa2ZpTkltazIzencAAAAABhcCJhZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABnW7zIWUnBjZWFMRGtRSEtfOUZieGxBaklIUQAAAAAW3YbFFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAAGmDgyxZHaHl0clJVU1NhaUZBSUY2TG81YzRRAAAAABj9LVwWaUpOMms5em5SUmVMR2JjT2VGdEFtdw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: items 500-1000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAZKaQmFmJnOVJRVU1xUzlLa2ZpTkltazIzencAAAAABhcCJhZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABnW7zIWUnBjZWFMRGtRSEtfOUZieGxBaklIUQAAAAAW3YbFFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAAGmDgyxZHaHl0clJVU1NhaUZBSUY2TG81YzRRAAAAABj9LVwWaUpOMms5em5SUmVMR2JjT2VGdEFtdw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: items 1000-1500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAZKaQmFmJnOVJRVU1xUzlLa2ZpTkltazIzencAAAAABhcCJhZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABnW7zIWUnBjZWFMRGtRSEtfOUZieGxBaklIUQAAAAAW3YbFFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAAGmDgyxZHaHl0clJVU1NhaUZBSUY2TG81YzRRAAAAABj9LVwWaUpOMms5em5SUmVMR2JjT2VGdEFtdw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nf</span><span class="o">/</span><span class="mi">35</span><span class="n">gdwksd0fx8kzbsljz4dz6hnrcnxq</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_60888</span><span class="o">/</span><span class="mf">2952761883.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> 
+<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">47</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="n">json_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="n">query_nr</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">75</span><span class="s2">     return request(&#39;get&#39;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span><span class="s2"> </span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span><span class="s2">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s2"> </span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span><span class="s2">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span><span class="s2">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">529</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span><span class="s2">         return resp</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">644</span><span class="s2">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">645</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">646</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">647</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                     decode_content=False,</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span><span class="s2">                     retries=self.max_retries,</span>
+<span class="ne">--&gt; </span><span class="mi">450</span><span class="s2">                     timeout=timeout</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="s2">                 )</span>
+<span class="g g-Whitespace">    </span><span class="mi">452</span><span class="s2"> </span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">                 body=body,</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="s2">                 headers=headers,</span>
+<span class="ne">--&gt; </span><span class="mi">706</span><span class="s2">                 chunked=chunked,</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span><span class="s2">             )</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span><span class="s2"> </span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">                     # Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="s2">                     # Otherwise it looks like a bug in the code.</span>
+<span class="ne">--&gt; </span><span class="mi">445</span><span class="s2">                     six.raise_from(e, None)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">         except (SocketTimeout, BaseSSLError, SocketError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">             self._raise_timeout(err=e, url=url, timeout_value=read_timeout)</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span><span class="s2">                 # Python 3</span>
+<span class="g g-Whitespace">    </span><span class="mi">439</span><span class="s2">                 try:</span>
+<span class="ne">--&gt; </span><span class="mi">440</span><span class="s2">                     httplib_response = conn.getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span><span class="s2">                 except BaseException as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span><span class="s2">                     # Remove the TypeError from the exception chain in</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1367</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1368</span><span class="s2">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">1369</span><span class="s2">                 response.begin()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1370</span><span class="s2">             except ConnectionError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1371</span><span class="s2">                 self.close()</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="s2">         # read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="s2">         while True:</span>
+<span class="ne">--&gt; </span><span class="mi">310</span><span class="s2">             version, status, reason = self._read_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span><span class="s2">             if status != CONTINUE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span><span class="s2">                 break</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">269</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span><span class="s2">     def _read_status(self):</span>
+<span class="ne">--&gt; </span><span class="mi">271</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">272</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span><span class="s2">         while True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">589</span><span class="s2">                 return self._sock.recv_into(b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span><span class="s2">             except timeout:</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="s2">                 self._timeout_occurred = True</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span><span class="s2">                   self.__class__)</span>
+<span class="ne">-&gt; </span><span class="mi">1071</span><span class="s2">             return self.read(nbytes, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1073</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
+
+<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span><span class="s2">             if buffer is not None:</span>
+<span class="ne">--&gt; </span><span class="mi">929</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span><span class="s2">                 return self._sslobj.read(len)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;articles_</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Peter Verhaar<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
