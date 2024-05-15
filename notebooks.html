@@ -109,7 +109,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  APIs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="API.html">
    Data acquisition via the Europeana API
@@ -117,7 +122,66 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Data_analysis.html">
-   Map
+   Data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="De-tabooing_loneliness.html">
+   De-tabooing loneliness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Comparison_of_bookclubs.html">
+   Comparisons of Book clubs based on GoodReads data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  STCN LOD
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Place_of_Publication.html">
+   Analyses of places of publication
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Italian.html">
+   Books in Italian or translated from Italian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Elsevier.html">
+   Bonaventura Elsevier
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Harry_Potter.html">
+   Fan fiction based on Harry Potter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Goodreads_reviews.html">
+   Goodreads reviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Mapping_literature.html">
+   Mapping literature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Van_Gogh.html">
+   Van Gogh
   </a>
  </li>
 </ul>
@@ -427,11 +491,6 @@ For example, here’s some sample Matplotlib code:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.pyplot._IonContext at 0x7f90815ee550&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -455,9 +514,6 @@ For example, here’s some sample Matplotlib code:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/notebooks_2_0.png" src="_images/notebooks_2_0.png" />
 </div>
 </div>
 <p>There is a lot more that you can do with outputs (such as including interactive outputs)

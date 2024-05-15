@@ -49,7 +49,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Van Gogh" href="Van_Gogh.html" />
-    <link rel="prev" title="Goodsreads reviews" href="Goodreads_reviews.html" />
+    <link rel="prev" title="Goodreads reviews" href="Goodreads_reviews.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Europeana API
+  APIs
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -123,6 +123,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Data_analysis.html">
    Data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="De-tabooing_loneliness.html">
+   De-tabooing loneliness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Comparison_of_bookclubs.html">
+   Comparisons of Book clubs based on GoodReads data
   </a>
  </li>
 </ul>
@@ -161,7 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Goodreads_reviews.html">
-   Goodsreads reviews
+   Goodreads reviews
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -395,25 +405,18 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-18 08:04:03 INFO: Loading these models for language: en (English):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-18 02:25:21 INFO: Loading these models for language: en (English):
 =========================
 | Processor | Package   |
 -------------------------
 | tokenize  | combined  |
 | ner       | ontonotes |
 =========================
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-18 08:04:03 INFO: Use device: cpu
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-18 08:04:03 INFO: Loading: tokenize
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-18 08:04:03 INFO: Loading: ner
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-18 08:04:04 INFO: Done loading processors!
+
+2024-04-18 02:25:21 INFO: Use device: cpu
+2024-04-18 02:25:21 INFO: Loading: tokenize
+2024-04-18 02:25:21 INFO: Loading: ner
+2024-04-18 02:25:22 INFO: Done loading processors!
 </pre></div>
 </div>
 </div>
@@ -458,86 +461,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">locations</span> <span class="o">=</span> <span class="n">find_locations</span><span class="p">(</span><span class="s1">&#39;passage_to_india.txt&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nf</span><span class="o">/</span><span class="mi">35</span><span class="n">gdwksd0fx8kzbsljz4dz6hnrcnxq</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_59873</span><span class="o">/</span><span class="mf">600008587.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">locations</span> <span class="o">=</span> <span class="n">find_locations</span><span class="p">(</span><span class="s1">&#39;passage_to_india.txt&#39;</span><span class="p">)</span>
-
-<span class="nn">/var/folders/nf/35gdwksd0fx8kzbsljz4dz6hnrcnxq/T/ipykernel_59873/3314502020.py</span> in <span class="ni">find_locations</span><span class="nt">(file)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">for</span> <span class="n">paragraph</span> <span class="ow">in</span> <span class="n">novel</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">6</span>         <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">paragraph</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">sentences</span><span class="p">:</span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/stanza/pipeline/core.py</span> in <span class="ni">__call__</span><span class="nt">(self, doc)</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>         <span class="k">assert</span> <span class="nb">any</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span>                     <span class="nb">isinstance</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">Document</span><span class="p">)]),</span> <span class="s1">&#39;input should be either str, list or Document&#39;</span>
-<span class="ne">--&gt; </span><span class="mi">231</span>         <span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span>         <span class="k">return</span> <span class="n">doc</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span> 
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/stanza/pipeline/core.py</span> in <span class="ni">process</span><span class="nt">(self, doc)</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">processor_name</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span>                 <span class="n">process</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processors</span><span class="p">[</span><span class="n">processor_name</span><span class="p">]</span><span class="o">.</span><span class="n">bulk_process</span> <span class="k">if</span> <span class="n">bulk</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">processors</span><span class="p">[</span><span class="n">processor_name</span><span class="p">]</span><span class="o">.</span><span class="n">process</span>
-<span class="ne">--&gt; </span><span class="mi">225</span>                 <span class="n">doc</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span>         <span class="k">return</span> <span class="n">doc</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span> 
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/stanza/pipeline/tokenize_processor.py</span> in <span class="ni">process</span><span class="nt">(self, document)</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span>                                                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_seqlen&#39;</span><span class="p">,</span> <span class="n">TokenizeProcessor</span><span class="o">.</span><span class="n">MAX_SEQ_LENGTH_DEFAULT</span><span class="p">),</span>
-<span class="g g-Whitespace">     </span><span class="mi">89</span>                                                <span class="n">orig_text</span><span class="o">=</span><span class="n">raw_text</span><span class="p">,</span>
-<span class="ne">---&gt; </span><span class="mi">90</span>                                                <span class="n">no_ssplit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;no_ssplit&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>         <span class="k">return</span> <span class="n">doc</span><span class="o">.</span><span class="n">Document</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">raw_text</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span> 
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/stanza/models/tokenization/utils.py</span> in <span class="ni">output_predictions</span><span class="nt">(output_file, trainer, data_generator, vocab, mwt_dict, max_seqlen, orig_text, no_ssplit, use_regex_tokens)</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span>         <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span>         <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="n">eval_limit</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">272</span>             <span class="n">pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">trainer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span>             <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">batchparas</span><span class="p">)</span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/stanza/models/tokenization/trainer.py</span> in <span class="ni">predict</span><span class="nt">(self, inputs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span> 
-<span class="ne">---&gt; </span><span class="mi">70</span>         <span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span> 
-<span class="g g-Whitespace">     </span><span class="mi">72</span>         <span class="k">return</span> <span class="n">pred</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/torch/nn/modules/module.py</span> in <span class="ni">_call_impl</span><span class="nt">(self, *input, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span>                 <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1102</span>             <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="nb">input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="c1"># Do not call functions when jit is used</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span>         <span class="n">full_backward_hooks</span><span class="p">,</span> <span class="n">non_full_backward_hooks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/stanza/models/tokenization/model.py</span> in <span class="ni">forward</span><span class="nt">(self, x, feats)</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="s1">&#39;hierarchical&#39;</span><span class="p">]:</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="s1">&#39;hier_invtemp&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">77</span>                 <span class="n">inp2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn2</span><span class="p">(</span><span class="n">inp</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">toknoise</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="o">-</span><span class="n">tok0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="s1">&#39;hier_invtemp&#39;</span><span class="p">]))))</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span>                 <span class="n">inp2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn2</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/torch/nn/modules/module.py</span> in <span class="ni">_call_impl</span><span class="nt">(self, *input, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span>                 <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1102</span>             <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="nb">input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="c1"># Do not call functions when jit is used</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span>         <span class="n">full_backward_hooks</span><span class="p">,</span> <span class="n">non_full_backward_hooks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/torch/nn/modules/rnn.py</span> in <span class="ni">forward</span><span class="nt">(self, input, hx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">690</span>         <span class="k">if</span> <span class="n">batch_sizes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">691</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_VF</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">hx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flat_weights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">692</span>                               <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bidirectional</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_first</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">693</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">694</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">_VF</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">batch_sizes</span><span class="p">,</span> <span class="n">hx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flat_weights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -5151,7 +5074,7 @@ Baedeker
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Goodsreads reviews</p>
+            <p class="prev-next-title">Goodreads reviews</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Van_Gogh.html" title="next page">

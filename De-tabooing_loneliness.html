@@ -48,7 +48,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Analyses of places of publication" href="Place_of_Publication.html" />
+    <link rel="next" title="Comparisons of Book clubs based on GoodReads data" href="Comparison_of_bookclubs.html" />
     <link rel="prev" title="Data analysis" href="Data_analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -128,6 +128,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    De-tabooing loneliness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Comparison_of_bookclubs.html">
+   Comparisons of Book clubs based on GoodReads data
   </a>
  </li>
 </ul>
@@ -396,9 +401,48 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analysis-of-differences-per-discipline">
-   Analysis of differences per discipline
+  <a class="reference internal nav-link" href="#all-publications">
+   All publications
   </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#broken-down-by-discipline">
+   Broken down by discipline
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#journals">
+   Journals
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#social-sciences-and-humanities">
+     Social Sciences and Humanities
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#science-technology-engineering-and-mathematics">
+     Science, technology, engineering, and mathematics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#collocations">
+   Collocations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ssh-journals">
+     SSH Journals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stem-journals">
+     STEM Journals
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -430,9 +474,48 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analysis-of-differences-per-discipline">
-   Analysis of differences per discipline
+  <a class="reference internal nav-link" href="#all-publications">
+   All publications
   </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#broken-down-by-discipline">
+   Broken down by discipline
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#journals">
+   Journals
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#social-sciences-and-humanities">
+     Social Sciences and Humanities
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#science-technology-engineering-and-mathematics">
+     Science, technology, engineering, and mathematics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#collocations">
+   Collocations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ssh-journals">
+     SSH Journals
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stem-journals">
+     STEM Journals
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -449,6 +532,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -456,6 +540,248 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">nltk</span>
 <span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1">## Frequently used words such as articles, pronouns and prepositions</span>
+<span class="n">stopword_list</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">stopword_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;loneliness&#39;</span><span class="p">)</span>
+<span class="n">stopword_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;among&#39;</span><span class="p">)</span>
+<span class="n">stopword_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">s&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">punct_mark</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">:</span>
+    <span class="n">stopword_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">punct_mark</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This notebook collects information about academic publications using the Crossref API. Crossref is the organisation which mints and manages DOI for publications and datasets.</p>
+<p>More information about this API can be found on <a class="reference external" href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/a-non-technical-introduction-to-our-api/">Crossref’s website</a></p>
+<p>The notebook also analyse the differences between publications in the STEM and in the SSH fields. The journals that are found using the Crossref API are linked to a domain using the <a class="reference external" href="https://www.kaggle.com/datasets/xabirhasan/journal-ranking-dataset">Journal Ranking Dataset</a>, which is available on Kaggle. The dataset lists journal titles, and links these to an academic discipline. This notebook works with revised version of this original dataset named “<a class="reference external" href="https://raw.githubusercontent.com/peterverhaar/dath_notebooks/main/Crossref/journals_discipline.tsv">journals_discipline.tsv</a>”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_journals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;journals_discipline.tsv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;jd.tsv&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;journal_title</span><span class="se">\t</span><span class="s1">domain</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">df_journals</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;journal_title&#39;</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_journals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;jd.tsv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">journals_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df_journals</span><span class="p">[</span><span class="s1">&#39;journal_title&#39;</span><span class="p">],</span><span class="n">df_journals</span><span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cells below collect metadata about academic articles whose titles contain the word “loneliness” using the Crossref API.</p>
+<p>The base url of the API for academic publications is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">crossref</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">works</span>
+</pre></div>
+</div>
+<p>The API can be used with the following parameters:</p>
+<ul class="simple">
+<li><p><strong>query</strong>: a term to search for.</p></li>
+<li><p><strong>rows</strong>: the number of publications to be included in the result set. The maximum number of rows is 500.</p></li>
+<li><p>In the <strong>filter</strong>, it is possible to specify a start date using <strong>from-pub-date</strong>, and an end date using  <strong>until-pub-date</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_items</span><span class="p">(</span><span class="n">json_data</span><span class="p">):</span>
+    
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="n">date</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">date_parts</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;published&#39;</span><span class="p">][</span><span class="s1">&#39;date-parts&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">part</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">date_parts</span><span class="p">):</span>
+            <span class="n">date</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_parts</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">date</span> <span class="o">+=</span> <span class="s1">&#39;-&#39;</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
+        
+        
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">-\d{1,2}-\d{1,2}&#39;</span><span class="p">,</span><span class="n">date</span><span class="p">):</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
+        <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">-\d{1,2}&#39;</span><span class="p">,</span><span class="n">date</span><span class="p">):</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
+        <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">date</span><span class="p">):</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;%Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
+            
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="s1">&#39;author&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">authors</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]:</span>
+                <span class="n">author_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">author_name</span> <span class="o">+=</span> <span class="n">author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;given&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">author_name</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;family&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">authors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">author_name</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">authors</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">authors</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;doi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;DOI&#39;</span><span class="p">]</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;publisher&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;publisher&#39;</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="s1">&#39;subject&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+      
+            <span class="n">subjects</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]:</span>
+                <span class="n">subjects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subjects</span>
+        <span class="k">if</span> <span class="s1">&#39;abstract&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;abstract&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;abstract&#39;</span><span class="p">]</span>     
+        <span class="k">if</span> <span class="s1">&#39;container-title&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">journal_title</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;container-title&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">journal_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s1">&#39;\s+&#39;</span> <span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">journal_title</span><span class="p">)</span> <span class="p">)</span>
+            <span class="n">journal_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s1">&#39;\s+&amp;amp;\s+&#39;</span> <span class="p">,</span> <span class="s1">&#39; &amp; &#39;</span> <span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">journal_title</span><span class="p">)</span> <span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;journal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">journal_title</span>
+            <span class="n">discipline</span> <span class="o">=</span> <span class="n">journals_dict</span><span class="p">[</span><span class="n">journal_title</span><span class="p">]</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;discipline&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">discipline</span>
+        
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;subtitle&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;subtitle&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">title</span>
+        <span class="k">if</span> <span class="s1">&#39;link&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]:</span>
+                <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">[</span><span class="s1">&#39;URL&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="s1">&#39;link&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">links</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">query_nr</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;loneliness&#39;</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">publ_type</span> <span class="o">=</span> <span class="s1">&#39;journal-article&#39;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2004-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2023-12-31&#39;</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span><span class="s1">&#39;mailto:p.a.f.verhaar@hum.leidenuniv.nl&#39;</span><span class="p">}</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://api.crossref.org/works?query=%22</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">%22&amp;cursor=</span><span class="si">{</span><span class="n">cursor</span><span class="si">}</span><span class="s1">&amp;rows=</span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">end_date</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;&amp;filter=type:</span><span class="si">{</span><span class="n">publ_type</span><span class="si">}</span><span class="s1">,from-pub-date:</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">,until-pub-date:</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;total-results&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> results. &quot;</span><span class="p">)</span>
+<span class="n">nr_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+
+<span class="n">query_nr</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">query_nr</span><span class="si">}</span><span class="s2">: items </span><span class="si">{</span><span class="p">(</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="p">)</span><span class="o">-</span><span class="n">rows</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+   
+<span class="n">data</span> <span class="o">=</span> <span class="n">get_items</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+<span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">next_cursor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">if</span> <span class="s1">&#39;next-cursor&#39;</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]:</span>
+    <span class="n">next_cursor</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;next-cursor&#39;</span><span class="p">]</span>
+
+<span class="k">while</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;\w+&#39;</span> <span class="p">,</span> <span class="n">next_cursor</span><span class="p">)</span> <span class="ow">and</span> <span class="n">nr_items</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://api.crossref.org/works?query=%22</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">%22&amp;cursor=</span><span class="si">{</span><span class="n">next_cursor</span><span class="si">}</span><span class="s1">&amp;rows=</span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">end_date</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;&amp;filter=type:</span><span class="si">{</span><span class="n">publ_type</span><span class="si">}</span><span class="s1">,from-pub-date:</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">,until-pub-date:</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">json_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">query_nr</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">query_nr</span><span class="si">}</span><span class="s2">: items </span><span class="si">{</span><span class="p">(</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="p">)</span><span class="o">-</span><span class="n">rows</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">query_nr</span><span class="o">*</span><span class="n">rows</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">nr_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">get_items</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;items&#39;</span><span class="p">])</span>
+    
+    <span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">next_cursor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="s1">&#39;next-cursor&#39;</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]:</span>
+        <span class="n">next_cursor</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;next-cursor&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=*&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+9107 results. 
+1: items 0-500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+2: items 500-1000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+3: items 1000-1500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+4: items 1500-2000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+5: items 2000-2500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+6: items 2500-3000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+7: items 3000-3500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+8: items 3500-4000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+9: items 4000-4500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+10: items 4500-5000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+11: items 5000-5500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+12: items 5500-6000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+13: items 6000-6500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+14: items 6500-7000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+15: items 7000-7500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+16: items 7500-8000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+17: items 8000-8500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+18: items 8500-9000
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+19: items 9000-9500
+https://api.crossref.org/works?query=%22loneliness%22&amp;cursor=DnF1ZXJ5VGhlbkZldGNoBgAAAAAbekzRFmx3VDZUUHY5VHlhdThmaGVtbFhBOVEAAAAAB5NImxZwMUUtd3VRM1RzU3RxcXpMUVg3MFZBAAAAABulQb8WTUpsaGN0RGFRbS1yN0ZYWTJ3MG5pUQAAAAAYPqORFmZPZjNDVWhLUnh1RDFtUWM4WFIzUHcAAAAACYzqehZISVAwTVh0alJ0eUZkTUoyOXBJdkVBAAAAAByVeykWY2hqVHNHWVVRYkdqcWtJNUJXbkk4Zw==&amp;rows=500&amp;filter=type:journal-article,from-pub-date:2004-01-01,until-pub-date:2024-01-01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20: items 9500-10000
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results are saved in a file named <a class="reference external" href="https://raw.githubusercontent.com/peterverhaar/dath_notebooks/main/Crossref/articles_loneliness.json">articles_loneliness.json</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;articles_</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -463,13 +789,8 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;articles_loneliness.json&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+<span class="n">json_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The file contains metadata about </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span><span class="si">}</span><span class="s1"> publications.&#39;</span><span class="p">)</span>
@@ -477,7 +798,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The file contains metadata about 9091 publications.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The file contains metadata about 9107 publications.
 </pre></div>
 </div>
 </div>
@@ -485,30 +806,34 @@ title="Print to PDF"
 </div>
 <div class="section" id="number-of-publications-per-year">
 <h1>Number of publications per year<a class="headerlink" href="#number-of-publications-per-year" title="Permalink to this headline">#</a></h1>
+</div>
+<div class="section" id="all-publications">
+<h1>All publications<a class="headerlink" href="#all-publications" title="Permalink to this headline">#</a></h1>
+<p>How many journal articles that have been assigned DOI have a title containing the word ‘loneliness’?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;articles_loneliness.json&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">article</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2024</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s1">&#39;discipline&#39;</span><span class="p">])</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s1">&#39;journal&#39;</span><span class="p">])</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">-\d{1,2}-\d{1,2}&#39;</span><span class="p">,</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]):</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
-    <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">-\d{1,2}&#39;</span><span class="p">,</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]):</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
-    <span class="k">elif</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]):</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="s1">&#39;%Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">year</span>
-          
-    <span class="k">if</span> <span class="n">year</span><span class="o">&gt;</span><span class="mi">2000</span> <span class="ow">and</span> <span class="n">year</span><span class="o">&lt;</span><span class="mi">2024</span><span class="p">:</span>
-        <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
-
-    
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;discipline&#39;</span><span class="p">,</span><span class="s1">&#39;journal&#39;</span><span class="p">,</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
 <span class="n">x_axis</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">y_axis</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -516,13 +841,7 @@ title="Print to PDF"
     <span class="n">x_axis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
     <span class="n">y_axis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dates_counter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
     
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span> <span class="n">x</span><span class="o">=</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> 
                   <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;#AA6799&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
@@ -531,39 +850,1051 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/De-tabooing_loneliness_7_0.png" src="_images/De-tabooing_loneliness_7_0.png" />
+<img alt="_images/De-tabooing_loneliness_14_0.png" src="_images/De-tabooing_loneliness_14_0.png" />
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-differences-per-discipline">
-<h1>Analysis of differences per discipline<a class="headerlink" href="#analysis-of-differences-per-discipline" title="Permalink to this headline">#</a></h1>
+<p>The visualisation above shows the absolute counts, and this pattern may not be fully reliable because of this reason. It may also be the case that CrossRef has simply begun to assign more DOIs overall over the course of the past few years. In an attempt to present a more reliable picture, the cells below collect data about the total number of DOIs assigned to journal articles on an annual basis. The number of articles on loneliness is subsequently divided by the total number of articles that have been given a DOI.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">journals</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nr_dois</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span><span class="mi">2024</span><span class="p">):</span>
 
-    <span class="k">if</span> <span class="s1">&#39;subject&#39;</span> <span class="ow">in</span> <span class="n">record</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
-        <span class="n">subjects</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">])</span>
-        
-    <span class="k">if</span> <span class="s1">&#39;journal&#39;</span> <span class="ow">in</span> <span class="n">record</span><span class="p">:</span>
-        <span class="n">journals</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;journal&#39;</span><span class="p">])</span>
-        
-<span class="n">subjects_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
-<span class="n">journals_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">journals</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">publ_type</span> <span class="o">=</span> <span class="s1">&#39;journal-article&#39;</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">-01-01&#39;</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">-12-31&#39;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span><span class="s1">&#39;mailto:p.a.f.verhaar@hum.leidenuniv.nl&#39;</span><span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://api.crossref.org/types/</span><span class="si">{</span><span class="n">publ_type</span><span class="si">}</span><span class="s1">/works?rows=</span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">start_date</span><span class="p">)</span> <span class="ow">and</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="n">end_date</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;&amp;filter=type:</span><span class="si">{</span><span class="n">publ_type</span><span class="si">}</span><span class="s1">,from-pub-date:</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">,until-pub-date:</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">:</span> 
+        <span class="n">json_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">total_items</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">][</span><span class="s1">&#39;total-results&#39;</span><span class="p">]</span>
+        <span class="n">nr_dois</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_items</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">journal_title</span> <span class="ow">in</span> <span class="n">journals_counter</span><span class="p">:</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">journal_title</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-    <span class="n">words_freq</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">nr_dois</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">nr_dois</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="si">}</span><span class="s1"> DOIs for journal articles in total&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2004: 1669025 DOIs for journal articles in total
+2005: 1744164 DOIs for journal articles in total
+2006: 1902348 DOIs for journal articles in total
+2007: 1991954 DOIs for journal articles in total
+2008: 2095884 DOIs for journal articles in total
+2009: 2239541 DOIs for journal articles in total
+2010: 2358946 DOIs for journal articles in total
+2011: 2575526 DOIs for journal articles in total
+2012: 2778812 DOIs for journal articles in total
+2013: 3000884 DOIs for journal articles in total
+2014: 3164215 DOIs for journal articles in total
+2015: 3324880 DOIs for journal articles in total
+2016: 3552742 DOIs for journal articles in total
+2017: 3756130 DOIs for journal articles in total
+2018: 4056794 DOIs for journal articles in total
+2019: 4380907 DOIs for journal articles in total
+2020: 4834343 DOIs for journal articles in total
+2021: 5204448 DOIs for journal articles in total
+2022: 5356989 DOIs for journal articles in total
+2023: 5330671 DOIs for journal articles in total
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
+<span class="n">x_axis</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y_axis</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dates_counter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">x_axis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+    <span class="n">y_axis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">dates_counter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">/</span><span class="n">nr_dois</span><span class="p">[</span><span class="n">year</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span> <span class="p">)</span>
+    
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span> <span class="n">x</span><span class="o">=</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> 
+                  <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;#AA6799&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/De-tabooing_loneliness_18_0.png" src="_images/De-tabooing_loneliness_18_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="broken-down-by-discipline">
+<h1>Broken down by discipline<a class="headerlink" href="#broken-down-by-discipline" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssh_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s1">&#39;discipline==&quot;SSH&quot; &#39;</span> <span class="p">)[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">stem_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s1">&#39;discipline==&quot;STEM&quot; &#39;</span> <span class="p">)[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">year_min</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">year_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">year_min</span><span class="p">,</span><span class="n">year_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ssh_counter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nr_dois</span><span class="p">[</span><span class="n">year</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;SSH&#39;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    
+    <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stem_counter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nr_dois</span><span class="p">[</span><span class="n">year</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;STEM&#39;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    
+<span class="n">df_discipline</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;discipline&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#f58442&#39;</span><span class="p">,</span><span class="s1">&#39;#1c60c7&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df_discipline</span><span class="p">,</span> 
+                  <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> 
+                  <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;discipline&#39;</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">colours</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/De-tabooing_loneliness_21_0.png" src="_images/De-tabooing_loneliness_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="journals">
+<h1>Journals<a class="headerlink" href="#journals" title="Permalink to this headline">#</a></h1>
+<p>Which STEM and SSH journals have published the highest number of publications on loneliness?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">singular_plural</span><span class="p">(</span><span class="n">noun</span><span class="p">,</span><span class="n">count</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">count</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">noun</span> <span class="o">+=</span> <span class="s1">&#39;s&#39;</span>
+    <span class="k">return</span> <span class="n">noun</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="social-sciences-and-humanities">
+<h2>Social Sciences and Humanities<a class="headerlink" href="#social-sciences-and-humanities" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">journals_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s1">&#39;discipline==&quot;SSH&quot; &#39;</span> <span class="p">)[</span><span class="s1">&#39;journal&#39;</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">journal</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">journals_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">journal</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">singular_plural</span><span class="p">(</span><span class="s1">&#39;publication&#39;</span><span class="p">,</span><span class="n">count</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Innovation in Aging (430 publications)
+Frontiers in Psychology (123 publications)
+Aging &amp; Mental Health (120 publications)
+Current Psychology (82 publications)
+International Psychogeriatrics (57 publications)
+Ageing and Society (51 publications)
+The American Journal of Geriatric Psychiatry (50 publications)
+Frontiers in Psychiatry (48 publications)
+Journal of Social and Personal Relationships (47 publications)
+Health &amp; Social Care in the Community (44 publications)
+International Journal of Geriatric Psychiatry (44 publications)
+Computers in Human Behavior (42 publications)
+Social Psychiatry and Psychiatric Epidemiology (42 publications)
+Psychiatry Research (41 publications)
+Psychological Reports (39 publications)
+Social Science &amp; Medicine (35 publications)
+The Journal of Psychology (35 publications)
+Journal of the American Geriatrics Society (34 publications)
+European Psychiatry (33 publications)
+The Proceedings of the Annual Convention of the Japanese Psychological Association (33 publications)
+Procedia - Social and Behavioral Sciences (32 publications)
+European Journal of Ageing (32 publications)
+Journal of Aging and Health (31 publications)
+Advances in Psychology (31 publications)
+BMC Psychiatry (29 publications)
+Social Behavior and Personality: an international journal (29 publications)
+Age and Ageing (28 publications)
+Health Psychology (26 publications)
+International Journal of Indian Psychology (23 publications)
+Social Indicators Research (21 publications)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which articles can be find in the journal with the highest number of articles on the topic under investigation?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">journal_most_publications</span> <span class="o">=</span> <span class="n">journals_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;journal == &#39;</span><span class="si">{</span><span class="n">journal_most_publications</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">)&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;What Is Loneliness: Insights From The Bbc Loneliness Experiment (2019)&quot;
+&quot;Changes In Loneliness And Patterns Of Loneliness Among Older People (2018)&quot;
+&quot;Interest Group Session—Loneliness And Social Isolation: The Language(S) Of Loneliness (2019)&quot;
+&quot;Companionship To Address Quality Of Life And Loneliness Among Older Adults With Severe Loneliness (2022)&quot;
+&quot;How Do Lonely Older People Talk About Loneliness? Preliminary Analysis Of The Bbc Loneliness Experiment (2022)&quot;
+&quot;Is There A Worry Advantage? The Role Of Fear Of Loneliness In Old Age In Loneliness Preventive Activities (2023)&quot;
+&quot;Loneliness And Social Engagement: The Unique Roles Of State And Trait Loneliness For Daily Prosocial Behaviors (2020)&quot;
+&quot;How Is Daily Social Interaction Related To Loneliness In Older Adults? The Roles Of Trait Loneliness And Personality. (2021)&quot;
+&quot;Talking About Loneliness (2019)&quot;
+&quot;Social Isolation, Loneliness, And Men&#39;S Health (2019)&quot;
+&quot;Social Isolation And Loneliness: Strengthening Education And Training (2020)&quot;
+&quot;Loneliness Among Involuntarily Childless Older Adults: A Life Course Perspective (2023)&quot;
+&quot;Social Isolation And Loneliness: A Place-Based Perspective (2017)&quot;
+&quot;Developing Evidence-Based Instruments To Talk About Loneliness (2019)&quot;
+&quot;Affective Variability, Loneliness, And Momentary Satisfaction (2018)&quot;
+&quot;Health Personality, Consumer Health Activation, And Loneliness (2020)&quot;
+&quot;Disenfranchised Loneliness: Dying Singly In A Communal World (2018)&quot;
+&quot;Social Network, Friendship, Loneliness And Isolation (2018)&quot;
+&quot;Loneliness In Older Hispanics: Who Matters More—Friends Or Family? (2017)&quot;
+&quot;Depression And Loneliness In Mid- And Later Life (2018)&quot;
+&quot;Racial Differences In Longitudinal Trajectories Of Social Isolation And Loneliness (2023)&quot;
+&quot;Loneliness And Isolation Versus Wisdom And Compassion During The Pandemic (2021)&quot;
+&quot;Efforts By The Coalition To End Social Isolation And Loneliness (2021)&quot;
+&quot;Loneliness And The Health And Well-Being Of Lgbt Seniors (2017)&quot;
+&quot;“God Alone Exists In Solitude”: Interviewing Old Migrants About Loneliness (2023)&quot;
+&quot;How Technology Impacts Loneliness: Perspectives Of African American Older Adults (2023)&quot;
+&quot;Applied Gerontology: How Students Address Loneliness In The Local Community (2019)&quot;
+&quot;Social Isolation And Loneliness: The Pros And Cons Of Technological Interventions (2020)&quot;
+&quot;Social Isolation And Loneliness: Develop A More Robust Evidence Base (2020)&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="science-technology-engineering-and-mathematics">
+<h2>Science, technology, engineering, and mathematics<a class="headerlink" href="#science-technology-engineering-and-mathematics" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">journals_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s1">&#39;discipline==&quot;STEM&quot; &#39;</span> <span class="p">)[</span><span class="s1">&#39;journal&#39;</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">journal</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">journals_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">journal</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">singular_plural</span><span class="p">(</span><span class="s1">&#39;publication&#39;</span><span class="p">,</span><span class="n">count</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>International Journal of Environmental Research and Public Health (203 publications)
+European Journal of Public Health (50 publications)
+Alzheimer&#39;s &amp; Dementia (50 publications)
+BMC Geriatrics (48 publications)
+Journal of Affective Disorders (46 publications)
+Archives of Gerontology and Geriatrics (42 publications)
+Frontiers in Public Health (39 publications)
+BMC Public Health (36 publications)
+Scientific Reports (33 publications)
+Healthcare (32 publications)
+Academy of Management Proceedings (30 publications)
+Geriatric Nursing (23 publications)
+International Journal of Mental Health and Addiction (20 publications)
+Gerontechnology (18 publications)
+Nursing Older People (17 publications)
+Journal of the American Medical Directors Association (15 publications)
+Nursing Standard (14 publications)
+Gerontology and Geriatric Medicine (14 publications)
+Perspectives in Public Health (13 publications)
+Journal of Public Health (13 publications)
+Journal of Clinical Nursing (13 publications)
+Journal of Medical Internet Research (12 publications)
+Journal of American College Health (12 publications)
+Neurology (11 publications)
+Clinical Gerontologist (11 publications)
+Medicine (10 publications)
+Scandinavian Journal of Public Health (10 publications)
+International Journal of Older People Nursing (10 publications)
+Public Health (9 publications)
+Journal of Pain and Symptom Management (9 publications)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">journal_most_publications</span> <span class="o">=</span> <span class="n">journals_counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;journal == &#39;</span><span class="si">{</span><span class="n">journal_most_publications</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">) </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;journal&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;Loneliness At Universities: Determinants Of Emotional And Social Loneliness Among Students (2018) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness And Emancipation: A Multilevel Analysis Of The Connection Between Gender Inequality, Loneliness, And Social Isolation In The Issp 2017 (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;The Missing Measure Of Loneliness: A Case For Including Neededness In Loneliness Scales (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness In Older Migrants: Exploring The Role Of Cultural Differences In Their Loneliness Experience (2023) International Journal of Environmental Research and Public Health&quot;
+&quot;Exploring The Frequency, Intensity, And Duration Of Loneliness: A Latent Class Analysis Of Data From The Bbc Loneliness Experiment (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;Tell Me About Loneliness: Interviews With Young People About What Loneliness Is And How To Cope With It (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;The Psychological Structure Of Loneliness (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness In Older Indian Dyads (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness In Young Adult Workers (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Climate Anxiety, Loneliness And Perceived Social Isolation (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness: An Immunometabolic Syndrome (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;Hope, Loneliness And Sense Of Coherence Among Bereaved Parents (2020) International Journal of Environmental Research and Public Health&quot;
+&quot;Impact Of Loneliness On Functioning In Lung Cancer Patients (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Multimorbidity, Loneliness, And Social Isolation. A Systematic Review (2020) International Journal of Environmental Research and Public Health&quot;
+&quot;Gender And Age Differences In Loneliness: Evidence For People Without And With Disabilities (2020) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness In Intimate Relationships Scale (Lirs): Development And Validation (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Informal Caregiving, Loneliness And Social Isolation: A Systematic Review (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;Associations Of Problematic Binge-Watching With Depression, Social Interaction Anxiety, And Loneliness (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness Before And After Covid-19: Sense Of Coherence And Hope As Coping Mechanisms (2023) International Journal of Environmental Research and Public Health&quot;
+&quot;Body-Esteem, Self-Esteem And Loneliness Among Social Media Young Users (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Modelling The Economic Impact Of Reducing Loneliness In Community Dwelling Older People In England (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;Family Caregiver’S Loneliness And Related Health Factors: What Can Be Changed? (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Meaning In Life Mediates The Association Between Environmental Engagement And Loneliness (2021) International Journal of Environmental Research and Public Health&quot;
+&quot;Cyber-Victimization Experience Among Higher Education Students: Effects Of Social Support, Loneliness, And Self-Efficacy (2022) International Journal of Environmental Research and Public Health&quot;
+&quot;Association Between Social Isolation And Loneliness With Estimated Atherosclerotic Cardiovascular Disease Risk In A Uk Biobank Population-Based Study (2023) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness, Malnutrition And Change In Subjective Age Among Older Adults During Covid-19 Pandemic (2020) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness, Family Communication, And School Adjustment In A Sample Of Cybervictimized Adolescents (2020) International Journal of Environmental Research and Public Health&quot;
+&quot;Loneliness Of Older Adults: Social Network And The Living Environment (2019) International Journal of Environmental Research and Public Health&quot;
+&quot;The Interrelationship Of Loneliness, Smartphone Addiction, Sleep Quality, And Students’ Attention In English As A Foreign Language Class (2023) International Journal of Environmental Research and Public Health&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="collocations">
+<h1>Collocations<a class="headerlink" href="#collocations" title="Permalink to this headline">#</a></h1>
+<p>Which other words are used in titles, besides “loneliness”? These other words may give an impressinon of the broader contexts of thi word. The cells below established the 15 words that are used most frequently in journal titles, besides “loneliness”.</p>
+<p>Articles in STEM journals and SSH journals are considered separately.</p>
+<div class="section" id="ssh-journals">
+<h2>SSH Journals<a class="headerlink" href="#ssh-journals" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;discipline==&quot;SSH&quot; and year==</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)[</span><span class="s1">&#39;title&#39;</span><span class="p">]:</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">]</span>
+        <span class="n">freq</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+    <span class="n">freq</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2004
+
+social 11
+children 6
+study 6
+older 5
+age 4
+emotional 4
+canadian 4
+isolation 4
+life 3
+longitudinal 3
+adults 3
+adaptation 3
+brazilian 3
+chinese 3
+italian 3
+
+
+2005
+
+social 10
+older 6
+students 6
+people 5
+attachment 5
+depression 4
+styles 3
+elderly 3
+life 3
+adult 3
+study 3
+skills 3
+immune 3
+response 3
+college 3
+
+
+2006
+
+social 13
+older 10
+people 7
+women 5
+attachment 5
+life 4
+relationship 4
+support 4
+study 4
+kate 4
+health 3
+satisfaction 3
+adolescents 3
+psychological 3
+physical 3
+
+
+2007
+
+social 13
+older 7
+adults 7
+students 4
+relationship 4
+internet 3
+use 3
+women 3
+children 3
+educational 3
+gender 3
+emotional 3
+life 3
+using 2
+alzheimer 2
+
+
+2008
+
+social 12
+life 6
+older 6
+relationship 5
+study 5
+satisfaction 4
+students 4
+health 4
+depression 4
+factors 4
+well 3
+family 3
+university 3
+people 3
+effect 3
+
+
+2009
+
+social 20
+older 8
+life 7
+students 6
+university 6
+adults 5
+effect 5
+support 4
+factors 4
+longitudinal 4
+use 4
+later 4
+lt 4
+gt 4
+relation 4
+
+
+2010
+
+social 21
+older 14
+students 10
+’ 9
+adults 8
+life 7
+study 7
+health 7
+relationship 7
+depression 6
+support 6
+role 6
+depressive 6
+relations 5
+university 5
+
+
+2011
+
+social 22
+older 13
+support 9
+life 9
+students 9
+relationship 8
+university 7
+study 7
+perceived 6
+satisfaction 6
+adults 6
+people 6
+mortality 5
+later 5
+work 5
+
+
+2012
+
+social 28
+older 25
+’ 18
+adults 18
+students 16
+support 11
+life 11
+relationship 10
+health 10
+study 10
+effects 9
+perceived 8
+self-esteem 7
+effect 7
+mediating 7
+
+
+2013
+
+social 37
+older 16
+support 16
+students 16
+life 15
+relationship 12
+effects 11
+depression 10
+satisfaction 10
+role 10
+mediating 9
+’ 9
+study 9
+adults 8
+university 7
+
+
+2014
+
+social 41
+older 21
+adults 16
+’ 14
+students 14
+effects 13
+support 13
+people 12
+role 12
+relationship 12
+depression 10
+study 10
+health 10
+adolescents 9
+effect 8
+
+
+2015
+
+social 40
+older 25
+relationship 19
+study 17
+’ 16
+students 16
+adults 15
+effects 13
+life 12
+support 12
+adolescence 10
+health 10
+– 9
+children 9
+people 9
+
+
+2016
+
+social 54
+older 30
+relationship 27
+students 26
+adults 21
+study 21
+adolescents 20
+depression 19
+people 17
+role 15
+anxiety 13
+life 13
+health 13
+symptoms 12
+’ 11
+
+
+2017
+
+social 67
+older 55
+adults 39
+students 32
+’ 29
+study 26
+life 23
+people 21
+isolation 20
+health 19
+role 18
+effects 18
+university 16
+relationship 16
+quality 14
+
+
+2018
+
+social 91
+older 57
+adults 45
+students 31
+relationship 31
+study 30
+people 26
+isolation 24
+life 24
+’ 21
+depression 21
+support 21
+health 19
+longitudinal 19
+use 18
+
+
+2019
+
+social 117
+older 90
+adults 71
+isolation 40
+longitudinal 37
+study 36
+relationship 33
+’ 33
+students 29
+health 28
+role 27
+people 27
+depression 26
+anxiety 22
+life 22
+
+
+2020
+
+social 189
+older 106
+adults 101
+covid-19 84
+health 75
+study 71
+isolation 68
+relationship 45
+students 44
+role 43
+effect 41
+life 40
+’ 36
+depression 36
+pandemic 33
+
+
+2021
+
+social 203
+older 152
+adults 135
+covid-19 126
+study 94
+health 84
+pandemic 75
+role 69
+isolation 65
+relationship 61
+students 52
+mental 48
+’ 44
+support 44
+life 42
+
+
+2022
+
+social 235
+older 151
+adults 134
+covid-19 126
+pandemic 100
+role 86
+study 80
+students 79
+isolation 71
+’ 69
+relationship 68
+mediating 62
+depression 61
+life 58
+health 55
+
+
+2023
+
+social 263
+older 174
+adults 156
+covid-19 108
+study 95
+isolation 85
+role 81
+pandemic 74
+relationship 69
+health 69
+students 65
+mediating 59
+life 57
+’ 55
+mental 55
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stem-journals">
+<h2>STEM Journals<a class="headerlink" href="#stem-journals" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;discipline==&quot;STEM&quot; and year==</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">&#39;</span> <span class="p">)[</span><span class="s1">&#39;title&#39;</span><span class="p">]:</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">]</span>
+        <span class="n">freq</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+    <span class="n">freq</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2004
+
+older 3
+indoor 2
+gardening 2
+adults 2
+effects 2
+socialization 2
+activities 2
+daily 2
+living 2
+technology 1
+
+
+2005
+
+social 3
+interventions 3
+combating 2
+persons 2
+severe 2
+mental 2
+illness 2
+network 2
+characteristics 2
+effectiveness 2
+
+
+2006
+
+older 5
+people 3
+depression 3
+meta-analytic 2
+study 2
+predictors 2
+adolescence 2
+loss 2
+parents 2
+childhood 2
+
+
+2007
+
+study 4
+social 4
+support 3
+dying 2
+care 2
+relationship 2
+specialization 2
+amongst 2
+sources 2
+receivers 2
+
+
+2008
+
+older 3
+school 2
+setting 2
+people 2
+electrons 2
+bc1 2
+complex 2
+leisure 2
+women 2
+rheumatoid 2
+
+
+2009
+
+health 6
+people 5
+psychosocial 4
+older 4
+social 4
+effects 4
+living 3
+persons 3
+support 3
+group 3
+
+
+2010
+
+older 4
+study 4
+elderly 4
+adults 3
+cancer 3
+people 3
+living 3
+differences 2
+increase 2
+patients 2
+
+
+2011
+
+older 7
+health 5
+relationship 4
+people 3
+living 3
+support 3
+work 2
+employee 2
+performance 2
+fun 2
+
+
+2012
+
+older 18
+social 11
+adults 8
+elderly 8
+depression 7
+living 6
+support 6
+risk 5
+rural 4
+people 4
+
+
+2013
+
+older 9
+health 8
+people 5
+social 4
+factors 4
+adults 4
+study 4
+public 3
+– 3
+patients 3
+
+
+2014
+
+social 12
+older 7
+health 6
+elderly 5
+depression 5
+support 5
+relationship 4
+adults 4
+people 4
+children 4
+
+
+2015
+
+older 21
+social 12
+adults 10
+study 9
+people 8
+depression 8
+health 5
+impact 4
+isolation 4
+association 4
+
+
+2016
+
+study 11
+depression 10
+social 10
+adults 8
+health 7
+older 7
+people 5
+adolescents 5
+elderly 4
+internet 4
+
+
+2017
+
+older 16
+social 14
+elderly 10
+people 10
+study 10
+effect 6
+adults 6
+students 6
+factors 5
+prevalence 5
+
+
+2018
+
+social 23
+study 21
+older 18
+depression 13
+health 12
+role 12
+students 11
+adults 11
+addiction 9
+relationship 9
+
+
+2019
+
+older 29
+social 27
+adults 19
+study 17
+people 13
+isolation 12
+health 11
+depression 10
+workplace 9
+elderly 8
+
+
+2020
+
+social 66
+older 56
+isolation 42
+adults 38
+study 34
+health 29
+covid-19 25
+life 22
+people 19
+elderly 18
+
+
+2021
+
+social 98
+covid-19 89
+older 79
+adults 71
+pandemic 57
+health 53
+study 51
+isolation 48
+depression 36
+life 35
+
+
+2022
+
+social 133
+covid-19 97
+older 84
+adults 81
+pandemic 73
+study 66
+isolation 54
+health 53
+role 42
+support 36
+
+
+2023
+
+social 119
+adults 98
+older 92
+covid-19 84
+study 71
+isolation 69
+pandemic 55
+health 45
+depression 43
+role 35
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -603,10 +1934,10 @@ title="Print to PDF"
             <p class="prev-next-title">Data analysis</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Place_of_Publication.html" title="next page">
+    <a class='right-next' id="next-link" href="Comparison_of_bookclubs.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Analyses of places of publication</p>
+        <p class="prev-next-title">Comparisons of Book clubs based on GoodReads data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
