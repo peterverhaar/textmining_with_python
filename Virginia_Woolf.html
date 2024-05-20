@@ -425,6 +425,18 @@ title="Print to PDF"
      Hypernyms
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unique-adjectives-adverbs-and-nouns-per-novel">
+   Unique adjectives, adverbs and nouns per novel
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unique-verbs-per-novel">
+   Unique verbs per novel
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sentiment-analysis">
      Sentiment analysis
@@ -481,6 +493,18 @@ title="Print to PDF"
      Hypernyms
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unique-adjectives-adverbs-and-nouns-per-novel">
+   Unique adjectives, adverbs and nouns per novel
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unique-verbs-per-novel">
+   Unique verbs per novel
+  </a>
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sentiment-analysis">
      Sentiment analysis
@@ -707,8 +731,6 @@ Analysing Woolf/night_and_day.txt ...
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span> <span class="s1">&#39;Average number of words per sentence&#39;</span>  <span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span> <span class="s1">&#39;Novels by Virginia Woolf&#39;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span> <span class="p">)</span>
 
-
-
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s1">&#39;scatterplot.png&#39;</span> <span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -867,55 +889,6 @@ Analysing Woolf/night_and_day.txt ...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>title</th>
-      <th>modal_verb</th>
-      <th>foreign_word</th>
-      <th>adj</th>
-      <th>adj-comp-super</th>
-      <th>adv</th>
-      <th>adv-comp-super</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Night and Day</td>
-      <td>0.019536</td>
-      <td>0.000235</td>
-      <td>0.135934</td>
-      <td>0.004722</td>
-      <td>0.075246</td>
-      <td>0.001947</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pos</span><span class="p">[</span><span class="s1">&#39;modal_verb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pos</span><span class="p">[</span><span class="s1">&#39;modal_verb&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span> <span class="mi">8</span><span class="p">,</span><span class="mi">5</span> <span class="p">)</span> <span class="p">)</span>
@@ -935,7 +908,7 @@ Analysing Woolf/night_and_day.txt ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Virginia_Woolf_14_0.png" src="_images/Virginia_Woolf_14_0.png" />
+<img alt="_images/Virginia_Woolf_13_0.png" src="_images/Virginia_Woolf_13_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -959,137 +932,8 @@ Analysing Woolf/night_and_day.txt ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Virginia_Woolf_15_0.png" src="_images/Virginia_Woolf_15_0.png" />
+<img alt="_images/Virginia_Woolf_14_0.png" src="_images/Virginia_Woolf_14_0.png" />
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>title</th>
-      <th>modal_verb</th>
-      <th>foreign_word</th>
-      <th>adj</th>
-      <th>adj-comp-super</th>
-      <th>adv</th>
-      <th>adv-comp-super</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Monday or Tuesday</td>
-      <td>1.319943</td>
-      <td>0.047824</td>
-      <td>0.142133</td>
-      <td>0.005548</td>
-      <td>0.062171</td>
-      <td>0.000765</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Mrs. Dalloway</td>
-      <td>2.355780</td>
-      <td>0.028729</td>
-      <td>0.133360</td>
-      <td>0.003447</td>
-      <td>0.070386</td>
-      <td>0.001752</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>To the Lighthouse</td>
-      <td>2.897903</td>
-      <td>0.022335</td>
-      <td>0.127167</td>
-      <td>0.003909</td>
-      <td>0.074179</td>
-      <td>0.001647</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Orlando</td>
-      <td>1.907521</td>
-      <td>0.062779</td>
-      <td>0.145768</td>
-      <td>0.006713</td>
-      <td>0.065435</td>
-      <td>0.001739</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>The Waves</td>
-      <td>1.212914</td>
-      <td>0.022545</td>
-      <td>0.135066</td>
-      <td>0.003111</td>
-      <td>0.055618</td>
-      <td>0.001150</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Between the Acts</td>
-      <td>1.031898</td>
-      <td>0.018103</td>
-      <td>0.114667</td>
-      <td>0.002752</td>
-      <td>0.046816</td>
-      <td>0.000905</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>The Years</td>
-      <td>1.054357</td>
-      <td>0.030046</td>
-      <td>0.119353</td>
-      <td>0.002950</td>
-      <td>0.053510</td>
-      <td>0.001079</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>The Voyage out</td>
-      <td>1.640280</td>
-      <td>0.017252</td>
-      <td>0.138694</td>
-      <td>0.004791</td>
-      <td>0.071875</td>
-      <td>0.001792</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Night and Day</td>
-      <td>1.953588</td>
-      <td>0.023497</td>
-      <td>0.135934</td>
-      <td>0.004722</td>
-      <td>0.075246</td>
-      <td>0.001947</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1117,7 +961,6 @@ Analysing Woolf/night_and_day.txt ...
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_pos</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span> <span class="n">row</span><span class="p">[</span><span class="n">x_axis</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="n">y_axis</span><span class="p">]</span><span class="o">+</span> <span class="mf">0.001</span> <span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">12.8</span><span class="p">)</span>
 
-
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span> <span class="s1">&#39;Adjectives in regular form&#39;</span>  <span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span> <span class="s1">&#39;Adjectives in the comparative or superlative form&#39;</span>  <span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span> <span class="s1">&#39;Novels by Virginia Woolf&#39;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span> <span class="p">)</span>
@@ -1127,7 +970,7 @@ Analysing Woolf/night_and_day.txt ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Virginia_Woolf_18_0.png" src="_images/Virginia_Woolf_18_0.png" />
+<img alt="_images/Virginia_Woolf_16_0.png" src="_images/Virginia_Woolf_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1156,7 +999,7 @@ Analysing Woolf/night_and_day.txt ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Virginia_Woolf_19_0.png" src="_images/Virginia_Woolf_19_0.png" />
+<img alt="_images/Virginia_Woolf_17_0.png" src="_images/Virginia_Woolf_17_0.png" />
 </div>
 </div>
 </div>
@@ -1523,6 +1366,9 @@ leave (61)
         <span class="n">graph</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
         <span class="n">graph</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Type-token ratio&#39;</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span> 
         <span class="n">graph</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">14</span> <span class="p">)</span>
+        
+        <span class="n">graph</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
 
         <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
 
@@ -1578,7 +1424,7 @@ leave (61)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Virginia_Woolf_24_0.png" src="_images/Virginia_Woolf_24_0.png" />
+<img alt="_images/Virginia_Woolf_22_0.png" src="_images/Virginia_Woolf_22_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;Orlando&quot;
 
 love (88); ecstasy (17); fear (10); happiness (10); rage (8); reverence (8); envy (8); fit (6); terror (6); joy (6); quiver (6); timidity (5); temper (5); rapture (4); excitement (4); 
@@ -1600,7 +1446,7 @@ Most common animals in &quot;Orlando&quot;
 horse (41); dog (36); fly (25); bird (20); bear (18); sheep (14); deer (10); female (10); goat (9); turkey (9); hare (9); fox (9); spaniel (8); cattle (8); cow (8); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_2.png" src="_images/Virginia_Woolf_24_2.png" />
+<img alt="_images/Virginia_Woolf_22_2.png" src="_images/Virginia_Woolf_22_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;The Voyage out&quot;
 
 love (120); happiness (31); spite (19); hate (16); excitement (16); envy (14); fit (13); fear (9); horror (9); joy (7); anger (6); alarm (5); temper (5); thrill (5); exultation (4); 
@@ -1622,7 +1468,7 @@ Most common animals in &quot;The Voyage out&quot;
 ridley (92); bird (28); fly (27); dog (24); bear (20); horse (13); entire (12); fish (10); ant (10); cow (9); rat (6); moth (6); butterfly (6); hen (6); female (6); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_4.png" src="_images/Virginia_Woolf_24_4.png" />
+<img alt="_images/Virginia_Woolf_22_4.png" src="_images/Virginia_Woolf_22_4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;Mrs. Dalloway&quot;
 
 love (114); fear (18); happiness (9); hatred (8); quiver (8); horror (7); excitement (6); jealousy (6); envy (6); terror (5); spite (5); fit (5); rapture (5); rage (5); ecstasy (4); 
@@ -1644,7 +1490,7 @@ Most common animals in &quot;Mrs. Dalloway&quot;
 dog (29); bird (18); fly (12); bear (12); mount (11); salmon (8); cricket (7); horse (7); giant (5); sparrow (4); spider (4); mankind (4); entire (4); pony (4); terrier (3); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_6.png" src="_images/Virginia_Woolf_24_6.png" />
+<img alt="_images/Virginia_Woolf_22_6.png" src="_images/Virginia_Woolf_22_6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;The Waves&quot;
 
 love (97); hate (35); quiver (22); fear (16); envy (15); happiness (13); terror (10); hatred (9); horror (9); joy (8); rapture (8); jealousy (6); rage (5); fit (5); ecstasy (5); 
@@ -1666,7 +1512,7 @@ Most common animals in &quot;The Waves&quot;
 bird (56); fly (30); horse (23); fish (19); dog (18); entire (17); cat (14); mount (13); bear (13); bee (12); butterfly (10); dove (10); cow (9); sheep (9); snail (7); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_8.png" src="_images/Virginia_Woolf_24_8.png" />
+<img alt="_images/Virginia_Woolf_22_8.png" src="_images/Virginia_Woolf_22_8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;To the Lighthouse&quot;
 
 love (48); joy (11); happiness (9); anger (9); reverence (8); temper (7); quiver (6); rapture (6); horror (5); alarm (4); outrage (4); rage (4); uneasiness (3); shudder (3); fit (3); 
@@ -1688,7 +1534,7 @@ Most common animals in &quot;To the Lighthouse&quot;
 bird (32); bear (18); fly (16); fish (12); dog (7); cricket (6); butterfly (6); puppy (6); bull (5); mankind (5); entire (5); horse (5); bee (4); rabbit (4); rat (4); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_10.png" src="_images/Virginia_Woolf_24_10.png" />
+<img alt="_images/Virginia_Woolf_22_10.png" src="_images/Virginia_Woolf_22_10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;Monday or Tuesday&quot;
 
 love (12); joy (6); horror (3); shudder (3); quiver (1); thrill (1); alarm (1); happiness (1); spite (1); caring (1); bitterness (1); hate (1); uneasiness (1); shyness (1); rage (1); 
@@ -1710,7 +1556,7 @@ Most common animals in &quot;Monday or Tuesday&quot;
 bear (9); fish (6); snail (6); bird (6); dragonfly (5); fly (4); butterfly (4); horse (3); dog (3); insect (3); cow (3); female (2); cat (2); pigeon (2); swan (1); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_12.png" src="_images/Virginia_Woolf_24_12.png" />
+<img alt="_images/Virginia_Woolf_22_12.png" src="_images/Virginia_Woolf_22_12.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;The Years&quot;
 
 love (64); fit (23); temper (9); excitement (9); thrill (8); envy (8); hate (7); happiness (7); alarm (6); anger (5); bitterness (5); joy (4); rapture (4); quiver (4); tingle (3); 
@@ -1732,7 +1578,7 @@ Most common animals in &quot;The Years&quot;
 horse (50); dog (47); bird (35); fly (23); fish (17); pigeon (15); cat (14); sheep (14); mount (14); cow (12); bear (11); sparrow (10); owl (9); walrus (6); elephant (6); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_14.png" src="_images/Virginia_Woolf_24_14.png" />
+<img alt="_images/Virginia_Woolf_22_14.png" src="_images/Virginia_Woolf_22_14.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;Night and Day&quot;
 
 love (215); happiness (32); spite (31); fit (23); anger (22); temper (17); fear (17); alarm (15); exaltation (15); excitement (11); envy (10); nervousness (8); bitterness (8); quiver (7); hate (7); 
@@ -1754,7 +1600,7 @@ Most common animals in &quot;Night and Day&quot;
 bird (27); bear (23); fly (16); dog (13); entire (11); horse (11); sparrow (11); bull (9); mount (9); cat (5); male (5); oyster (5); duck (4); fish (4); silkworm (4); 
 </pre></div>
 </div>
-<img alt="_images/Virginia_Woolf_24_16.png" src="_images/Virginia_Woolf_24_16.png" />
+<img alt="_images/Virginia_Woolf_22_16.png" src="_images/Virginia_Woolf_22_16.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most common emotions in &quot;Between the Acts&quot;
 
 love (42); hate (8); fear (6); fit (5); rage (5); joy (3); horror (3); quiver (2); shudder (2); spite (2); envy (2); outrage (2); anger (2); rapture (2); fury (1); 
@@ -1778,16 +1624,14 @@ dog (33); cow (29); bird (26); fish (26); spaniel (26); horse (20); butterfly (1
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="unique-adjectives-adverbs-and-nouns-per-novel">
+<h1>Unique adjectives, adverbs and nouns per novel<a class="headerlink" href="#unique-adjectives-adverbs-and-nouns-per-novel" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unique adjectives, adverbs and nouns</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">all_adj_adv_noun</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_novels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_verbs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">all_novels</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&quot;</span><span class="si">{</span><span class="n">titles</span><span class="p">[</span><span class="n">text</span><span class="p">]</span><span class="si">}</span><span class="s1">&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">other_novels</span> <span class="o">=</span> <span class="n">all_novels</span>
     <span class="n">other_novels</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -1809,315 +1653,184 @@ dog (33); cow (29); bird (26); fish (26); spaniel (26); horse (20); butterfly (1
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;Monday or Tuesday&quot;
 
-Castalia 19
-Marsh 13
-Moggridge 13
-Poll 10
-Library 6
-Whitaker 6
-Hobkin 5
+castalia 19
+moggridge 13
+poll 10
+whitaker 6
+hobkin 5
 flower-bed 4
-Oxbridge 3
-President 3
-Kruger 3
+oxbridge 3
+president 3
+kruger 3
 aspidistra 3
-Marshes 3
-Precedency 3
-Chancellors 2
-Academy 2
+marshes 3
+precedency 3
+chancellors 2
+academy 2
 cactus 2
 unchastity 2
-Cassy 2
+cassy 2
 unworldly 2
 cultivate 2
-Treaty 2
-Lazy 2
+ferns 2
 poulterer 2
 shop-window 2
-Eggs 2
 cheaper 2
 foothold 2
 heart-shaped 2
 tongue-shaped 2
-
-
-&quot;Mrs. Dalloway&quot;
-
-Walsh 75
-Kilman 68
-Holmes 63
-Bruton 63
-Rezia 56
-Bradshaw 36
-Bourton 29
-Whitbread 27
-Filmer 19
-Ellie 19
-Henderson 17
-Warren 16
-Brush 14
-Daisy 13
-Helena 12
-Big 11
-Brewer 10
-Whittaker 9
-Dempster 8
-Walker 7
-Lovejoy 7
-Bexborough 6
-Lucrezia 6
-Maisie 6
-Breitkopf 6
-ambulance 6
-Barnet 6
-Rosseter 6
-Bowley 5
-Milan 5
+insulate 2
+uruguay 2
+bert 2
+damnation 2
 
 
 &quot;To the Lighthouse&quot;
 
-Ramsay 337
-Minta 72
-Cam 63
-Lighthouse 60
-Tansley 59
-Carmichael 41
-Briscoe 40
-Nancy 28
-Macalister 25
-Jasper 19
-Rayley 16
-Ramsays 15
-McNab 14
-Doyle 10
+ramsay 337
+minta 72
+cam 63
+tansley 59
+carmichael 41
+briscoe 40
+macalister 25
+jasper 19
+rayley 16
+ramsays 15
+mcnab 14
+doyle 10
 easel 9
-Beckwith 8
-Rayleys 7
-atheist 6
-Carrie 6
-Z 5
-BOEUF 5
-EN 5
-DAUBE 5
-Bast 5
+beckwith 8
+rayleys 7
+boeuf 5
+en 5
+daube 5
+bast 5
 disparage 4
-skimpy 4
-Fisherman 4
-Wife 4
-TIMES 4
-Hume 4
-
-
-&quot;Orlando&quot;
-
-Orlando 436
-Greene 43
-Sasha 29
-Archduke 29
-Ambassador 26
-Shelmerdine 16
-Truth 15
-Bonthrop 14
-Dupper 13
-Nick 13
-Grimsditch 12
-Oak 12
-Archduchess 12
-Memory 9
-Shel 9
-bosom 8
-Glawr 8
-Moor 7
-Muscovite 7
-Nobleman 7
-Rustum 7
-Bartolus 7
-Basket 7
-Bell 6
-Modesty 6
-Chesterfield 6
-arras 5
-cannon 5
-taffeta 5
-Orlandos 5
+hume 4
+hive 4
+kennedy 4
+luriana 4
+lurilee 4
+earwig 4
+swiss 3
+shag 3
+dune 3
+paunceforte 3
 
 
 &quot;The Waves&quot;
 
-Louis 135
-Jinny 121
-Rhoda 107
-Percival 89
-beech 11
+louis 135
+jinny 121
+rhoda 107
+percival 89
 currant 10
-dove 10
-Lambert 9
-Nile 8
-Elvedon 7
-Brisbane 7
-Australian 7
+crane 10
+lambert 9
+nile 8
+fin 8
+cheep 7
+elvedon 7
+brisbane 7
+australian 7
 sequence 7
-Archie 7
+archie 7
 tram 7
-fin 7
-Hudson 6
-bury 6
 drum 6
 shop-windows 6
-Moffat 6
-remorseless 6
+moffat 6
 peeling 6
 wilt 6
 sediment 5
-cheep 5
-spike 5
-Crane 5
-crane 5
-fling 4
-
-
-&quot;Between the Acts&quot;
-
-Swithin 87
-Manresa 84
-Isa 79
-Giles 78
-Trobe 51
-Bartholomew 38
-Barn 29
-chuff 29
-LADY 27
-Spaniel 26
-SIR 24
-L 24
-Streatfield 21
-Sands 21
-Flavinda 20
-Deb 19
-Bart 17
-Parker 16
-Valentine 14
-Hardcastle 13
-Candish 11
-Haines 10
-Cobbet 10
-Chuff 10
-Albert 9
-greenhouse 9
-Batty 8
-hound 8
-Elmhurst 8
-Madam 8
+swing-door 4
+immitigable 4
+sea-holly 4
+boasting 4
+tripper 4
+serge 4
+dalton 4
+compulsion 4
 
 
 &quot;The Years&quot;
 
-Kitty 206
-Martin 188
-Sara 159
-Peggy 154
-Delia 127
-Crosby 86
-Renny 78
-Nicholas 75
-Morris 74
-Milly 67
-Colonel 64
-Pargiter 61
-Eugénie 42
-Malone 37
-Digby 34
-Mama 27
-Patrick 27
-Robson 26
-Gibbs 25
-Ashley 25
-Lasswade 24
-Craddock 23
-Abel 22
-tonight 22
-Nell 21
-Abercorn 20
-Duffus 19
-Lamley 16
-Parnell 15
-Mira 14
-
-
-&quot;The Voyage out&quot;
-
-Rachel 576
-Helen 388
-Hirst 239
-Hewet 234
-Terence 190
-Flushing 128
-Evelyn 126
-Thornbury 119
-Pepper 93
-Elliot 93
-Ridley 92
-Allan 86
-Ambrose 79
-Dalloway 74
-Clarissa 59
-Vinrace 57
-Willoughby 49
-Perrott 46
-Paley 45
-Chapter 27
-Chailey 27
-doctor 26
-Gibbon 25
-Venning 24
-Cambridge 21
-colour 21
-Rodriguez 19
-Bax 19
-Ambroses 14
-twenty-four 13
+sara 159
+peggy 154
+crosby 86
+renny 78
+pargiter 61
+eugénie 42
+malone 37
+digby 34
+patrick 27
+robson 26
+gibbs 25
+ashley 25
+lasswade 24
+craddock 23
+abel 22
+abercorn 20
+duffus 19
+lamley 16
+parnell 15
+cole 13
+fripp 12
+baxter 12
+rover 10
+raid 9
+potter 8
+trombone 8
+vilets 8
+chinnery 8
+jo 7
+judd 7
 
 
 &quot;Night and Day&quot;
 
-Katharine 1181
-s 741
-Mary 486
-Ralph 453
-Mrs 358
-Denham 346
-Hilbery 341
-little 333
-time 331
-Cassandra 314
-nt 301
-William 295
-Mr 288
-Rodney 277
-room 273
-moment 267
-way 267
-thing 248
-life 240
-something 234
-mind 233
-eye 228
-people 216
-hand 215
-much 214
-word 190
-never 190
-door 188
-rather 183
-great 164
+katharine 1181
+denham 346
+cassandra 314
+rodney 277
+datchet 71
+milvain 60
+clacton 44
+otway 39
+basnett 31
+joan 29
+cyril 26
+behavior 20
+cosham 19
+color 18
+hilberys 17
+alardyce 15
+fields 15
+maggie 15
+leaflet 14
+gray 14
+trevor 14
+center 13
+fortescue 12
+self-control 12
+peyton 11
+cheyne 9
+bookcase 9
+pelham 9
+stogdon 9
+johnnie 9
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="unique-verbs-per-novel">
+<h1>Unique verbs per novel<a class="headerlink" href="#unique-verbs-per-novel" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">all_novels</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_novels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_verbs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">all_novels</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&quot;</span><span class="si">{</span><span class="n">titles</span><span class="p">[</span><span class="n">text</span><span class="p">]</span><span class="si">}</span><span class="s1">&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">other_novels</span> <span class="o">=</span> <span class="n">all_novels</span>
     <span class="n">other_novels</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -2310,10 +2023,16 @@ maintain 3
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="sentiment-analysis">
 <h2>Sentiment analysis<a class="headerlink" href="#sentiment-analysis" title="Permalink to this headline">#</a></h2>
 <p>The cells below identifies the sentences with the highest and the lowest sentiment scores in all the novels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_novels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_verbs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span> 
@@ -2328,13 +2047,16 @@ maintain 3
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
         <span class="n">scores</span> <span class="o">=</span> <span class="n">ana</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
         <span class="n">all_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">scores</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span> <span class="p">)</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">all_scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_scores</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">all_scores</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">all_scores</span><span class="p">)</span>
         
 <span class="n">sent_scores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">novel</span> <span class="ow">in</span> <span class="n">all_novels</span><span class="p">:</span>
+
     <span class="n">avg_score</span> <span class="o">=</span> <span class="n">average_score</span><span class="p">(</span><span class="n">novel</span><span class="p">)</span>
     <span class="n">sent_scores</span><span class="p">[</span><span class="n">novel</span><span class="p">]</span><span class="o">=</span><span class="n">avg_score</span>
+    
+
     
 <span class="n">x_axis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sent_scores</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="n">y_axis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sent_scores</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -2605,9 +2327,7 @@ It is all an illusion (which is nothing against it, for illusions are the most v
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_novels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_verbs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-<span class="n">json_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s1">&#39;woolf_ner.json&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="s1">&#39;woolf_ner.json&#39;</span><span class="p">))</span>
 <span class="n">ner</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">novel</span> <span class="ow">in</span> <span class="n">all_novels</span><span class="p">:</span>
