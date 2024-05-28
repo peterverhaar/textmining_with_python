@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Number of works, languages and fandoms &#8212; DATH notebooks</title>
+    <title>Archive of our own: Number of works, languages and fandoms &#8212; DATH notebooks</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -224,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Number of works, languages and fandoms
+   Archive of our own: Number of works, languages and fandoms
   </a>
  </li>
  <li class="toctree-l1">
@@ -479,7 +479,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Number of works, languages and fandoms</h1>
+                <h1>Archive of our own: Number of works, languages and fandoms</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -519,8 +519,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="number-of-works-languages-and-fandoms">
-<h1>Number of works, languages and fandoms<a class="headerlink" href="#number-of-works-languages-and-fandoms" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="archive-of-our-own-number-of-works-languages-and-fandoms">
+<h1>Archive of our own: Number of works, languages and fandoms<a class="headerlink" href="#archive-of-our-own-number-of-works-languages-and-fandoms" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -562,11 +562,13 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dataset contains works created in between </span><span class="si">{</span><span class="n">works</span><span class="p">[</span><span class="s1">&#39;creation date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">works</span><span class="p">[</span><span class="s1">&#39;creation date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;It describes </span><span class="si">{</span><span class="n">works</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> works in total.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The dataset contains works created in between 2008-09-13 and 2021-02-26 
+It describes 7269693 works in total.
 </pre></div>
 </div>
 </div>
@@ -756,18 +758,17 @@ The longest work has 5078036 words.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;word_count&lt;50000&#39;</span><span class="p">)[</span><span class="s1">&#39;word_count&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;word_count&lt;50000&#39;</span><span class="p">)[</span><span class="s1">&#39;word_count&#39;</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of works with less than 50000 words&#39;</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/seaborn/distributions.py:2619: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
-  warnings.warn(msg, FutureWarning)
-</pre></div>
-</div>
-<img alt="_images/General_ArchiveOfOurOwn_20_1.png" src="_images/General_ArchiveOfOurOwn_20_1.png" />
+<img alt="_images/General_ArchiveOfOurOwn_20_0.png" src="_images/General_ArchiveOfOurOwn_20_0.png" />
 </div>
 </div>
 </div>
@@ -786,10 +787,7 @@ The longest work has 5078036 words.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">remove_non_ascii</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_non_ascii</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="n">new_text</span> <span class="o">=</span> <span class="n">text</span>
     <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[|]&#39;</span><span class="p">,</span><span class="n">text</span><span class="p">):</span>
         <span class="n">index_pipe</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
