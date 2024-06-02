@@ -171,6 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
    References in the New York Times to Italy
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="NYT_Israel_Palestine.html">
+   References in the New York Times to Israel and Palestine
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -186,6 +191,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Elsevier.html">
    Bonaventura Elsevier
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Printers_Deventer.html">
+   STCN: Analyses of printers based in Deventer
   </a>
  </li>
 </ul>
@@ -466,6 +476,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Word count
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tags">
    Tags
   </a>
@@ -505,6 +520,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Word count
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tags">
    Tags
   </a>
@@ -532,6 +552,9 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">langcodes</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">language_data</span>
 <span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -684,6 +707,34 @@ It describes 7269693 works in total.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">english_works</span> <span class="o">=</span> <span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;language == &quot;en&quot;&#39;</span><span class="p">)</span>
+<span class="n">creation_dates</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">english_works</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]))</span>
+
+<span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span> <span class="o">=</span> <span class="n">counter_to_axes</span><span class="p">(</span><span class="n">creation_dates</span> <span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> 
+                  <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;#AA6799&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">()[::</span><span class="mi">5</span><span class="p">]);</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Works in English&#39;</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of works&#39;</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">14</span> <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/General_ArchiveOfOurOwn_16_0.png" src="_images/General_ArchiveOfOurOwn_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chinese_works</span> <span class="o">=</span> <span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;language == &quot;zh&quot;&#39;</span><span class="p">)</span>
 <span class="n">creation_dates</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">chinese_works</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]))</span>
 
@@ -707,13 +758,13 @@ It describes 7269693 works in total.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/General_ArchiveOfOurOwn_16_0.png" src="_images/General_ArchiveOfOurOwn_16_0.png" />
+<img alt="_images/General_ArchiveOfOurOwn_17_0.png" src="_images/General_ArchiveOfOurOwn_17_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chinese_works</span> <span class="o">=</span> <span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;language == &quot;ru&quot;&#39;</span><span class="p">)</span>
-<span class="n">creation_dates</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">chinese_works</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">russian_works</span> <span class="o">=</span> <span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;language == &quot;ru&quot;&#39;</span><span class="p">)</span>
+<span class="n">creation_dates</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">russian_works</span><span class="p">[</span><span class="s1">&#39;year_month&#39;</span><span class="p">]))</span>
 
 <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span> <span class="o">=</span> <span class="n">counter_to_axes</span><span class="p">(</span><span class="n">creation_dates</span> <span class="p">)</span>
 
@@ -735,12 +786,105 @@ It describes 7269693 works in total.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/General_ArchiveOfOurOwn_17_0.png" src="_images/General_ArchiveOfOurOwn_17_0.png" />
+<img alt="_images/General_ArchiveOfOurOwn_18_0.png" src="_images/General_ArchiveOfOurOwn_18_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="word-count">
 <h2>Word count<a class="headerlink" href="#word-count" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">en_works</span> <span class="o">=</span> <span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s1">&#39;language == &quot;en&quot;&#39;</span><span class="p">)</span>
+<span class="n">en_works</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">en_works</span><span class="p">[</span><span class="s1">&#39;creation date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">word_count</span> <span class="o">=</span> <span class="n">en_works</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;word_count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span> <span class="o">=</span> <span class="n">counter_to_axes</span><span class="p">(</span><span class="n">word_count</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> 
+                  <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;#AA6799&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/General_ArchiveOfOurOwn_21_0.png" src="_images/General_ArchiveOfOurOwn_21_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zh_works</span> <span class="o">=</span> <span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s1">&#39;language == &quot;zh&quot;&#39;</span><span class="p">)</span>
+<span class="n">zh_works</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">zh_works</span><span class="p">[</span><span class="s1">&#39;creation date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">word_count</span> <span class="o">=</span> <span class="n">zh_works</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;word_count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span> <span class="o">=</span> <span class="n">counter_to_axes</span><span class="p">(</span><span class="n">word_count</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> 
+                  <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;#AA6799&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/General_ArchiveOfOurOwn_23_0.png" src="_images/General_ArchiveOfOurOwn_23_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ru_works</span> <span class="o">=</span> <span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span> <span class="s1">&#39;language == &quot;ru&quot;&#39;</span><span class="p">)</span>
+<span class="n">ru_works</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ru_works</span><span class="p">[</span><span class="s1">&#39;creation date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">word_count</span> <span class="o">=</span> <span class="n">ru_works</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;word_count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span> <span class="o">=</span> <span class="n">counter_to_axes</span><span class="p">(</span><span class="n">word_count</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> 
+                  <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;#AA6799&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/General_ArchiveOfOurOwn_25_0.png" src="_images/General_ArchiveOfOurOwn_25_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Word count<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg</span> <span class="o">=</span> <span class="n">works</span><span class="p">[</span><span class="s1">&#39;word_count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -758,17 +902,14 @@ The longest work has 5078036 words.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;word_count&lt;50000&#39;</span><span class="p">)[</span><span class="s1">&#39;word_count&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">works</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;word_count&lt;50000&#39;</span><span class="p">)[</span><span class="s1">&#39;word_count&#39;</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of works with less than 50000 words&#39;</span> <span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/General_ArchiveOfOurOwn_20_0.png" src="_images/General_ArchiveOfOurOwn_20_0.png" />
+<img alt="_images/General_ArchiveOfOurOwn_28_0.png" src="_images/General_ArchiveOfOurOwn_28_0.png" />
 </div>
 </div>
 </div>
@@ -819,7 +960,7 @@ The longest work has 5078036 words.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/General_ArchiveOfOurOwn_24_0.png" src="_images/General_ArchiveOfOurOwn_24_0.png" />
+<img alt="_images/General_ArchiveOfOurOwn_32_0.png" src="_images/General_ArchiveOfOurOwn_32_0.png" />
 </div>
 </div>
 </div>
