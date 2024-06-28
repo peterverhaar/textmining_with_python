@@ -8,10 +8,15 @@ Through a series of hands-on exercises, this tutorial  will clarify how data sci
 
 This tutorial discusses the following openly available notebooks: 
 
-1. [Introduction to Machine Learning](https://colab.research.google.com/drive/1AiZM6DPnY7tlmoEhw_He-hT2D-d0AP0B?usp=sharing) 
+1. [Introduction to Machine Learning](https://colab.research.google.com/drive/1hlS2cFYaUMu2x37eqN1zWvULa7j6MgWt?usp=sharing) 
  
-2. [Large Language Models](https://colab.research.google.com/drive/1A-u7vsdSgRJVxHvS3Atw9xZy_nMhbiWv?usp=sharing)
+2. [Large Language Models](https://colab.research.google.com/drive/1ORWjJhGHUGX1SPLTcGbfEI5IZ8lbj-MI#scrollTo=o0URVA8LqKWD)
 
 3. [Retrieval Augmented Generation](https://colab.research.google.com/drive/1A-u7vsdSgRJVxHvS3Atw9xZy_nMhbiWv?usp=sharing)
 
+These notebooks can be run in [Google Collab](https://colab.research.google.com/). Please familiarise yourself with [the basic functionaliities of this application]((https://colab.research.google.com/drive/1NO2mCouxjAZCOpi94vknYL52gNhH2Zok#scrollTo=pLyX40ufpI9R)) before opening the notebooks.  
 <!-- #endregion -->
+
+```python
+
+```
