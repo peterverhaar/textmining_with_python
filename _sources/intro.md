@@ -8,7 +8,7 @@ Through a series of hands-on exercises, this workshop  will clarify how data sci
 
 During the workshop, the following openly available notebooks will be discussed: 
 
-1. [Google Colab Basics](https://drive.google.com/file/d/1NO2mCouxjAZCOpi94vknYL52gNhH2Zok/view?usp=sharing) 
+1. [Google Colab Basics](https://colab.research.google.com/drive/11FGEh0UFUqTfZW0sJeXf_ZNBW2OhwG_U) 
 
 2. [Introduction to Machine Learning](https://colab.research.google.com/drive/1hlS2cFYaUMu2x37eqN1zWvULa7j6MgWt?usp=sharing) 
 
@@ -22,3 +22,7 @@ These notebooks can be run in [Google Colab](https://colab.research.google.com/)
 
 [https://docs.google.com/presentation/d/1fHpDcFaeng5jeJ4w4A3IYdmbEulz3qwp/edit?usp=drive_web&ouid=109195792506806970866&rtpof=true](https://docs.google.com/presentation/d/1fHpDcFaeng5jeJ4w4A3IYdmbEulz3qwp/edit?usp=drive_web&ouid=109195792506806970866&rtpof=true)
 <!-- #endregion -->
+
+```python
+
+```
