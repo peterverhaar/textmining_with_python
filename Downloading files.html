@@ -1,0 +1,1609 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Downloading files &#8212; DATH notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Downloading files';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Jupyter Notebook basics" href="Jupyter_notebook_basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="Welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="DATH notebooks - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="DATH notebooks - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1%20Variables_and_data_types.html">1. Statements, variables and data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2%20Operators.html">2. Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3%20Working_with_strings.html">3. Working with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4%20Flow_control.html">4. Flow control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5%20Lists.html">5. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20Working_with_files_and_folders.html">6. Working with files and folders¶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7%20Functions_modules_and_libraries.html">7. Functions, Modules and Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Tokenisation.html">8. Tokenisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Word%20frequencies.html">9. Word frequencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10%20Examining_context.html">10. Examining the context of words</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation.html">11. Part of Speech Tagging and Lemmatisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12%20Sentiment_analysis.html">12. Sentiment analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13%20Named_Entity_Recognition.html">13. Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Lexicons.html">14. Lexicons</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Jupyter_notebook_basics.html">Jupyter Notebook basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Downloading files</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2FDownloading files.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Downloading files.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Downloading files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-1">Exercise 10.1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-text-from-pdf-files">Extract text from PDF files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-15-1">Exercise 15.1</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="downloading-files">
+<h1>Downloading files<a class="headerlink" href="#downloading-files" title="Link to this heading">#</a></h1>
+<p>Projects in field of <em>Text Mining</em> typically start with the acquisition of texts. Such data sets may consist of secondary data made available on the web by commercial or non-commercial organisations. Machine-readable texts can be downloaded from a wide range of sources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a></p></li>
+<li><p><a class="reference external" href="https://github.com/distantreading/distantreading.github.io">Distant Reading E-COST</a></p></li>
+<li><p><a class="reference external" href="https://dbnl.nl/">DBNL</a></p></li>
+<li><p><a class="reference external" href="https://github.com/textcreationpartnership/Texts">Text Creation Partnership</a></p></li>
+<li><p><a class="reference external" href="https://www.wikidata.org/">WikiData</a></p></li>
+<li><p><a class="reference external" href="https://shakespeare.folger.edu/download/">Folger Shakespeare Digital Library</a></p></li>
+<li><p><a class="reference external" href="https://ota.bodleian.ox.ac.uk/repository/xmlui/">Oxford Text Archive</a></p></li>
+<li><p><a class="reference external" href="https://www.opensubtitles.com/en">Open Subtitles</a></p></li>
+<li><p><a class="reference external" href="https://textgridrep.org/">TextGrid Repository</a></p></li>
+<li><p><a class="reference external" href="https://archive.org/details/opensource">Internet Archive</a></p></li>
+<li><p><a class="reference external" href="https://openlibrary.org/">Open Library</a></p></li>
+<li><p><a class="reference external" href="https://www.delpher.nl/">Delpher</a></p></li>
+<li><p><a class="reference external" href="https://www.nrc.nl/index/archief/">Archive of NRC (Dutch Newspaper)</a></p></li>
+<li><p><a class="reference external" href="https://www.dbnl.org/">Digital Library of the Netherlands</a></p></li>
+</ul>
+<p>The manual acquisition of texts may be tedious if the data collection consists of many files. In such situations, you can choose to write a program to carry out the downloads. One of the libraries you can work with for this purpose is <a class="reference external" href="https://requests.readthedocs.io/"><code class="docutils literal notranslate"><span class="pre">requests</span></code></a>.</p>
+<p>As is the case for all libraries, the <code class="docutils literal notranslate"><span class="pre">requests</span></code> library needs to be imported before you can use it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">requests</span></code> library can be used to make requests according to the <a class="reference external" href="https://en.wikipedia.org/wiki/HTTP">Hypertext Transfer Protocol (HTTP)</a>, which was developed to enable the exchange of information between computers. The computer that can provide information is typically referred to as a <em>server</em>, and the computer that requests information from this server is referred to as a <em>client</em>. In the HTTP protocol, the GET method is used to request data from a specified server.</p>
+<p>In Python, such a GET request can be sent to a server using the <code class="docutils literal notranslate"><span class="pre">get()</span></code> method in <code class="docutils literal notranslate"><span class="pre">requests</span></code>, as demonstrated below. Evidently, it is important that you are online when you run this code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span> <span class="s1">&#39;https://www.universiteitleiden.nl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This method returns a so-called <code class="docutils literal notranslate"><span class="pre">Response</span></code> object. It is an object which represents information about the downloaded web resource. In the example above, the result of the method is assigned to a variable named <code class="docutils literal notranslate"><span class="pre">response</span></code>.</p>
+<p>Once this <code class="docutils literal notranslate"><span class="pre">Response</span></code> object has been created successfully, you can use various pieces of information about the resource that was requested.
+The property <code class="docutils literal notranslate"><span class="pre">status_code</span></code>, for instance, indicates the HTTP status code that was returned by the server.
+The status code 200 indicates that the request was successful. The infamous status code 404 indicates that the file was not found.</p>
+<p>If the status code is indeed 200, the contents of the resource is accessible in the response’s <code class="docutils literal notranslate"><span class="pre">content</span></code> property. This property holds the contents as bytes, however. When we downloaded a webpage, we typically want to work with the data as text. To obtain this text, we can work with the <code class="docutils literal notranslate"><span class="pre">text</span></code> property of the <code class="docutils literal notranslate"><span class="pre">Response</span></code> object. It contains the full contents of the downloaded resource as a string.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">requests</span></code> may not always understand a file’s <a class="reference external" href="https://www.w3.org/International/questions/qa-what-is-encoding">character encoding</a> automatically. You can set the correct character encoding explicitly using the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> property.</p>
+<p>When you run the code that is given below, the contents of the webpage that is specified in the <code class="docutils literal notranslate"><span class="pre">get()</span></code> method (or, more precisely, the HTML code that was created to build the webpage) becomes available as a string, assigned to the variable named <code class="docutils literal notranslate"><span class="pre">contents</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contents</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://www.universiteitleiden.nl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;nl&quot; data-version=&quot;1.185.00&quot; &gt;
+&lt;head&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;!-- standard page html head --&gt;
+
+    &lt;title&gt;Home - Universiteit Leiden&lt;/title&gt;
+        &lt;meta name=&quot;google-site-verification&quot; content=&quot;o8KYuFAiSZi6QWW1wxqKFvT1WQwN-BxruU42si9YjXw&quot;/&gt;
+        &lt;meta name=&quot;google-site-verification&quot; content=&quot;hRUxrqIARMinLW2dRXrPpmtLtymnOTsg0Pl3WjHWQ4w&quot;/&gt;
+
+        &lt;link rel=&quot;canonical&quot; href=&quot;https://www.universiteitleiden.nl/&quot;/&gt;
+&lt;!-- icons --&gt;
+    &lt;link rel=&quot;shortcut icon&quot; href=&quot;/design-1.0/assets/icons/favicon.ico&quot;/&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;32x32&quot; href=&quot;/design-1.0/assets/icons/icon-32px.png&quot;/&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;96x96&quot; href=&quot;/design-1.0/assets/icons/icon-96px.png&quot;/&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;195x195&quot; href=&quot;/design-1.0/assets/icons/icon-195px.png&quot;/&gt;
+
+    &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/design-1.0/assets/icons/icon-120px.png&quot;/&gt; &lt;!-- iPhone retina --&gt;
+    &lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;180x180&quot;
+          href=&quot;/design-1.0/assets/icons/icon-180px.png&quot;/&gt; &lt;!-- iPhone 6 plus --&gt;
+    &lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;152x152&quot;
+          href=&quot;/design-1.0/assets/icons/icon-152px.png&quot;/&gt; &lt;!-- iPad retina --&gt;
+    &lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;167x167&quot;
+          href=&quot;/design-1.0/assets/icons/icon-167px.png&quot;/&gt; &lt;!-- iPad pro --&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;/&gt;
+
+            &lt;meta name=&quot;description&quot; content=&quot;De Universiteit Leiden is een internationaal georiënteerde universiteit met een breed palet aan talentgericht onderwijs voor goede en gemotiveerde studenten, dat wordt geïnspireerd door wetenschappelijk onderzoek.&quot;/&gt;
+&lt;meta name=&quot;application-name&quot; content=&quot;search&quot;
+data-protected=&quot;false&quot;
+data-language=&quot;nl&quot;
+data-last-modified-date=&quot;2024-10-02&quot;
+data-publication-date=&quot;2024-10-04&quot;
+data-uuid=&quot;c547740d-f922-4c14-8691-ad1bc3dfddb3&quot;
+data-website=&quot;external-site&quot;
+/&gt;    &lt;!-- twitter --&gt;
+    &lt;meta name=&quot;twitter:card&quot; content=&quot;summary_large_image&quot;&gt;
+    &lt;meta name=&quot;twitter:site&quot; content=&quot;@UniLeiden&quot;&gt;
+        &lt;meta name=&quot;twitter:title&quot; content=&quot;Home&quot;&gt;
+        &lt;meta name=&quot;twitter:description&quot; content=&quot;De Universiteit Leiden is een internationaal georiënteerde universiteit met een breed palet aan talentgericht onderwijs voor goede en gemotiveerde studenten, dat wordt geïnspireerd door wetenschappelijk onderzoek.&quot;&gt;
+
+        &lt;meta name=&quot;twitter:image&quot;
+              content=&quot;https://www.universiteitleiden.nl/design-1.0/assets/images/twitter-card.png&quot;&gt;
+    &lt;!-- Open Graph --&gt;
+        &lt;meta property=&quot;og:title&quot; content=&quot;Home&quot;/&gt;
+    &lt;meta property=&quot;og:type&quot; content=&quot;website&quot;/&gt;
+        &lt;meta property=&quot;og:description&quot; content=&quot;De Universiteit Leiden is een internationaal georiënteerde universiteit met een breed palet aan talentgericht onderwijs voor goede en gemotiveerde studenten, dat wordt geïnspireerd door wetenschappelijk onderzoek.&quot;/&gt;
+        &lt;meta property=&quot;og:site_name&quot; content=&quot;Universiteit Leiden&quot;/&gt;
+        &lt;meta property=&quot;og:locale&quot; content=&quot;nl_NL&quot;/&gt;
+
+        &lt;meta property=&quot;og:image&quot; content=&quot;https://www.universiteitleiden.nl/design-1.0/assets/images/twitter-card.png&quot;/&gt;
+
+        &lt;meta property=&quot;og:url&quot; content=&quot;https://www.universiteitleiden.nl/&quot;/&gt;
+
+&lt;!-- Favicon and CSS --&gt;
+
+&lt;link rel=&#39;shortcut icon&#39; href=&quot;/design-1.0/assets/icons/favicon.ico&quot;/&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/design-1.0/css/ul2external/screen.css?v=1.185.00&quot;/&gt;
+
+
+
+
+
+
+&lt;script&gt;
+var cookiesAccepted = &#39;false&#39;;
+var internalTraffic = &#39;false&#39;;
+&lt;/script&gt;
+
+&lt;script&gt;
+window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+event: &#39;Custom dimensions&#39;,
+customDimensionData: {
+language: &#39;nl&#39;,
+cookiesAccepted: window.cookiesAccepted,
+},
+user: {
+internalTraffic: window.internalTraffic,
+}
+});
+&lt;/script&gt;
+&lt;!-- Google Tag Manager --&gt;
+&lt;script&gt;(function (w, d, s, l, i) {
+w[l] = w[l] || [];
+w[l].push({
+&#39;gtm.start&#39;:
+new Date().getTime(), event: &#39;gtm.js&#39;
+});
+var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s), dl = l != &#39;dataLayer&#39; ? &#39;&amp;l=&#39; + l : &#39;&#39;;
+j.async = true;
+j.src =
+&#39;https://www.googletagmanager.com/gtm.js?id=&#39; + i + dl;
+f.parentNode.insertBefore(j, f);
+})(window, document, &#39;script&#39;, &#39;dataLayer&#39;, &#39;GTM-P7SF446&#39;);
+&lt;/script&gt;
+&lt;!-- End Google Tag Manager --&gt;
+
+
+
+&lt;!-- this line enables the loading of asynchronous components (together with the headContributions at the bottom) --&gt;
+&lt;!-- Header Scripts --&gt;
+&lt;/head&gt;
+&lt;body class=&quot; full home&quot;&gt;
+&lt;!-- To enable JS-based styles: --&gt;
+&lt;script&gt; document.body.className += &#39; js&#39;; &lt;/script&gt;&lt;div class=&quot;header-container&quot;&gt;&lt;nav class=&quot;top-nav&quot;&gt;
+&lt;ul class=&quot;wrapper&quot;&gt;
+&lt;li&gt;
+&lt;a class=&quot;active track-event&quot;
+href=&quot;/&quot;
+data-event-category=&quot;external-site&quot;
+data-event-label=&quot;Topmenu external-site&quot;
+&gt;Universiteit Leiden&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a class=&quot; track-event&quot;
+href=&quot;https://www.student.universiteitleiden.nl/&quot;
+data-event-category=&quot;student-site&quot;
+data-event-label=&quot;Topmenu external-site&quot;
+&gt;Studenten&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a class=&quot; track-event&quot;
+href=&quot;https://www.medewerkers.universiteitleiden.nl/&quot;
+data-event-category=&quot;staffmember-site&quot;
+data-event-label=&quot;Topmenu external-site&quot;
+&gt;Medewerkers&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a class=&quot; track-event&quot;
+href=&quot;https://www.organisatiegids.universiteitleiden.nl/&quot;
+data-event-category=&quot;org-site&quot;
+data-event-label=&quot;Topmenu external-site&quot;
+&gt;Organisatiegids&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a class=&quot; track-event&quot;
+href=&quot;https://www.bibliotheek.universiteitleiden.nl/&quot;
+data-event-category=&quot;library-site&quot;
+data-event-label=&quot;Topmenu external-site&quot;
+&gt;Bibliotheek&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+&lt;header class=&quot;wrapper clearfix&quot;&gt;
+&lt;h1 class=&quot;logo&quot;&gt;
+&lt;a href=&quot;/&quot;&gt;
+&lt;img width=&quot;151&quot; height=&quot;64&quot; src=&quot;/design-1.0/assets/images/zegel.png&quot; alt=&quot;Universiteit Leiden&quot;/&gt;
+&lt;/a&gt;
+&lt;/h1&gt;&lt;!-- Standard page searchbox --&gt;
+&lt;form id=&quot;search&quot; method=&quot;get&quot; action=&quot;searchresults-main&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;website&quot; value=&quot;external-site&quot;/&gt;
+&lt;fieldset&gt;
+&lt;input type=&quot;search&quot; name=&quot;q&quot; data-suggest=&quot;https://www.universiteitleiden.nl/async/searchsuggestions&quot;
+data-wait=&quot;100&quot; data-threshold=&quot;3&quot;
+value=&quot;&quot; placeholder=&quot;Zoek op onderwerp of persoon&quot;/&gt;
+&lt;button class=&quot;submit&quot; type=&quot;submit&quot;&gt;
+&lt;span&gt;Zoeken&lt;/span&gt;
+&lt;/button&gt;
+&lt;/fieldset&gt;
+&lt;ul class=&quot;options&quot;&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;&#39; data-hint=&quot;Zoek op onderwerp of persoon&quot;&gt;
+Alle categorieën &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;staffmember&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;personen&quot;&gt;
+Personen
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;education&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;onderwijs&quot;&gt;
+Onderwijs
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;research&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;onderzoek&quot;&gt;
+Onderzoek
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;news&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;nieuws&quot;&gt;
+Nieuws
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;event&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;agenda&quot;&gt;
+Agenda
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;dossier&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;dossiers&quot;&gt;
+Dossiers
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;location&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;locaties&quot;&gt;
+Locaties
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;course&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;cursussen&quot;&gt;
+Cursussen
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;vacancy&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;vacatures&quot;&gt;
+Vacatures
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;content-category&quot;:&quot;general&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;overig&quot;&gt;
+Overig
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/zoeken&quot; data-hidden=&#39;{&quot;keywords&quot;:&quot;true&quot;}&#39; data-hint=&quot;Zoek op&amp;nbsp;trefwoorden&quot;&gt;
+Trefwoorden
+&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/form&gt;&lt;div class=&quot;language-btn-group&quot;&gt;
+&lt;span class=&quot;btn active&quot;&gt;
+&lt;abbr title=&quot;Nederlands&quot;&gt;nl&lt;/abbr&gt;
+&lt;/span&gt;
+&lt;a href=&quot;https://www.universiteitleiden.nl/en&quot; class=&quot;btn&quot;&gt;
+&lt;abbr title=&quot;English&quot;&gt;en&lt;/abbr&gt;
+&lt;/a&gt;
+&lt;/div&gt;
+&lt;/header&gt;&lt;nav class=&quot;main-nav&quot; data-menu-label=&quot;Menu&quot;&gt;
+&lt;ul class=&quot;wrapper&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;home&quot; href=&quot;/&quot;&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/onderzoek&quot; &gt;Onderzoek&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/onderwijs&quot; &gt;Onderwijs&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/wetenschappers&quot; &gt;Wetenschappers&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/over-ons&quot; &gt;Over ons&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/samenwerking&quot; &gt;Samenwerking&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/over-ons/bestuur/faculteiten&quot; &gt;Faculteiten&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/den-haag&quot; &gt;Campus Den Haag&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/alumni&quot; &gt;Alumni&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://www.bibliotheek.universiteitleiden.nl&quot; &gt;Bibliotheek&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+        &lt;div class=&quot;home-hero right &quot;
+            &gt;
+            &lt;img src=&quot;/binaries/content/gallery/ul2/headers/241002-header-archeologie-expo.jpg/241002-header-archeologie-expo.jpg/d480xvar&quot;
+                 srcset=&quot;/binaries/content/gallery/ul2/headers/241002-header-archeologie-expo.jpg/241002-header-archeologie-expo.jpg/d480xvar 480w, /binaries/content/gallery/ul2/headers/241002-header-archeologie-expo.jpg/241002-header-archeologie-expo.jpg/d1400xvar 1400w, /binaries/content/gallery/ul2/headers/241002-header-archeologie-expo.jpg/241002-header-archeologie-expo.jpg/d1920xvar 1920w, /binaries/content/gallery/ul2/headers/241002-header-archeologie-expo.jpg/241002-header-archeologie-expo.jpg/d3000xvar 3000w&quot;
+                 data-bgset=&quot;.home-hero&quot; alt=&quot;&quot;/&gt;
+            &lt;div class=&quot;wrapper clearfix&quot;&gt;
+        &lt;section class=&quot;lead-story trigger-click&quot;&gt;
+                &lt;p class=&quot;context&quot;&gt;Expositie&lt;/p&gt;
+
+                &lt;h1&gt;Leidse opgravingen in Oss&lt;/h1&gt;
+&lt;p&gt;Archeologen doen met studenten al een halve eeuw onderzoek in Oss. Een expositie laat zien hoe deze vondsten de geschiedenis van deze regio vertellen.&lt;/p&gt;
+                &lt;p class=&quot;read-more&quot;&gt;
+                    &lt;a href=&quot;/nieuws/2024/10/expositie-toont-belang-van-50-jaar-leidse-opgravingen-in-oss&quot; class=&quot;call-btn&quot;&gt;Lees meer&lt;/a&gt;
+                &lt;/p&gt;
+        &lt;/section&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+&lt;div class=&quot;main-container&quot;&gt;
+&lt;div class=&quot;main wrapper clearfix&quot;&gt;
+
+
+
+
+
+
+
+
+
+&lt;!-- Content --&gt;
+    &lt;div id=&quot;content&quot;&gt;
+        &lt;div class=&quot;primary&quot;&gt;
+        &lt;section&gt;
+                &lt;h2&gt;Kies een studie&lt;/h2&gt;
+&lt;p&gt;Maak een keuze uit het brede aanbod van:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&quot;/onderwijs/bachelors&quot;&gt;Bacheloropleidingen&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;/onderwijs/masters&quot;&gt;Masteropleidingen&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;/wetenschappers/promoveren&quot;&gt;PhD-programma&#39;s&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;/onderwijs/onderwijs-voor-professionals&quot;&gt;Opleidingen voor professionals&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;https://www.universiteitleiden.nl/en/education/other-modes-of-study/summer-schools?utm_source=universiteitleiden&amp;amp;utm_medium=referral&amp;amp;utm_campaign=homepageheadernl&quot;&gt;Summer School&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Studiekeuze &amp;amp; Voorlichting&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&quot;https://www.universiteitleiden.nl/onderwijs/bachelor/agenda&quot;&gt;Bachelor voorlichtingsactiviteiten&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;/onderwijs/masters/voorlichtingsactiviteiten&quot;&gt;Master voorlichtingsactiviteiten&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;/onderwijs/bachelors/chat-met-een-student&quot;&gt;Chat met een bachelorstudent&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;/onderwijs/masters/chat-met-student&quot;&gt;Chat met een masterstudent&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;        &lt;/section&gt;
+
+        &lt;div class=&quot;box ghost events&quot;&gt;
+
+                &lt;div class=&quot;box-content&quot;&gt;
+                    &lt;ul&gt;
+                            &lt;li&gt;
+
+
+
+
+
+
+
+
+&lt;a href=&quot;/agenda/extra/2024/10/bachelor-open-dag-12-oktober-2024&quot;&gt;
+
+        &lt;span class=&quot;event-date one-day&quot;&gt;
+            &lt;time datetime=&quot;2024-10-12T09:00&quot;&gt;
+12                &lt;abbr title=&quot;oktober&quot;&gt;
+                    okt
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+        &lt;/span&gt;
+
+    &lt;div&gt;
+      &lt;span class=&quot;meta alt&quot;&gt;
+        Studievoorlichting
+      &lt;/span&gt;
+        &lt;strong&gt;Bachelor Open Dag&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+
+
+
+
+
+
+
+
+&lt;a href=&quot;/agenda/extra/2024/10/master-online-open-dagen-17--18-oktober-2024&quot;&gt;
+
+        &lt;span class=&quot;event-date multiple-days&quot;&gt;
+            &lt;time datetime=&quot;2024-10-17T00:00&quot;&gt;
+17                &lt;abbr title=&quot;oktober&quot;&gt;
+                    okt
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+            &lt;time datetime=&quot;2024-10-18T00:00&quot;&gt;
+18                &lt;abbr title=&quot;oktober&quot;&gt;
+                    okt
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+        &lt;/span&gt;
+
+    &lt;div&gt;
+      &lt;span class=&quot;meta alt&quot;&gt;
+        Studievoorlichting
+      &lt;/span&gt;
+        &lt;strong&gt;Master Online Open Dagen&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+
+
+
+
+
+
+
+
+&lt;a href=&quot;/agenda/extra/2025/02/master-open-dag-14-februari-2025&quot;&gt;
+
+        &lt;span class=&quot;event-date one-day&quot;&gt;
+            &lt;time datetime=&quot;2025-02-14T08:00&quot;&gt;
+14                &lt;abbr title=&quot;februari&quot;&gt;
+                    feb
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+        &lt;/span&gt;
+
+    &lt;div&gt;
+      &lt;span class=&quot;meta alt&quot;&gt;
+        Studievoorlichting
+      &lt;/span&gt;
+        &lt;strong&gt;Master Open Dag&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+
+
+
+
+
+
+
+
+&lt;a href=&quot;/agenda/extra/2025/03/bachelor-open-dag-1-maart-2025&quot;&gt;
+
+        &lt;span class=&quot;event-date one-day&quot;&gt;
+            &lt;time datetime=&quot;2025-03-01T09:00&quot;&gt;
+01                &lt;abbr title=&quot;maart&quot;&gt;
+                    mrt
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+        &lt;/span&gt;
+
+    &lt;div&gt;
+      &lt;span class=&quot;meta alt&quot;&gt;
+        Studievoorlichting
+      &lt;/span&gt;
+        &lt;strong&gt;Bachelor Open Dag&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                            &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+
+        &lt;/div&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class=&quot;secondary&quot;&gt;
+                &lt;div class=&quot;box-row fifty-fifty&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;div class=&quot;box&quot;&gt;
+    &lt;div class=&quot;box-header alt&quot;&gt;
+            &lt;h2&gt;Nieuws&lt;/h2&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;box-content&quot;&gt;
+        &lt;ul&gt;
+                            &lt;li&gt;
+
+
+
+
+
+
+&lt;a href=&quot;/nieuws/2024/10/onderzoekers-en-burgers-brengen-samen-de-duurzame-wereld-een-stap-dichterbij&quot;&gt;
+
+
+
+            &lt;img src=&quot;/binaries/content/gallery/ul2/main-images/general/banner-afbeeldingen/2401001-banner-symposium-stadsoase.jpg/2401001-banner-symposium-stadsoase.jpg/d50x50&quot; alt=&quot;&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;
+
+    &lt;div&gt;
+        &lt;span class=&quot;meta&quot;&gt;01 oktober 2024&lt;/span&gt;
+        &lt;strong&gt;Onderzoekers en burgers brengen samen de duurzame wereld een stap dichterbij&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                            &lt;/li&gt;
+
+                            &lt;li&gt;
+
+
+
+
+
+
+&lt;a href=&quot;/nieuws/2024/10/beatrice-de-graaf-houdt-53e-huizingalezing&quot;&gt;
+
+
+
+            &lt;img src=&quot;/binaries/content/gallery/ul2/main-images/humanities/alumni/beatricedegraaf12-fotodavidvandam-bannerfix.jpg/beatricedegraaf12-fotodavidvandam-bannerfix.jpg/d50x50&quot; alt=&quot;&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;
+
+    &lt;div&gt;
+        &lt;span class=&quot;meta&quot;&gt;01 oktober 2024&lt;/span&gt;
+        &lt;strong&gt;Beatrice de Graaf houdt 53e Huizingalezing&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                            &lt;/li&gt;
+
+                            &lt;li&gt;
+
+
+
+
+
+
+&lt;a href=&quot;/nieuws/2024/09/een-reproductie-kan-het-origineel-weer-belangrijk-maken&quot;&gt;
+
+
+
+            &lt;img src=&quot;/binaries/content/gallery/ul2/main-images/humanities/gedeelde-content/2024/09/liselore-leiden_header_2.jpg/liselore-leiden_header_2.jpg/d50x50&quot; alt=&quot;&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;
+
+    &lt;div&gt;
+        &lt;span class=&quot;meta&quot;&gt;01 oktober 2024&lt;/span&gt;
+        &lt;strong&gt;‘Een reproductie kan het origineel weer belangrijk maken’&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+
+            &lt;p class=&quot;more&quot;&gt;
+                &lt;a href=&quot;https://www.universiteitleiden.nl/dossiers/actueel&quot;&gt;Meer nieuws&lt;/a&gt;
+            &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+        &lt;div class=&quot;box events&quot;&gt;
+                &lt;div class=&quot;box-header alt&quot;&gt;
+                    &lt;h2&gt;Agenda&lt;/h2&gt;
+                &lt;/div&gt;
+
+            &lt;div class=&quot;box-content&quot;&gt;
+                &lt;ul&gt;
+                        &lt;li&gt;
+
+
+
+
+
+
+
+
+&lt;a href=&quot;/agenda/2024/10/rondleiding-in-ngt-in-de-hortus&quot;&gt;
+
+        &lt;span class=&quot;event-date one-day&quot;&gt;
+            &lt;time datetime=&quot;2024-10-06T11:00&quot;&gt;
+06                &lt;abbr title=&quot;oktober&quot;&gt;
+                    okt
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+        &lt;/span&gt;
+
+    &lt;div&gt;
+      &lt;span class=&quot;meta alt&quot;&gt;
+        Kunst en cultuur | Rondleiding
+      &lt;/span&gt;
+        &lt;strong&gt;Rondleiding in NGT in de Hortus&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+
+
+
+
+
+
+
+
+&lt;a href=&quot;/agenda/2024/10/de-hortusimker-vertelt-in-de-hortus&quot;&gt;
+
+        &lt;span class=&quot;event-date one-day&quot;&gt;
+            &lt;time datetime=&quot;2024-10-06T14:00&quot;&gt;
+06                &lt;abbr title=&quot;oktober&quot;&gt;
+                    okt
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+        &lt;/span&gt;
+
+    &lt;div&gt;
+      &lt;span class=&quot;meta alt&quot;&gt;
+        Kunst en cultuur | De Hortusimker vertelt
+      &lt;/span&gt;
+        &lt;strong&gt;De Hortusimker vertelt in de Hortus&lt;/strong&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+
+
+
+
+
+
+
+
+&lt;a href=&quot;/agenda/2024/10/sails-lunch-time-seminar-henning-lahmann&quot;&gt;
+
+        &lt;span class=&quot;event-date one-day&quot;&gt;
+            &lt;time datetime=&quot;2024-10-07T12:00&quot;&gt;
+07                &lt;abbr title=&quot;oktober&quot;&gt;
+                    okt
+                &lt;/abbr&gt;
+            &lt;/time&gt;
+        &lt;/span&gt;
+
+    &lt;div&gt;
+      &lt;span class=&quot;meta alt&quot;&gt;
+        Lezing
+      &lt;/span&gt;
+        &lt;strong&gt;SAILS Lunch Time Seminar: Henning Lahmann&lt;/strong&gt;
+                &lt;span class=&quot;meta&quot;&gt;Henning Lahmann&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                        &lt;/li&gt;
+                &lt;/ul&gt;
+
+                &lt;p class=&quot;more&quot;&gt;
+                    &lt;a href=&quot;/agenda&quot;&gt;Meer agendaberichten&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/div&gt; &lt;!-- .box-content --&gt;
+        &lt;/div&gt;
+        &lt;!-- .box.events --&gt;
+
+
+    &lt;div class=&quot;ajax&quot; data-content=&quot;https://www.universiteitleiden.nl/async/spotlightcarousel?uuid=bd15c61b-6b81-4f4c-be8e-5f32c8865a2a&quot; data-loading=&quot;Laden...&quot;&gt;
+      &lt;noscript&gt;Javascript is vereist om deze inhoud te zien.&lt;/noscript&gt;
+    &lt;/div&gt;
+
+
+    &lt;div class=&quot;ajax&quot; data-content=&quot;https://www.universiteitleiden.nl/async/spotlightcarousel?uuid=4a9a3ac3-a253-4074-b766-42a73de0679b&quot; data-loading=&quot;Laden...&quot;&gt;
+      &lt;noscript&gt;Javascript is vereist om deze inhoud te zien.&lt;/noscript&gt;
+    &lt;/div&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;div class=&quot;payoff&quot;&gt;
+    &lt;span&gt;Bij ons leer je de wereld kennen&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&quot;footer-container&quot;&gt;
+&lt;footer class=&quot;wrapper clearfix&quot;&gt;
+&lt;section&gt;
+&lt;h2&gt;Studiekeuze&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&quot;/onderwijs/bachelors&quot;&gt;Bacheloropleidingen&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/onderwijs/masters&quot;&gt;Masteropleidingen&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/wetenschappers/promoveren&quot;&gt;PhD-programma&#39;s&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/onderwijs/onderwijs-voor-professionals&quot;&gt;Onderwijs voor professionals&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/en/education/other-modes-of-study/summer-schools&quot;&gt;Summer Schools&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/onderwijs/bachelors/voorlichtingsactiviteiten/open-dagen&quot;&gt;Open dagen&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/onderwijs/masters/voorlichtingsactiviteiten/master-open-dagen&quot;&gt;Master Open Dag&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;h2&gt;Organisatie&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&quot;/en/archaeology&quot;&gt;Archeologie&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/geesteswetenschappen&quot;&gt;Geesteswetenschappen&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/geneeskunde-lumc&quot;&gt;Geneeskunde/LUMC&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/governance-and-global-affairs&quot;&gt;Governance and Global Affairs&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/rechtsgeleerdheid&quot;&gt;Rechtsgeleerdheid&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/sociale-wetenschappen&quot;&gt;Sociale Wetenschappen&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/wiskunde-en-natuurwetenschappen&quot;&gt;Wiskunde en Natuurwetenschappen&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/afrika-studiecentrum-leiden&quot;&gt;Afrika-Studiecentrum Leiden&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/honours-academy&quot;&gt;Honours Academy&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/iclon&quot;&gt;ICLON&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;h2&gt;Over ons&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&quot;/werken-bij&quot;&gt;Werken bij de Universiteit Leiden&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://www.luf.nl/&quot;&gt;Steun de Universiteit Leiden&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/alumni&quot;&gt;Alumni&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/over-ons/impact&quot;&gt;Impact&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://www.leiden-delft-erasmus.nl/&quot;&gt;Leiden-Delft-Erasmus Universities&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://www.universiteitleiden.nl/locaties&quot;&gt;Locaties&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://www.organisatiegids.universiteitleiden.nl/reglementen/algemeen/universitaire-website-disclaimer&quot;&gt;Disclaimer&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://www.organisatiegids.universiteitleiden.nl/cookies&quot;&gt;Cookies&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://www.organisatiegids.universiteitleiden.nl/reglementen/algemeen/privacyverklaringen&quot;&gt;Privacy&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&quot;/over-ons/contact&quot;&gt;Contact&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section&gt;
+&lt;h2&gt;Volg ons&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&quot;https://web.universiteitleiden.nl/nieuwsbrief&quot;&gt;Lees onze wekelijkse nieuwsbrief&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;share&quot;&gt;
+&lt;a href=&quot;https://nl-nl.facebook.com/UniversiteitLeiden&quot; class=&quot;facebook&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://twitter.com/UniLeiden&quot; class=&quot;twitter&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://www.youtube.com/user/UniversiteitLeiden&quot; class=&quot;youtube&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://www.linkedin.com/company/leiden-university&quot; class=&quot;linkedin&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://instagram.com/universiteitleiden&quot; class=&quot;instagram&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;https://mastodon.nl/@universiteitleiden&quot; class=&quot;mastodon&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;/footer&gt;
+&lt;/div&gt;&lt;div class=&quot;cookies&quot;&gt;
+&lt;div class=&quot;wrapper&quot;&gt;
+Deze website maakt gebruik van cookies.&amp;nbsp;
+&lt;a href=&quot;https://www.organisatiegids.universiteitleiden.nl/cookies&quot;&gt;
+Meer informatie. &lt;/a&gt;
+&lt;form action=&quot;/?_hn:type=action&amp;amp;_hn:ref=r101_r9&quot; method=&quot;post&quot;&gt;
+&lt;button type=&quot;submit&quot; class=&quot;accept&quot; name=&quot;cookie&quot; value=&quot;accept&quot;&gt;Cookies accepteren&lt;/button&gt;
+&lt;button type=&quot;submit&quot; class=&quot;reject&quot; name=&quot;cookie&quot; value=&quot;reject&quot;&gt;Cookies weigeren&lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!-- bottom scripts --&gt;
+&lt;script async defer src=&quot;/design-1.0/scripts/ul2.js?v=1.185.00&quot; data-main=&quot;/design-1.0/scripts/ul2common/main.js&quot;&gt;&lt;/script&gt;
+&lt;!-- this line enables the loading of asynchronous components (together with the headContributions at the top) --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> library, you can basically download any type of file from the web, as long as it is retrievable via HTTP(s).</p>
+<p><a class="reference external" href="http://gutenberg.org">Project Gutenberg</a>. which was mentioned above, is an online repository containing tens of thousands of machine readable texts in a variety of formats. For Text Mining projects, the  plain TXT format , with characters encoded accordingh to UTF-8 encoding, is usually the most convenient format.</p>
+<p>If you know the URL of a specific TXT file on <em>Project Gutenberg</em>, you can retrieve the contents of the online file using <code class="docutils literal notranslate"><span class="pre">requests</span></code>. To download the file, you can make use of the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function in the ‘write’ mode.</p>
+<p>The code below downloads the file with the url <a class="reference external" href="https://www.gutenberg.org/files/4300/4300-0.txt">https://www.gutenberg.org/files/4300/4300-0.txt</a>. This file contains the full text of James Joyces’s novel Ulysses. The full text of the novel is firstly assigned to a string named <code class="docutils literal notranslate"><span class="pre">full_text</span></code>, and, as a next step, the full text is saved to the disk using the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_url</span> <span class="o">=</span> <span class="s1">&#39;https://www.gutenberg.org/files/4300/4300-0.txt&#39;</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Ullyses&#39;</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">text_url</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">response</span><span class="p">:</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span> 
+    <span class="n">full_text</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span> 
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">.txt&quot;</span> <span class="p">,</span> <span class="s1">&#39;w&#39;</span> <span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="n">full_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="p">)</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">if</span></code> keyword in the code above does not explicitly test whether the response code is 200. The Response object, which is created when you use the <code class="docutils literal notranslate"><span class="pre">get()</span></code> method from requests, automatically returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when the status code is 200.</p>
+<section id="exercise-10-1">
+<h2>Exercise 10.1.<a class="headerlink" href="#exercise-10-1" title="Link to this heading">#</a></h2>
+<p>The list below contains a number of URLs. They are the web addresses of texts created for the <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> website.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">urls</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;https://www.gutenberg.org/files/580/580-0.txt&#39;</span> <span class="p">,</span>
+<span class="s1">&#39;https://www.gutenberg.org/files/1400/1400-0.txt&#39;</span> <span class="p">,</span>
+<span class="s1">&#39;https://www.gutenberg.org/files/786/786-0.txt&#39;</span> <span class="p">,</span>
+<span class="s1">&#39;https://www.gutenberg.org/files/766/766-0.txt&#39;</span> 
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Write a program in Python that can download all the files in this list and stores them in the current directory.</p>
+<p>As filenames, use the same names that are used by Project Gutenberg (e.g. ‘580-0.txt’ or ‘1400-0.txt’).</p>
+<p>The basename in a URL can be extracted using the <a class="reference external" href="https://docs.python.org/3/library/os.path.html#os.path.basename"><code class="docutils literal notranslate"><span class="pre">os.path.basename()</span></code></a> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="c1"># Recreate the given list using copy and paste</span>
+<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span>  
+<span class="p">]</span>
+
+<span class="c1"># We use a for-loop to take the same steps for each item in the list:</span>
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+    <span class="c1"># 1. Download the file contents</span>
+    
+    <span class="c1"># 1a. Force the textual contents to be interpreted as UTF-8 encoded, because the website does not send the text encoding</span>
+    
+    <span class="c1"># 2. Use basename() to get a suitable filename</span>
+    
+    <span class="c1"># 3. Open the file in write mode and write the downloaded file contents to the file</span>
+    
+    <span class="c1"># 4. Close the file</span>
+    
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you download text files from Project Gutenberg, it is important to bear in mind that the files all contain a ‘boilerplate’, before and after the actual full text. These headers and footers contain some legal texts, and often some information about the digitisation process.</p>
+<p>The Gutenberg header and footer obviously need to be removed from the file before you start to analyse the text.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">remove_pg_boilerplate()</span></code>, defined below, removes the boilerplate, based on the string that are used at the end of the header (‘START OF THE PROJECT GUTENBURG EBOOK’) and at the beginning of the footer (‘END OF THE PROJECT GUTENBURG EBOOK’). The function selects all the text in between these two strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span> 
+
+<span class="k">def</span> <span class="nf">remove_pg_boilerplate</span><span class="p">(</span><span class="n">complete_file</span><span class="p">):</span>
+    
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;\n&#39;</span> <span class="p">,</span> <span class="n">complete_file</span> <span class="p">)</span>
+    <span class="n">read_mode</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="n">full_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="c1">#print(line)</span>
+        <span class="k">if</span> <span class="n">read_mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">full_text</span> <span class="o">+=</span> <span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+            
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;\*{3,}\s+START\s+OF\s+TH(E|IS)\s+PROJECT\s+GUTENBERG\s+EBOOK&#39;</span> <span class="p">,</span>  <span class="nb">str</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span> <span class="p">):</span>
+            <span class="n">read_mode</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;\*{3,}\s+END\s+OF\s+TH(E|IS)\s+PROJECT\s+GUTENBERG\s+EBOOK&#39;</span> <span class="p">,</span>  <span class="nb">str</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span> <span class="p">):</span>
+            <span class="n">read_mode</span> <span class="o">=</span> <span class="mi">0</span>
+            
+    <span class="n">full_text</span> <span class="o">=</span> <span class="n">full_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;^Produced by&#39;</span> <span class="p">,</span> <span class="n">full_text</span> <span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span> <span class="p">):</span>
+        <span class="n">full_text</span> <span class="o">=</span> <span class="n">full_text</span><span class="p">[</span> <span class="n">full_text</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span> <span class="p">]</span>
+    <span class="k">return</span> <span class="n">full_text</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the code below, the result of the <code class="docutils literal notranslate"><span class="pre">remove_pg_boilerplate()</span></code> function is asigned to a varibable named <code class="docutils literal notranslate"><span class="pre">cleaned_text</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">remove_pg_boilerplate</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code below defines a dictionary containing both the URLs and the titles of a number of books available at Project Gutenberg. The files that are listed in this dictionary can all be downloaded using the steps that have been discussed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">gutenberg_files</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;http://www.gutenberg.org/files/158/158-0.txt&#39;</span><span class="p">:</span><span class="s1">&#39;Emma&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;http://www.gutenberg.org/files/161/161-0.txt&#39;</span><span class="p">:</span><span class="s1">&#39;Sense and Sensibility&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;http://www.gutenberg.org/files/1342/1342-0.txt&#39;</span><span class="p">:</span><span class="s1">&#39;Pride and Prejudice&#39;</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">gutenberg_files</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloading &quot;</span> <span class="o">+</span> <span class="n">gutenberg_files</span><span class="p">[</span><span class="n">url</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; ...&quot;</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="sa">r</span><span class="s1">&#39;\s+&#39;</span> <span class="p">,</span> <span class="s1">&#39;_&#39;</span> <span class="p">,</span>  <span class="n">gutenberg_files</span><span class="p">[</span><span class="n">url</span><span class="p">]</span> <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">:</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+        <span class="n">full_text</span> <span class="o">=</span> <span class="n">remove_pg_boilerplate</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>           
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">title</span> <span class="p">,</span> <span class="s1">&#39;w&#39;</span> <span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="n">full_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Done!&#39;</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-text-from-pdf-files">
+<h2>Extract text from PDF files<a class="headerlink" href="#extract-text-from-pdf-files" title="Link to this heading">#</a></h2>
+<p>The notebooks written for this tutorial assume that texts are stored as TXT files with the characters encoded as UTF-8. If you have downloaded texts in other formats, you need to convert these text into TXT first.</p>
+<p>There are a number of packages that you can use to convert PDF files, into TXT. One of these is <code class="docutils literal notranslate"><span class="pre">PyPDF2</span></code>.</p>
+<p>This library is not part of the Anaconda distribution of Python, so it needs to be installed before you can use it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove the hashed in the two lines that follow!</span>
+
+<span class="c1">#import sys</span>
+<span class="c1">#!pip install PyPDF2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">PyPDF2</span></code>, you can create a <code class="docutils literal notranslate"><span class="pre">pdfReader</span></code> object, containing a method named <code class="docutils literal notranslate"><span class="pre">extractText()</span></code> which can convert pages in PDF files into plain text files.</p>
+<p>Succes cannot be guaranteed, however. If a page in the PDF contains multiple columns, some of the lines may get mixed up. If the file uses a character encoding system other than UTF-8, there can also be some isues with the text of the file. The text that is created by the script will probably need to be edited manually, unfortunately.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PyPDF2</span>  
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pdf_url</span> <span class="o">=</span> <span class="s1">&#39;https://scholarlypublications.universiteitleiden.nl/access/item%3A2729408/view&#39;</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;downloaded.pdf&#39;</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pdf_url</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">response</span><span class="p">:</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">file</span> <span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;Reading </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1"> ...&#39;</span><span class="p">)</span>
+    
+<span class="n">pdf_obj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">file</span> <span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span>  <span class="p">:</span> <span class="n">file</span><span class="o">.</span><span class="n">rindex</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span>  
+
+<span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="n">filename</span> <span class="p">,</span> <span class="s1">&#39;w&#39;</span> <span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span> <span class="p">)</span>
+<span class="n">pdfReader</span> <span class="o">=</span> <span class="n">PyPDF2</span><span class="o">.</span><span class="n">PdfFileReader</span><span class="p">(</span><span class="n">pdf_obj</span><span class="p">)</span>  
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;The PDF file has </span><span class="si">{</span><span class="n">pdfReader</span><span class="o">.</span><span class="n">numPages</span><span class="si">}</span><span class="s1"> pages.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="p">)</span>  
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pdfReader</span><span class="o">.</span><span class="n">numPages</span><span class="p">):</span>
+    <span class="n">page_obj</span> <span class="o">=</span> <span class="n">pdfReader</span><span class="o">.</span><span class="n">getPage</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  
+
+    <span class="n">txt</span> <span class="o">=</span> <span class="n">page_obj</span><span class="o">.</span><span class="n">extractText</span><span class="p">()</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>  
+
+
+<span class="n">pdf_obj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">out</span><span class="o">.</span><span class="n">close</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-15-1">
+<h2>Exercise 15.1<a class="headerlink" href="#exercise-15-1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Download all the text files that are listed in the following dictionary.</p></li>
+</ol>
+<p><code class="docutils literal notranslate">&#160;&#160;&#160; <span class="pre">gutenberg_files</span> <span class="pre">=</span> <span class="pre">{</span>&#160;&#160;&#160;&#160; <span class="pre">'https://www.gutenberg.org/files/98/98-0.txt'</span> <span class="pre">:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'A</span> <span class="pre">Tale</span> <span class="pre">of</span> <span class="pre">Two</span> <span class="pre">Cities',</span>&#160;&#160;&#160;&#160; <span class="pre">'https://www.gutenberg.org/files/580/580-0.txt':</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'The</span> <span class="pre">Pickwick</span> <span class="pre">Papers'</span>&#160;&#160;&#160; <span class="pre">}</span></code></p>
+<p>Save these files in the folder named ‘Corpus’. Make sure that the Gutenberg boilerplates are removed from the texts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">gutenberg_files</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;https://www.gutenberg.org/files/98/98-0.txt&#39;</span> <span class="p">:</span>
+        <span class="s1">&#39;A Tale of Two Cities&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://www.gutenberg.org/files/580/580-0.txt&#39;</span><span class="p">:</span>
+        <span class="s1">&#39;The Pickwick Papers&#39;</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Jupyter_notebook_basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Jupyter Notebook basics</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-1">Exercise 10.1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-text-from-pdf-files">Extract text from PDF files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-15-1">Exercise 15.1</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Peter Verhaar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

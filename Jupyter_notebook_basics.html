@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; DATH notebooks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Jupyter Notebook basics &#8212; DATH notebooks</title>
   
   
   
@@ -56,9 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
-    <link rel="index" title="Index" href="#" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Jupyter_notebook_basics';</script>
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Downloading files" href="Downloading%20files.html" />
+    <link rel="prev" title="14. Lexicons" href="14%20Lexicons.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -120,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -194,8 +195,8 @@
 <li class="toctree-l1"><a class="reference internal" href="14%20Lexicons.html">14. Lexicons</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Jupyter_notebook_basics.html">Jupyter Notebook basics</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Notebook basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Downloading%20files.html">Downloading files</a></li>
 </ul>
 
@@ -268,7 +269,7 @@
       
       
       
-      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2FJupyter_notebook_basics.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -280,6 +281,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Jupyter_notebook_basics.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -321,7 +370,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -332,11 +383,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Jupyter Notebook basics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cells">Cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-notebooks">Saving notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-a-notebook">Closing a notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exiting-jupyter-notebook">Exiting Jupyter Notebook</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -346,13 +408,78 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebook-basics">
+<h1>Jupyter Notebook basics<a class="headerlink" href="#jupyter-notebook-basics" title="Link to this heading">#</a></h1>
+<p>Jupyter Notebook is an aplication that enables you to create documents containing both code and explanations of the code in understandable language. Such documents are called ‘notebooks’. The code that you include in these notebooks can also be run (or executed) directly.</p>
+<p>Creating notebooks enables you to share your code and the documentation of this code in a very effective way.</p>
+<section id="cells">
+<h2>Cells<a class="headerlink" href="#cells" title="Link to this heading">#</a></h2>
+<p>A notebook is essentially a collection of cells. We shall be working with two types of cells.</p>
+<ul class="simple">
+<li><p>A <strong>Code cell</strong> contains code to be executed using the so-called Python kernel. When you run a cell, the output will be displayed directly below the cell.</p></li>
+<li><p>A <strong>Markdown cell</strong> contains rich text. The text can be formatted using a language named <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a>.</p></li>
+</ul>
+<p>To view the <em>markdown</em> codes, you need to <strong>double click on the cell</strong> that contains this text. You can try this with this current cell.</p>
+<p>The cell below contains code. Double clicking on this cell and try to edit the code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This cell contains code</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+</div>
+<p>Cells can be run by placing the cursor inside the cell and by pressing <kbd>Ctrl</kbd> + <kbd>Enter</kbd> (or <kbd>Command</kbd> + <kbd>Enter</kbd> on MacOS). Alternatively, you can click ‘<code class="docutils literal notranslate"><span class="pre">Run</span></code>’ in the menu at the top of the screen. Please experiment with this. Can you change the output of the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function, for instance?</p>
+<p>Code cells always have the characters <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span> <span class="pre">]:</span></code> to their left. While the kernel is still active (i.e. when it is busy running the code), you will see an asterisk (’<code class="docutils literal notranslate"><span class="pre">*</span></code>’) in between the two square brackets. When it has finished running, Jupyter Notebook will display a number. The program keeps track of the order in which you run all the cells.</p>
+<p>You can also add new cells by choosing <code class="docutils literal notranslate"><span class="pre">Insert</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Insert</span> <span class="pre">Cell</span> <span class="pre">Above</span></code> or <code class="docutils literal notranslate"><span class="pre">Insert</span> <span class="pre">Cell</span> <span class="pre">Below</span></code> from the menu. New cells will be code cells by default. If you want to change the newly created cell into a Markdown cell, you can use the drowdown menu at the top of your screen, containing values such as <code class="docutils literal notranslate"><span class="pre">Code</span></code> and <code class="docutils literal notranslate"><span class="pre">Markdown</span></code>.</p>
+<p>To delete a cell, you can choose <code class="docutils literal notranslate"><span class="pre">Edit</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">cells</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Click on this cell to insert a new cell below it. Next, try to delete this cell</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="saving-notebooks">
+<h2>Saving notebooks<a class="headerlink" href="#saving-notebooks" title="Link to this heading">#</a></h2>
+<p>Normally, when you work with Jupyter Notebook, you use notebooks for code and results.
+Of course you want to save that work!
+Although you may see that Jupyter Notebook automatically saves changes in “checkpoints” (temporary backups, in case of problems),
+you need to save your changes actively to save the original notebook file.</p>
+<p>Save your file by clicking the “floppy disk” button on the toolbar, or via “File” &gt; “Save”, or using a keyboard shortcut <kbd>Ctrl</kbd> + <kbd>S</kbd> (or <kbd>Cmnd</kbd> + <kbd>S</kbd> on MacOS).</p>
+</section>
+<section id="closing-a-notebook">
+<h2>Closing a notebook<a class="headerlink" href="#closing-a-notebook" title="Link to this heading">#</a></h2>
+<p>To close a notebook, save it and use the menu option “File” &gt; “Close and Halt”.
+If you close the browser tab with your notebook directly, the file is actually still running.
+<em>Close and Halt</em> stops the background process and then closes the browser window.</p>
+</section>
+<section id="exiting-jupyter-notebook">
+<h2>Exiting Jupyter Notebook<a class="headerlink" href="#exiting-jupyter-notebook" title="Link to this heading">#</a></h2>
+<p>Since Jupyter Notebook is running in the background while you work in the browser frontend, closing the browser tabs or windows is not enough to stop the application. To exit Jupyter Notebook, firstly close each running notebook using “Close and Halt”. Then, when you are back in the Jupyter Notebook Dashboard, click the “Quit” button in the top right of the page. Once the background processes have succesfully been terminated, there will be a message saying that you can close the browser tab.</p>
+</section>
+</section>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -364,12 +491,48 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="14%20Lexicons.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">14. Lexicons</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Downloading%20files.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Downloading files</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cells">Cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-notebooks">Saving notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-a-notebook">Closing a notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exiting-jupyter-notebook">Exiting Jupyter Notebook</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
