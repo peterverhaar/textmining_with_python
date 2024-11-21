@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -427,6 +427,26 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>nltk
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: nltk in /Users/verhaarpaf/Library/Python/3.12/lib/python/site-packages (3.9.1)
+Requirement already satisfied: click in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from nltk) (8.1.7)
+Requirement already satisfied: joblib in /Users/verhaarpaf/Library/Python/3.12/lib/python/site-packages (from nltk) (1.4.2)
+Requirement already satisfied: regex&gt;=2021.8.3 in /Users/verhaarpaf/Library/Python/3.12/lib/python/site-packages (from nltk) (2024.11.6)
+Requirement already satisfied: tqdm in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from nltk) (4.66.6)
+
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.2</span> -&gt; <span class=" -Color -Color-Green">24.3.1</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>The methods that are discussed in this tutorial make use of a number of additional resources which are not installed by default. If you have never used <code class="docutils literal notranslate"><span class="pre">nltk</span></code> before, you need to run the code below to install these resources.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -479,8 +499,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
 
-<span class="n">quote</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">It was the best of times, </span>
+<span class="n">quote</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;It was the best of times, </span>
 <span class="s1">it was the worst of times&#39;&#39;&#39;</span>
 
 <span class="n">words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">quote</span><span class="p">)</span>
@@ -555,8 +574,8 @@ document.write(`
 
 <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;The fragment contains </span><span class="si">{</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span><span class="w"> </span><span class="si">}</span><span class="s1"> sentences.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="p">)</span>
 
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sentence</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -584,6 +603,63 @@ Write code that can help you to answer the following questions about this text:<
 <li><p>How often does the novel mention the word “marriage”?</p></li>
 <li><p>How long are the words in <em>Pride and Prejudice</em> on average (measured in number of characters)?</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Corpus/PrideAndPrejudice.txt&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">full_text</span> <span class="o">=</span> <span class="n">text_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">remove_punctuation</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;marriage&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120081
+66
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">frequencies</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>to =&gt; 4076
+the =&gt; 4056
+of =&gt; 3605
+and =&gt; 3371
+her =&gt; 2131
+I =&gt; 2020
+a =&gt; 1874
+was =&gt; 1842
+in =&gt; 1783
+that =&gt; 1520
+not =&gt; 1506
+she =&gt; 1378
+it =&gt; 1273
+be =&gt; 1230
+his =&gt; 1191
+had =&gt; 1148
+you =&gt; 1137
+as =&gt; 1132
+he =&gt; 1096
+for =&gt; 1029
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercise-8-2">
 <h3>Exercise 8.2.<a class="headerlink" href="#exercise-8-2" title="Link to this heading">#</a></h3>
