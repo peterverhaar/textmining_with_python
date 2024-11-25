@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Working with files and folders¶ &#8212; DATH notebooks</title>
+    <title>9. Word frequencies &#8212; DATH notebooks</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Solutions/6 Working_with_files_and_folders';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Solutions/9 Word frequencies';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Functions, Modules and Libraries" href="7%20Functions_modules_and_libraries.html" />
-    <link rel="prev" title="5. Lists" href="5%20Lists.html" />
+    <link rel="next" title="10. Examining the context of words" href="10%20Examining_context.html" />
+    <link rel="prev" title="8. Tokenisation" href="8%20Tokenisation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,10 +201,10 @@
 <li class="toctree-l1"><a class="reference internal" href="3%20Working_with_strings.html">3. Working with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4%20Flow_control.html">4. Flow control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5%20Lists.html">5. Lists</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Working with files and folders¶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20Working_with_files_and_folders.html">6. Working with files and folders¶</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7%20Functions_modules_and_libraries.html">7. Functions, Modules and Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8%20Tokenisation.html">8. Tokenisation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9%20Word%20frequencies.html">9. Word frequencies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Word frequencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10%20Examining_context.html">10. Examining the context of words</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation.html">11. Part of Speech Tagging and Lemmatisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12%20Sentiment_analysis.html">12. Sentiment analysis</a></li>
@@ -284,7 +284,7 @@
       
       
       
-      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2FSolutions/6 Working_with_files_and_folders.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2FSolutions/9 Word frequencies.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +314,7 @@
       
       
       
-      <li><a href="../_sources/Solutions/6 Working_with_files_and_folders.ipynb" target="_blank"
+      <li><a href="../_sources/Solutions/9 Word frequencies.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,7 +398,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>6. Working with files and folders¶</h1>
+    <h1>9. Word frequencies</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,10 +408,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-1">Exercise 6.1.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-2">Exercise 6.2.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-3">Exercise 6.3.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-4">Exercise 6.4.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-1">Exercise 9.1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-2">Exercise 9.2.</a></li>
 </ul>
             </nav>
         </div>
@@ -423,114 +421,139 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="working-with-files-and-folders">
-<h1>6. Working with files and folders¶<a class="headerlink" href="#working-with-files-and-folders" title="Link to this heading">#</a></h1>
-<section id="exercise-6-1">
-<h2>Exercise 6.1.<a class="headerlink" href="#exercise-6-1" title="Link to this heading">#</a></h2>
-<p>Working with the <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> method, print a sentence which gives information about the number of files in the folder named ‘Corpus’.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="word-frequencies">
+<h1>9. Word frequencies<a class="headerlink" href="#word-frequencies" title="Link to this heading">#</a></h1>
+<section id="exercise-9-1">
+<h2>Exercise 9.1.<a class="headerlink" href="#exercise-9-1" title="Link to this heading">#</a></h2>
+<p>The ‘Corpus’ folder contains the full text of the novel <em>Pride and Prejudice</em>. Use this text file to answer the following questions.</p>
+<ul class="simple">
+<li><p>How many words does the novel contain?</p></li>
+<li><p>What are the 25 most frequent words of the novel?</p></li>
+<li><p>How many times does the novel contain the token ‘Darcy’?</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">directory</span> <span class="o">=</span> <span class="s1">&#39;../Corpus&#39;</span>
-<span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;The folder named &quot;Corpus&quot; contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> texts&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+
+<span class="k">def</span> <span class="nf">remove_punctuation</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">new_list</span><span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">isalnum</span><span class="p">():</span>
+            <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">w</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_list</span>
+
+<span class="n">text_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../Corpus/PrideAndPrejudice.txt&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">full_text</span> <span class="o">=</span> <span class="n">text_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">remove_punctuation</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The novel contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="si">}</span><span class="s2"> words.&quot;</span><span class="p">)</span>
+
+<span class="n">freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+<span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;Darcy&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The word &quot;</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s1">&quot; occurs </span><span class="si">{</span><span class="n">freq</span><span class="p">[</span><span class="n">keyword</span><span class="p">]</span><span class="si">}</span><span class="s1"> times.&#39;</span><span class="p">)</span>
+    
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The folder named &quot;Corpus&quot; contains 4 texts
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The novel contains 120081 words.
+to =&gt; 4076
+the =&gt; 4056
+of =&gt; 3605
+and =&gt; 3371
+her =&gt; 2131
+I =&gt; 2020
+a =&gt; 1874
+was =&gt; 1842
+in =&gt; 1783
+that =&gt; 1520
+not =&gt; 1506
+she =&gt; 1378
+it =&gt; 1273
+be =&gt; 1230
+his =&gt; 1191
+had =&gt; 1148
+you =&gt; 1137
+as =&gt; 1132
+he =&gt; 1096
+for =&gt; 1029
+with =&gt; 1017
+have =&gt; 836
+is =&gt; 835
+him =&gt; 761
+at =&gt; 737
+The word &quot;Darcy&quot; occurs 415 times.
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-6-2">
-<h2>Exercise 6.2.<a class="headerlink" href="#exercise-6-2" title="Link to this heading">#</a></h2>
-<p>Using the code discussed above, print the full text of Shakespeare’s <em>Sonnet 116</em> on your screen, and make sure that you also add line numbers, as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="p">[</span><span class="n">line1</span><span class="p">]</span>
-<span class="mf">2.</span> <span class="p">[</span><span class="n">line2</span><span class="p">]</span>
-</pre></div>
-</div>
+<section id="exercise-9-2">
+<h2>Exercise 9.2.<a class="headerlink" href="#exercise-9-2" title="Link to this heading">#</a></h2>
+<p>What are the 25 most frequent words in <em>Brave New Worls</em>, if you disregard all the words that are on the <code class="docutils literal notranslate"><span class="pre">nltk</span></code> list of English stopwords?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;Sonnet116.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_punctuation_and_stopwords</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">new_list</span><span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="ow">and</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">:</span>
+            <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">w</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_list</span>
 
-<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
-<span class="n">line_number</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">line_number</span><span class="o">+=</span><span class="mi">1</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+
+<span class="n">text_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../Corpus/BraveNewWorld.txt&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">full_text</span> <span class="o">=</span> <span class="n">text_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">remove_punctuation_and_stopwords</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="n">freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">count</span> <span class="ow">in</span> <span class="n">freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2"> =&gt; </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line_number</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Let me not to the marriage of true minds
-2. Admit impediments. Love is not love
-3. Which alters when it alteration finds,
-4. Or bends with the remover to remove:
-5. O, no! it is an ever-fixed mark,
-6. That looks on tempests and is never shaken;
-7. It is the star to every wandering bark,
-8. Whose worth’s unknown, although his height be taken.
-9. Love’s not Time’s fool, though rosy lips and cheeks
-10. Within his bending sickle’s compass come;
-11. Love alters not with his brief hours and weeks,
-12. But bears it out even to the edge of doom.
-13. If this be error and upon me proved,
-14. I never writ, nor no man ever loved.
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-6-3">
-<h2>Exercise 6.3.<a class="headerlink" href="#exercise-6-3" title="Link to this heading">#</a></h2>
-<p>Building on the code you wrote for exercise 8.1, create a new text file containing the NUMBERED lines of Shakespeare’s <em>Sonnet 116</em>. As a file name, use “sonnet166_numbered.txt”, to make sure that you do not overwrite the existing file.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;Sonnet116.txt&#39;</span><span class="p">)</span>
-
-<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-
-<span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sonnet166_numbered.txt&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-
-<span class="n">line_number</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">line_number</span><span class="o">+=</span><span class="mi">1</span>
-    
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line_number</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    
-<span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-6-4">
-<h2>Exercise 6.4.<a class="headerlink" href="#exercise-6-4" title="Link to this heading">#</a></h2>
-<p>Create a CSV file listing the names of all the files in the subfolder named “Corpus”, together with the number of characters in each of these files. The number of characters can be found using the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function. The header should specify ‘text’ and ‘nr_characters’ as column names.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">directory</span> <span class="o">=</span> <span class="s1">&#39;../Corpus&#39;</span>
-<span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-
-<span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;corpus.csv&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-
-<span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;text,nr_characters</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">file</span><span class="p">)</span>
-    <span class="n">corpus_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-    <span class="n">full_text</span> <span class="o">=</span> <span class="n">corpus_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">nr_chars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">nr_chars</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        
-<span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>said =&gt; 315
+one =&gt; 262
+bernard =&gt; 238
+savage =&gt; 201
+lenina =&gt; 195
+like =&gt; 181
+would =&gt; 116
+could =&gt; 116
+made =&gt; 112
+time =&gt; 112
+man =&gt; 111
+little =&gt; 111
+round =&gt; 108
+voice =&gt; 106
+eyes =&gt; 102
+linda =&gt; 101
+face =&gt; 100
+though =&gt; 97
+two =&gt; 97
+away =&gt; 94
+director =&gt; 93
+went =&gt; 92
+still =&gt; 91
+back =&gt; 91
+know =&gt; 90
 </pre></div>
 </div>
 </div>
@@ -569,20 +592,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="5%20Lists.html"
+       href="8%20Tokenisation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">5. Lists</p>
+        <p class="prev-next-title">8. Tokenisation</p>
       </div>
     </a>
     <a class="right-next"
-       href="7%20Functions_modules_and_libraries.html"
+       href="10%20Examining_context.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">7. Functions, Modules and Libraries</p>
+        <p class="prev-next-title">10. Examining the context of words</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -602,10 +625,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-1">Exercise 6.1.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-2">Exercise 6.2.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-3">Exercise 6.3.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-4">Exercise 6.4.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-1">Exercise 9.1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-2">Exercise 9.2.</a></li>
 </ul>
   </nav></div>
 

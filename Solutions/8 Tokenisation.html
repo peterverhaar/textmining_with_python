@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Working with files and folders¶ &#8212; DATH notebooks</title>
+    <title>8. Tokenisation &#8212; DATH notebooks</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Solutions/6 Working_with_files_and_folders';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Solutions/8 Tokenisation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Functions, Modules and Libraries" href="7%20Functions_modules_and_libraries.html" />
-    <link rel="prev" title="5. Lists" href="5%20Lists.html" />
+    <link rel="next" title="9. Word frequencies" href="9%20Word%20frequencies.html" />
+    <link rel="prev" title="7. Functions, Modules and Libraries" href="7%20Functions_modules_and_libraries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,9 +201,9 @@
 <li class="toctree-l1"><a class="reference internal" href="3%20Working_with_strings.html">3. Working with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4%20Flow_control.html">4. Flow control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5%20Lists.html">5. Lists</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Working with files and folders¶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20Working_with_files_and_folders.html">6. Working with files and folders¶</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7%20Functions_modules_and_libraries.html">7. Functions, Modules and Libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8%20Tokenisation.html">8. Tokenisation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Tokenisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="9%20Word%20frequencies.html">9. Word frequencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10%20Examining_context.html">10. Examining the context of words</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation.html">11. Part of Speech Tagging and Lemmatisation</a></li>
@@ -284,7 +284,7 @@
       
       
       
-      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2FSolutions/6 Working_with_files_and_folders.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2FSolutions/8 Tokenisation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,7 +314,7 @@
       
       
       
-      <li><a href="../_sources/Solutions/6 Working_with_files_and_folders.ipynb" target="_blank"
+      <li><a href="../_sources/Solutions/8 Tokenisation.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,7 +398,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>6. Working with files and folders¶</h1>
+    <h1>8. Tokenisation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,10 +408,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-1">Exercise 6.1.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-2">Exercise 6.2.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-3">Exercise 6.3.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-4">Exercise 6.4.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-1">Exercise 8.1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-2">Exercise 8.2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-3">Exercise 8.3.</a></li>
 </ul>
             </nav>
         </div>
@@ -423,114 +422,123 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="working-with-files-and-folders">
-<h1>6. Working with files and folders¶<a class="headerlink" href="#working-with-files-and-folders" title="Link to this heading">#</a></h1>
-<section id="exercise-6-1">
-<h2>Exercise 6.1.<a class="headerlink" href="#exercise-6-1" title="Link to this heading">#</a></h2>
-<p>Working with the <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> method, print a sentence which gives information about the number of files in the folder named ‘Corpus’.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tokenisation">
+<h1>8. Tokenisation<a class="headerlink" href="#tokenisation" title="Link to this heading">#</a></h1>
+<section id="exercise-8-1">
+<h2>Exercise 8.1.<a class="headerlink" href="#exercise-8-1" title="Link to this heading">#</a></h2>
+<p>The ‘Corpus’ that you have downloaded as part of this tutorial contains the full text of ‘Pride and Prejudice’.
+Write code that can help you to answer the following questions about this text:</p>
+<ul class="simple">
+<li><p>How many characters are there in the novel?</p></li>
+<li><p>How many words does the novel contain?</p></li>
+<li><p>How often does the novel mention the word “marriage”?</p></li>
+<li><p>How long are the words in <em>Pride and Prejudice</em> on average (measured in number of characters)?</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">directory</span> <span class="o">=</span> <span class="s1">&#39;../Corpus&#39;</span>
-<span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;The folder named &quot;Corpus&quot; contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> texts&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+
+
+<span class="n">text_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../Corpus/PrideAndPrejudice.txt&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">full_text</span> <span class="o">=</span> <span class="n">text_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The novel contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span><span class="si">}</span><span class="s2"> characters.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The novel contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="si">}</span><span class="s2"> words.&quot;</span><span class="p">)</span>
+
+<span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;marriage&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The word &#39;</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s2">&#39; occurs </span><span class="si">{</span><span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;marriage&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> times.&quot;</span><span class="p">)</span>
+
+<span class="n">avg_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The words in this novel have </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">avg_length</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> characters on average&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The folder named &quot;Corpus&quot; contains 4 texts
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The novel contains 685008 characters.
+The novel contains 143569 words.
+The word &#39;marriage&#39; occurs 66 times.
+The words in this novel have 4.7713 characters on average
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-6-2">
-<h2>Exercise 6.2.<a class="headerlink" href="#exercise-6-2" title="Link to this heading">#</a></h2>
-<p>Using the code discussed above, print the full text of Shakespeare’s <em>Sonnet 116</em> on your screen, and make sure that you also add line numbers, as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="p">[</span><span class="n">line1</span><span class="p">]</span>
-<span class="mf">2.</span> <span class="p">[</span><span class="n">line2</span><span class="p">]</span>
-</pre></div>
-</div>
+<section id="exercise-8-2">
+<h2>Exercise 8.2.<a class="headerlink" href="#exercise-8-2" title="Link to this heading">#</a></h2>
+<p>Can you print the first five sentences of <em>Pride and Prejudice</em>?
+How many sentences does the novel contain in total?
+Building on the results of the previous exercise, can you calculate the average length of sentences? In other words, how many tokens do the sentences contain on average?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;Sonnet116.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">sent_tokenize</span><span class="p">,</span><span class="n">word_tokenize</span>
 
-<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">text_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../Corpus/PrideAndPrejudice.txt&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">full_text</span> <span class="o">=</span> <span class="n">text_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-<span class="n">line_number</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">line_number</span><span class="o">+=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first five sentences in &quot;Pride and Prejudice&quot;: &#39;</span><span class="p">)</span>
+
+<span class="n">sentences</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sentence</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line_number</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">avg_words</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The sentences in the novel contain </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">avg_words</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1"> words on average.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Let me not to the marriage of true minds
-2. Admit impediments. Love is not love
-3. Which alters when it alteration finds,
-4. Or bends with the remover to remove:
-5. O, no! it is an ever-fixed mark,
-6. That looks on tempests and is never shaken;
-7. It is the star to every wandering bark,
-8. Whose worth’s unknown, although his height be taken.
-9. Love’s not Time’s fool, though rosy lips and cheeks
-10. Within his bending sickle’s compass come;
-11. Love alters not with his brief hours and weeks,
-12. But bears it out even to the edge of doom.
-13. If this be error and upon me proved,
-14. I never writ, nor no man ever loved.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The first five sentences in &quot;Pride and Prejudice&quot;: 
+CHAPTER I.
+
+It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.
+
+However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.
+
+&quot;My dear Mr. Bennet,&quot; said his lady to him one day, &quot;have you heard that Netherfield Park is let at last?&quot;
+
+Mr. Bennet replied that he had not.
+
+The sentences in the novel contain 24.5585 words on average.
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-6-3">
-<h2>Exercise 6.3.<a class="headerlink" href="#exercise-6-3" title="Link to this heading">#</a></h2>
-<p>Building on the code you wrote for exercise 8.1, create a new text file containing the NUMBERED lines of Shakespeare’s <em>Sonnet 116</em>. As a file name, use “sonnet166_numbered.txt”, to make sure that you do not overwrite the existing file.</p>
+<section id="exercise-8-3">
+<h2>Exercise 8.3.<a class="headerlink" href="#exercise-8-3" title="Link to this heading">#</a></h2>
+<p>What is the longest word in the novel <em>Ullyses</em>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;Sonnet116.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">sent_tokenize</span><span class="p">,</span><span class="n">word_tokenize</span>
 
-<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">text_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../Corpus/Ullyses.txt&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">full_text</span> <span class="o">=</span> <span class="n">text_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-<span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sonnet166_numbered.txt&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
 
-<span class="n">line_number</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">line_number</span><span class="o">+=</span><span class="mi">1</span>
-    
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line_number</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    
-<span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">longest</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">longest</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">longest</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</div>
-</section>
-<section id="exercise-6-4">
-<h2>Exercise 6.4.<a class="headerlink" href="#exercise-6-4" title="Link to this heading">#</a></h2>
-<p>Create a CSV file listing the names of all the files in the subfolder named “Corpus”, together with the number of characters in each of these files. The number of characters can be found using the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function. The header should specify ‘text’ and ‘nr_characters’ as column names.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">directory</span> <span class="o">=</span> <span class="s1">&#39;../Corpus&#39;</span>
-<span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-
-<span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;corpus.csv&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-
-<span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;text,nr_characters</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">file</span><span class="p">)</span>
-    <span class="n">corpus_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-    <span class="n">full_text</span> <span class="o">=</span> <span class="n">corpus_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">nr_chars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">nr_chars</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        
-<span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[
+Stately
+Mulligan
+stairhead
+dressinggown
+scrotumtightening
+Steeeeeeeeeeeephen
+contransmagnificandjewbangtantiality
+sudden—at—the—moment—though—from—lingering—illness—often—previously—expectorated—demise
 </pre></div>
 </div>
 </div>
@@ -569,20 +577,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="5%20Lists.html"
+       href="7%20Functions_modules_and_libraries.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">5. Lists</p>
+        <p class="prev-next-title">7. Functions, Modules and Libraries</p>
       </div>
     </a>
     <a class="right-next"
-       href="7%20Functions_modules_and_libraries.html"
+       href="9%20Word%20frequencies.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">7. Functions, Modules and Libraries</p>
+        <p class="prev-next-title">9. Word frequencies</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -602,10 +610,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-1">Exercise 6.1.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-2">Exercise 6.2.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-3">Exercise 6.3.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-4">Exercise 6.4.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-1">Exercise 8.1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-2">Exercise 8.2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-3">Exercise 8.3.</a></li>
 </ul>
   </nav></div>
 

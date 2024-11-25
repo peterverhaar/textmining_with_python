@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -193,6 +193,21 @@
 <li class="toctree-l1"><a class="reference internal" href="12%20Sentiment_analysis.html">12. Sentiment analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13%20Named_Entity_Recognition.html">13. Named Entity Recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14%20Lexicons.html">14. Lexicons</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Solutions/1%20Variables_and_data_types.html">1. Statements, variables and data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/2%20Operators.html">2. Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/3%20Working_with_strings.html">3. Working with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/4%20Flow_control.html">4. Flow control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/5%20Lists.html">5. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/6%20Working_with_files_and_folders.html">6. Working with files and folders¶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/7%20Functions_modules_and_libraries.html">7. Functions, Modules and Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/8%20Tokenisation.html">8. Tokenisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/9%20Word%20frequencies.html">9. Word frequencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/10%20Examining_context.html">10. Examining the context of words</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation.html">11. Part of Speech Tagging and Lemmatisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/12%20Sentiment_analysis.html">12. Sentiment analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -612,7 +627,14 @@ Collins was not left long to the silent contemplation of his successful love for
 <p>The code below makes use of the function <code class="docutils literal notranslate"><span class="pre">sortedByValue()</span></code> which can sort a dictionary by value, and the list of stopwords from <code class="docutils literal notranslate"><span class="pre">nltk</span></code> to remove the function words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nearby_words</span> <span class="o">=</span> <span class="n">collocation</span><span class="p">(</span> <span class="n">full_text</span> <span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;marriage&#39;</span> <span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sortedByValue</span><span class="p">(</span> <span class="nb">dict</span> <span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">):</span>
+    <span class="k">if</span> <span class="n">ascending</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))}</span>
+
+
+<span class="n">nearby_words</span> <span class="o">=</span> <span class="n">collocation</span><span class="p">(</span> <span class="n">full_text</span> <span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;marriage&#39;</span> <span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 <span class="n">stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
@@ -623,6 +645,27 @@ Collins was not left long to the silent contemplation of his successful love for
     <span class="n">freq</span> <span class="o">=</span> <span class="n">nearby_words_sorted</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span> <span class="ow">and</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1"> =&gt; </span><span class="si">{</span><span class="n">freq</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>would =&gt; 9
+offer =&gt; 6
+lydia =&gt; 5
+must =&gt; 5
+sister =&gt; 4
+could =&gt; 4
+darcy =&gt; 4
+happiness =&gt; 4
+elizabeth =&gt; 3
+miss =&gt; 3
+daughter =&gt; 3
+wickham =&gt; 3
+without =&gt; 3
+place =&gt; 3
+one =&gt; 3
+made =&gt; 3
+felicity =&gt; 3
 </pre></div>
 </div>
 </div>
@@ -679,6 +722,19 @@ Collins was not left long to the silent contemplation of his successful love for
 
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imprudent as a marriage between Mr. Wickham and our poor Lydia would be, we are now anxious to be assured it has taken place, for there is but too much reason to fear they are not gone to Scotland.
+
+Had Lydia&#39;s marriage been concluded on the most honourable terms, it was not to be supposed that Mr. Darcy would connect himself with a family, where to every other objection would now be added, an alliance and relationship of the nearest kind with the man whom he so justly scorned.
+
+But now she would no longer conceal from her, his share in Lydia&#39;s marriage.
+
+As for Wickham and Lydia, their characters suffered no revolution from the marriage of her sisters.
+
+The congratulatory letter which Elizabeth received from Lydia on her marriage, explained to her that, by his wife at least, if not by himself, such a hope was cherished.
 </pre></div>
 </div>
 </div>
