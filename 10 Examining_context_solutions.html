@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. Examining the context of words &#8212; DATH notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10 Examining_context_solutions';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. Part of Speech Tagging and Lemmatisation" href="11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation_solutions.html" />
+    <link rel="prev" title="9. Word frequencies" href="9%20Word%20frequencies_solutions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="Welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="DATH notebooks - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="DATH notebooks - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1%20Variables_and_data_types.html">1. Statements, variables and data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2%20Operators.html">2. Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3%20Working_with_strings.html">3. Working with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4%20Flow_control.html">4. Flow control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5%20Lists.html">5. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20Working_with_files_and_folders.html">6. Working with files and folders¶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7%20Functions_modules_and_libraries.html">7. Functions, Modules and Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Tokenisation.html">8. Tokenisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Word%20frequencies.html">9. Word frequencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10%20Examining_context.html">10. Examining the context of words</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation.html">11. Part of Speech Tagging and Lemmatisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12%20Sentiment_analysis.html">12. Sentiment analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13%20Named_Entity_Recognition.html">13. Named Entity Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Lexicons.html">14. Lexicons</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Solutions/2%20Operators.html">2. Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/3%20Working_with_strings.html">3. Working with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/4%20Flow_control.html">4. Flow control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/5%20Lists.html">5. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/6%20Working_with_files_and_folders.html">6. Working with files and folders¶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/7%20Functions_modules_and_libraries.html">7. Functions, Modules and Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solutions/8%20Tokenisation.html">8. Tokenisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Word%20frequencies_solutions.html">9. Word frequencies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Examining the context of words</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation_solutions.html">11. Part of Speech Tagging and Lemmatisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12%20Sentiment_analysis_solutions.html">12. Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Jupyter_notebook_basics.html">Jupyter Notebook basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Downloading%20files.html">Downloading files</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/peterverhaar/dath_notebooks/tree/main/issues/new?title=Issue%20on%20page%20%2F10 Examining_context_solutions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/10 Examining_context_solutions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>10. Examining the context of words</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-1">Exercise 10.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-2">Exercise 10.2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-3">Exercise 10.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-4">Exercise 10.4</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="examining-the-context-of-words">
+<h1>10. Examining the context of words<a class="headerlink" href="#examining-the-context-of-words" title="Link to this heading">#</a></h1>
+<section id="exercise-10-1">
+<h2>Exercise 10.1<a class="headerlink" href="#exercise-10-1" title="Link to this heading">#</a></h2>
+<p>Create a concordance for the word ‘savage’ in the novel <em>Brave New World</em>. You can find the full text in the ‘Corpus’ folder. Work with a width of 50 characters (i.e. 25 characters before and 25 characters after this search term).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span><span class="p">,</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.text</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;BraveNewWorld.txt&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="n">path</span> <span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">full_text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">full_text</span><span class="p">)</span>
+<span class="n">novel</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+<span class="n">novel</span><span class="o">.</span><span class="n">concordance</span><span class="p">(</span><span class="s1">&#39;savage&#39;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">50</span> <span class="p">,</span> <span class="n">lines</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 10 of 201 matches:
+e to go to one of the Savage Reservations with him
+lways wanted to see a Savage Reservation . &#39; &#39;But 
+se I do want to see a Savage Reservation . &#39; * * *
+ they would be in the Savage Reservation . Not mor
+ad ever been inside a Savage Reservation . As an A
+e is no escape from a Savage Reservation . &#39; The w
+d to the sullen young savage . &#39;Funny , I expect .
+ more the men &#39;s deep savage affirmation of their 
+heek . &#39;Turned into a savage , &#39; she shouted . &#39;Ha
+ather &#39; of this young savage must be . &#39;Would you 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-10-2">
+<h2>Exercise 10.2.<a class="headerlink" href="#exercise-10-2" title="Link to this heading">#</a></h2>
+<p>Create a concordance for the word ‘soma’ in the novel <em>Brave New World</em>. This time, work with a width of 20 words (i.e. 10 words before and 10 words after this search term). Display the first 15 occurrences.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">text_mining</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;BraveNewWorld.txt&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="n">path</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">full_text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+<span class="n">fragments</span> <span class="o">=</span> <span class="n">concordance_word</span><span class="p">(</span> <span class="n">full_text</span> <span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;soma&#39;</span> <span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fragments</span><span class="p">)</span><span class="si">}</span><span class="s1"> ocurrences of the word &quot;soma&quot;.&#39;</span><span class="p">)</span>
+
+<span class="n">number_of_results</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;Here are the first </span><span class="si">{</span><span class="n">number_of_results</span><span class="si">}</span><span class="s1"> occurrences:</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fragments</span><span class="p">[:</span><span class="n">number_of_results</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 61 ocurrences of the word &quot;soma&quot;.
+Here are the first 15 occurrences:
+
+
+that brute Henry Foster you need is a gramme of soma the advantages of Christianity and alcohol none of their defects 
+
+in the solid substance of their distractions there is always soma delicious soma half a gramme for a a gramme for 
+
+solid substance of their distractions there is always soma delicious soma half a gramme for a a gramme for a two 
+
+that he could have got through life without ever touching soma The malice and bad tempers from which other people had 
+
+do look glum What you need is a gramme of soma Diving into his Benito produced a phial cubic centimetre cures 
+
+be true his brain I suppose He put away the soma bottle and taking out a packet of stuffed a plug 
+
+a loud and cheerful company they ate an excellent meal Soma was served with the coffee Lenina took two tablets and 
+
+half an hour before closing time that second dose of soma had raised a quite impenetrable wall between the actual universe 
+
+she was and in spite of that second gramme of soma Lenina did not forget to take all the contraceptive precautions 
+
+T and sat down The service had begun The dedicated soma tablets were placed in the centre of the dinner table 
+
+centre of the dinner table The loving cup of strawberry soma was passed from hand to hand and with the formula 
+
+has but begun Again twelve stanzas By this time the soma had begun to work Eyes shone cheeks were flushed the 
+
+to Lenina friends of whom they met dozens in the soma bar between the wrestling bouts and in spite of his 
+
+of all she continued in another tone you do take soma when you have these dreadful ideas of yours You forget 
+
+were back in his rooms Bernard swallowed four tablets of soma at a gulp turned on the radio and television and 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-10-3">
+<h2>Exercise 10.3<a class="headerlink" href="#exercise-10-3" title="Link to this heading">#</a></h2>
+<p>In <em>Ullyses</em>, which words are used most frequently in the vicinity of the word ‘father’? Consider 8 words before and 8 words after all the occurrences of this specific name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">text_mining</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">sortedByValue</span><span class="p">(</span> <span class="nb">dict</span> <span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">):</span>
+    <span class="k">if</span> <span class="n">ascending</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))}</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;Ullyses.txt&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="n">path</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">full_text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+<span class="n">nearby_words</span> <span class="o">=</span> <span class="n">collocation</span><span class="p">(</span> <span class="n">full_text</span> <span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;father&#39;</span> <span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+
+<span class="n">nearby_words_sorted</span> <span class="o">=</span> <span class="n">sortedByValue</span><span class="p">(</span> <span class="n">nearby_words</span> <span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span> <span class="n">nearby_words_sorted</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">):</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">nearby_words_sorted</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span> <span class="ow">and</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1"> =&gt; </span><span class="si">{</span><span class="n">freq</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conmee =&gt; 62
+cowley =&gt; 28
+son =&gt; 27
+said =&gt; 18
+conroy =&gt; 11
+left =&gt; 11
+like =&gt; 9
+house =&gt; 9
+old =&gt; 9
+mother =&gt; 9
+simon =&gt; 8
+john =&gt; 8
+saluted =&gt; 8
+mr =&gt; 8
+walked =&gt; 8
+reverend =&gt; 7
+little =&gt; 7
+thought =&gt; 7
+stephen =&gt; 7
+man =&gt; 7
+time =&gt; 7
+put =&gt; 7
+handed =&gt; 6
+dedalus =&gt; 6
+smiled =&gt; 6
+blessed =&gt; 6
+told =&gt; 6
+father =&gt; 6
+poor =&gt; 6
+bernard =&gt; 6
+thy =&gt; 6
+ghost =&gt; 6
+hamlet =&gt; 6
+go =&gt; 5
+hanlon =&gt; 5
+malachi =&gt; 5
+along =&gt; 5
+road =&gt; 5
+letter =&gt; 5
+flynn =&gt; 5
+name =&gt; 5
+well =&gt; 5
+friend =&gt; 5
+holy =&gt; 5
+knows =&gt; 5
+god =&gt; 5
+gave =&gt; 5
+captain =&gt; 4
+bloom =&gt; 4
+canon =&gt; 4
+hughes =&gt; 4
+forget =&gt; 4
+virag =&gt; 4
+black =&gt; 4
+constable =&gt; 4
+passed =&gt; 4
+corner =&gt; 4
+hat =&gt; 4
+dineen =&gt; 4
+race =&gt; 4
+sir =&gt; 4
+going =&gt; 4
+art =&gt; 4
+would =&gt; 4
+eyes =&gt; 4
+things =&gt; 4
+child =&gt; 4
+first =&gt; 4
+looked =&gt; 4
+laid =&gt; 4
+voice =&gt; 4
+ennis =&gt; 3
+waiting =&gt; 3
+theyre =&gt; 3
+always =&gt; 3
+used =&gt; 3
+bit =&gt; 3
+corrigan =&gt; 3
+church =&gt; 3
+years =&gt; 3
+must =&gt; 3
+respected =&gt; 3
+dolan =&gt; 3
+thinking =&gt; 3
+air =&gt; 3
+dublin =&gt; 3
+saint =&gt; 3
+hope =&gt; 3
+good =&gt; 3
+talking =&gt; 3
+ancient =&gt; 3
+patrick =&gt; 3
+back =&gt; 3
+cried =&gt; 3
+famous =&gt; 3
+ross =&gt; 3
+dilly =&gt; 3
+read =&gt; 3
+help =&gt; 3
+conductor =&gt; 3
+seemed =&gt; 3
+head =&gt; 3
+saw =&gt; 3
+went =&gt; 3
+right =&gt; 3
+north =&gt; 3
+turned =&gt; 3
+street =&gt; 3
+great =&gt; 3
+red =&gt; 3
+bright =&gt; 3
+provincial =&gt; 3
+walking =&gt; 3
+indeed =&gt; 3
+unborn =&gt; 3
+grandfather =&gt; 3
+envy =&gt; 3
+youth =&gt; 3
+decline =&gt; 3
+new =&gt; 3
+wrote =&gt; 3
+says =&gt; 3
+wife =&gt; 3
+forty =&gt; 3
+call =&gt; 3
+might =&gt; 3
+queen =&gt; 3
+one =&gt; 3
+could =&gt; 3
+day =&gt; 3
+walk =&gt; 3
+got =&gt; 3
+coffey =&gt; 3
+dead =&gt; 3
+quay =&gt; 3
+wise =&gt; 3
+floating =&gt; 3
+vaughan =&gt; 3
+hear =&gt; 3
+consubstantial =&gt; 3
+jew =&gt; 3
+shakespeare =&gt; 3
+grandson =&gt; 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-10-4">
+<h2>Exercise 10.4<a class="headerlink" href="#exercise-10-4" title="Link to this heading">#</a></h2>
+<p>Find all the sentences in <em>Ullyses</em> that contain the words ‘book’ and ‘read’. Make sure that, in these sentences, there are no more than 10 words in between these two words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">text_mining</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Corpus&#39;</span><span class="p">,</span><span class="s1">&#39;Ullyses.txt&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="n">path</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">full_text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+<span class="n">cooccurrences</span> <span class="o">=</span> <span class="n">cooccurrence</span><span class="p">(</span> <span class="n">full_text</span> <span class="p">,</span> <span class="s1">&#39;book&#39;</span> <span class="p">,</span> <span class="s1">&#39;read&#39;</span> <span class="p">,</span> <span class="mi">10</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">fragment</span> <span class="ow">in</span> <span class="n">cooccurrences</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Who’ll read the book?
+They halted by the bier and the priest began to read out of his book with a fluent croak.
+And she could see far away the lights of the lighthouses so picturesque she would have loved to do with a box of paints because it was easier than to make a man and soon the lamplighter would be going his rounds past the presbyterian church grounds and along by shady Tritonville avenue where the couples walked and lighting the lamp near her window where Reggy Wylie used to turn his freewheel like she read in that book _The Lamplighter_ by Miss Cummins, author of _Mabel Vaughan_ and other tales.
+and dout the light whereby you read in the Sacred Book for the oil too has run low, and so with a tranquil heart to bed, to rest.
+One time I could read a book in the dark, manner of speaking.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="9%20Word%20frequencies_solutions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">9. Word frequencies</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11%20Part%20of%20Speech%20Tagging%20and%20Lemmatisation_solutions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">11. Part of Speech Tagging and Lemmatisation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-1">Exercise 10.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-2">Exercise 10.2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-3">Exercise 10.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-4">Exercise 10.4</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Peter Verhaar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
