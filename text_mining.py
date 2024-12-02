@@ -1,4 +1,5 @@
 from nltk.corpus import stopwords
+from nltk import word_tokenize,sent_tokenize,pos_tag
 stopwords = stopwords.words('english')
 import math
 import re
@@ -18,9 +19,8 @@ def remove_punctuation_and_stopwords(words):
             new_list.append( w )
     return new_list
 
+
 # +
-
-
 def concordance_word( text, regex , width = 10 ):
 
     concordance = []
@@ -46,7 +46,7 @@ def concordance_word( text, regex , width = 10 ):
 
 
 
-# -
+
 
 def collocation( text , regex , width ):
 
@@ -58,10 +58,11 @@ def collocation( text , regex , width ):
     for sentence in sentences:
 
         words = word_tokenize( sentence )
-        words = remove_punctuation(words)
+        words = remove_punctuation_and_stopwords(words)
 
         for i,w in enumerate(words):
             if re.search( regex , w , re.IGNORECASE ):
+
                 index_regex = i 
 
                 for x in range( i - distance , i + distance ):
@@ -71,6 +72,14 @@ def collocation( text , regex , width ):
                             freq_c[ word ] = freq_c.get( word , 0 ) + 1
             
     return freq_c
+
+
+def sorted_by_value( dict , ascending = True ):
+    if ascending: 
+        return {k: v for k, v in sorted(dict.items(), key=lambda item: item[1])}
+    else:
+        return {k: v for k, v in reversed( sorted(dict.items(), key=lambda item: item[1]))}
+
 
 
 
@@ -102,7 +111,7 @@ def cooccurrence( text , word1 , word2 , width ):
             if difference <= width:
                 relevant_sentences.append(s)
     return relevant_sentences
-                       
+
 
 
 def ptb_to_wordnet(PTT):
