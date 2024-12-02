@@ -169,6 +169,12 @@ upenn_code = { "CC":"conjunction, coordinating",
 "WP$":"WH-pronoun, possessive",
 "WRB":"Wh-adverb" }
 
+def sorted_by_value( dict , ascending = True ):
+    if ascending: 
+        return {k: v for k, v in sorted(dict.items(), key=lambda item: item[1])}
+    else:
+        return {k: v for k, v in reversed( sorted(dict.items(), key=lambda item: item[1]))}
+
 
 
 
