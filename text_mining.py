@@ -184,7 +184,7 @@ def lemmatise( full_text ):
 
     sentences = sent_tokenize(full_text)
     for sent in sentences:
-        words = word_tokenise(sent)
+        words = word_tokenize(sent)
         pos = nltk.pos_tag(words)
 
         for i in range( 0 , len(words) ):
