@@ -1,5 +1,6 @@
 from nltk.corpus import stopwords
 from nltk import word_tokenize,sent_tokenize,pos_tag
+from nltk.stem import WordNetLemmatizer
 stopwords = stopwords.words('english')
 import math
 import re
@@ -177,5 +178,22 @@ def sorted_by_value( dict , ascending = True ):
 
 
 
+def lemmatise( full_text ):
+    lemmatised_text = ''
+    lemmatiser = WordNetLemmatizer()
 
+    sentences = sent_tokenize(full_text)
+    for sent in sentences:
+        words = word_tokenise(sent)
+        pos = nltk.pos_tag(words)
+
+        for i in range( 0 , len(words) ):
+            posTag = ptb_to_wordnet( pos[i][1] )
+            if re.search( r'\w+' , posTag , re.IGNORECASE ):
+                lemma = lemmatiser.lemmatize( words[i] , posTag )
+            else:
+                lemma = lemmatiser.lemmatize( words[i] )
+            lemmatised_text += lemma + ' '
+        lemmatised_text += '\n'
+    return lemmatised_text
 
