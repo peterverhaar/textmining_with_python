@@ -1,3 +1,4 @@
+import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize,sent_tokenize,pos_tag
 from nltk.stem import WordNetLemmatizer
@@ -185,7 +186,7 @@ def lemmatise( full_text ):
     sentences = sent_tokenize(full_text)
     for sent in sentences:
         words = word_tokenize(sent)
-        pos = nltk.pos_tag(words)
+        pos = pos_tag(words)
 
         for i in range( 0 , len(words) ):
             posTag = ptb_to_wordnet( pos[i][1] )
